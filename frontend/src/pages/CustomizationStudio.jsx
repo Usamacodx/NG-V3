@@ -81,6 +81,10 @@ export default function CustomizationStudio() {
   const [stickerLoading, setStickerLoading] = useState(false);
   const [stickerError, setStickerError] = useState(null);
   const [pexelsTestResult, setPexelsTestResult] = useState(null);
+  
+  // ✅ NEW: Product color variants from admin
+  const [availableColors, setAvailableColors] = useState([]);
+  const [selectedProductColor, setSelectedProductColor] = useState(null);
 
   // Per-side design states so front/back customizations persist separately
   const [frontDesign, setFrontDesign] = useState({
@@ -121,6 +125,11 @@ export default function CustomizationStudio() {
   const [draggingElement, setDraggingElement] = useState(null);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [suppressViewSync, setSuppressViewSync] = useState(false);
+
+  // ✅ NEW: Selected sticker & resize state for better UX
+  const [selectedStickerId, setSelectedStickerId] = useState(null);
+  const [resizingStickerId, setResizingStickerId] = useState(null);
+  const [resizeStart, setResizeStart] = useState({ x: 0, y: 0, size: 0 });
 
   // History for undo/redo
   const [history, setHistory] = useState([]);
@@ -274,50 +283,108 @@ export default function CustomizationStudio() {
 
       // Note: UI syncing on view change handled by the dedicated view-only effect below.
 
-  // Fetch product on mount
+  // ✅ Fetch product with color variants from the backend (single source of truth)
   useEffect(() => {
-    if (id) {
-      fetch(`http://localhost:5000/api/products/${id}`)
-        .then((res) => res.json())
-        .then((data) => setProduct(data))
-        .catch((err) => console.error(err));
+    if (!id) {
+      return;
     }
+
+    let isCancelled = false;
+
+    const fetchProductData = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/products/${id}`);
+        if (!response.ok) {
+          throw new Error(`API Error: ${response.status}`);
+        }
+
+        const productData = await response.json();
+        if (isCancelled) return;
+
+        setProduct(productData);
+
+        const variants = Array.isArray(productData?.colorVariants)
+          ? productData.colorVariants
+          : [];
+        setAvailableColors(variants);
+        setSelectedProductColor(variants[0]?.colorName || null);
+      } catch (error) {
+        console.error("Failed to load product:", error);
+        alert("Failed to load product. Please try again.");
+      }
+    };
+
+    fetchProductData();
+
+    return () => {
+      isCancelled = true;
+    };
   }, [id]);
 
-  // Fetch product images as data URLs to avoid CORS issues when capturing
+  // ✅ Fetch and update product images as data URLs when product or selected color changes
   useEffect(() => {
-    if (!product) return;
+    if (!product) {
+      return;
+    }
 
-    const toDataUrl = async (url) => {
+    const convertImageToDataUrl = async (imageUrl) => {
+      if (!imageUrl) return null;
+
       try {
-        const res = await fetch(url);
-        if (!res.ok) throw new Error('fetch failed');
-        const blob = await res.blob();
-        return await new Promise((resolve, reject) => {
+        const response = await fetch(imageUrl);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch image: ${response.status}`);
+        }
+        
+        const blob = await response.blob();
+        return new Promise((resolve, reject) => {
           const reader = new FileReader();
           reader.onload = () => resolve(reader.result);
-          reader.onerror = reject;
+          reader.onerror = () => reject(new Error("FileReader error"));
           reader.readAsDataURL(blob);
         });
-      } catch (e) {
-        console.warn('toDataUrl failed for', url, e.message);
+      } catch (error) {
+        console.warn("⚠️ Failed to convert image to data URL:", imageUrl, error.message);
         return null;
       }
     };
 
     (async () => {
-      const f = product.frontImage ? await toDataUrl(product.frontImage) : null;
-      const b = product.backImage ? await toDataUrl(product.backImage) : null;
-      setFrontDataUrl(f);
-      setBackDataUrl(b);
+      try {
+        let frontImageUrl = product.frontImage;
+        let backImageUrl = product.backImage;
+
+        if (selectedProductColor && availableColors.length > 0) {
+          const selectedVariant = availableColors.find(
+            (variant) => variant.colorName === selectedProductColor
+          );
+          if (selectedVariant) {
+            frontImageUrl = selectedVariant.frontImage || product.frontImage;
+            backImageUrl = selectedVariant.backImage || product.backImage;
+          }
+        }
+
+        const frontDataUrl = await convertImageToDataUrl(frontImageUrl);
+        const backDataUrl = await convertImageToDataUrl(backImageUrl);
+
+        setFrontDataUrl(frontDataUrl);
+        setBackDataUrl(backDataUrl);
+      } catch (error) {
+        console.error("Error converting images:", error);
+      }
     })();
-  }, [product]);
+  }, [product, selectedProductColor, availableColors]);
 
 
 
   
 
-  // Calculate dynamic customization price
+  // ✅ Handle product color selection
+  const handleProductColorSelect = (colorName) => {
+    setSelectedProductColor(colorName);
+  };
+
+  // ✅ Calculate dynamic customization price
   const calculateCustomizationPrice = () => {
     let price = 0;
 
@@ -506,6 +573,20 @@ export default function CustomizationStudio() {
     const element = e.currentTarget.getAttribute("data-element");
     if (!element) return;
 
+    // ✅ Check if clicking on a resize handle for stickers
+    if (element.startsWith("sticker-resize-")) {
+      const stickerId = element.substring(15); // Remove "sticker-resize-" prefix
+      setResizingStickerId(stickerId);
+      const rect = canvasRef.current.getBoundingClientRect();
+      setResizeStart({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+        size: stickerSizes[stickerId] || 80,
+      });
+      e.preventDefault();
+      return;
+    }
+
     setDraggingElement(element);
     const rect = canvasRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -517,12 +598,31 @@ export default function CustomizationStudio() {
       setOffset({ x: x - (logoPos.x / 100) * rect.width, y: y - (logoPos.y / 100) * rect.height });
     } else if (element.startsWith("sticker-")) {
       const stickerId = element.substring(8); // Remove "sticker-" prefix
+      setSelectedStickerId(stickerId);
       const pos = stickerPositions[stickerId] || { x: 70, y: 70 };
       setOffset({ x: x - (pos.x / 100) * rect.width, y: y - (pos.y / 100) * rect.height });
     }
   };
 
   const handleMouseMove = (e) => {
+    // ✅ Handle sticker resizing
+    if (resizingStickerId && canvasRef.current) {
+      const rect = canvasRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const distX = x - resizeStart.x;
+      const distY = y - resizeStart.y;
+      const distance = Math.sqrt(distX * distX + distY * distY);
+      
+      const newSize = Math.max(40, Math.min(200, resizeStart.size + distance / 2));
+      setStickerSizes((prev) => ({
+        ...prev,
+        [resizingStickerId]: newSize,
+      }));
+      return;
+    }
+
     if (!draggingElement || !canvasRef.current) return;
 
     const rect = canvasRef.current.getBoundingClientRect();
@@ -547,7 +647,22 @@ export default function CustomizationStudio() {
 
   const handleMouseUp = () => {
     setDraggingElement(null);
+    setResizingStickerId(null);
   };
+
+  // ✅ NEW: Handle keyboard shortcuts (Delete key for selected sticker)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Delete" && selectedStickerId) {
+        handleDeleteSticker(selectedStickerId);
+        setSelectedStickerId(null);
+        e.preventDefault();
+      }
+    };
+    
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedStickerId]);
 
   // Sticker size controls
   const handleIncreaseStickerSize = (stickerId) => {
@@ -1224,24 +1339,42 @@ export default function CustomizationStudio() {
         <div style={styles.leftPanel}>
           <h3 style={styles.panelTitle}>Customize Your Design</h3>
 
-          {/* Shirt Color (for SVG products) */}
-          <div style={styles.card}>
-            <h4 style={styles.cardTitle}>Shirt Color</h4>
-            <div style={styles.colorGrid}>
-              {fabricColors.map((c) => (
-                <button
-                  key={c.name}
-                  onClick={() => setShirtColor(c.color)}
-                  style={{
-                    ...styles.colorButton,
-                    backgroundColor: c.color,
-                    border: shirtColor === c.color ? "3px solid #000" : "1px solid #ddd",
-                  }}
-                  title={c.name}
-                />
-              ))}
+          {/* ✅ ENHANCED: Product Available Colors - Dynamically Generated from Backend */}
+          {availableColors && availableColors.length > 0 ? (
+            <div style={styles.card}>
+              <h4 style={styles.cardTitle}>
+                🎨 Available Colors <span style={{fontSize: "12px", color: "#666"}}>({availableColors.length})</span>
+              </h4>
+              <div style={styles.colorGrid}>
+                {availableColors.map((colorVariant) => (
+                  <button
+                    key={colorVariant.colorName}
+                    onClick={() => handleProductColorSelect(colorVariant.colorName)}
+                    style={{
+                      ...styles.colorButton,
+                      backgroundColor: colorVariant.colorCode,
+                      border: selectedProductColor === colorVariant.colorName ? "3px solid #000" : "2px solid #ccc",
+                      boxShadow: selectedProductColor === colorVariant.colorName ? "0 0 10px rgba(0,0,0,0.5)" : "0 2px 4px rgba(0,0,0,0.1)",
+                      transform: selectedProductColor === colorVariant.colorName ? "scale(1.05)" : "scale(1)",
+                      transition: "all 0.2s ease",
+                      cursor: "pointer",
+                    }}
+                    title={`Select ${colorVariant.colorName} color`}
+                    aria-label={`Select ${colorVariant.colorName} color`}
+                  />
+                ))}
+              </div>
+              <p style={{ fontSize: "12px", color: "#666", marginTop: "10px", textAlign: "center" }}>
+                Selected: <strong style={{color: "#000", fontSize: "13px"}}>{selectedProductColor}</strong>
+              </p>
             </div>
-          </div>
+          ) : (
+            <div style={{...styles.card, backgroundColor: "#fff9e6", borderColor: "#ffd700", borderLeftWidth: "4px"}}>
+              <p style={{ fontSize: "12px", color: "#FF8C00", margin: 0 }}>
+                {product ? "No color variants added for this product." : "Loading product..."}
+              </p>
+            </div>
+          )}
 
           {/* Text Color */}
           <div style={styles.card}>
@@ -1265,13 +1398,37 @@ export default function CustomizationStudio() {
           {/* Text Editor */}
           <div style={styles.card}>
             <h4 style={styles.cardTitle}>Add Text</h4>
-            <input
-              type="text"
+            <textarea
               value={designText}
               onChange={(e) => setDesignText(e.target.value)}
-              placeholder="Enter text"
-              style={styles.input}
+              onKeyDown={(e) => {
+                // ✅ Support Shift + Enter for manual line breaks
+                if (e.key === "Enter" && e.shiftKey) {
+                  e.preventDefault();
+                  const textarea = e.currentTarget;
+                  const start = textarea.selectionStart;
+                  const end = textarea.selectionEnd;
+                  const newText = designText.substring(0, start) + "\n" + designText.substring(end);
+                  setDesignText(newText);
+                  // Move cursor after the new line
+                  setTimeout(() => {
+                    textarea.selectionStart = textarea.selectionEnd = start + 1;
+                  }, 0);
+                }
+              }}
+              placeholder="Enter text (Shift+Enter for line breaks)"
+              style={{
+                ...styles.input,
+                minHeight: "80px",
+                fontFamily: "Arial, sans-serif",
+                resize: "vertical",
+                whiteSpace: "pre-wrap",
+                wordWrap: "break-word",
+              }}
             />
+            <p style={{ fontSize: "11px", color: "#999", marginTop: "6px" }}>
+              💡 Tip: Press <strong>Shift+Enter</strong> to create a line break
+            </p>
             <label style={styles.label}>Font</label>
             <select
               value={selectedFont}
@@ -1487,26 +1644,40 @@ export default function CustomizationStudio() {
 
             {selectedStickers.length > 0 && (
               <div>
-                <p style={styles.selectedText}>✓ {selectedStickers.length} sticker(s) selected</p>
+                <p style={styles.selectedText}>✓ {selectedStickers.length} sticker(s) added</p>
+                <div style={{marginBottom: "12px", padding: "10px", backgroundColor: "#e8f5e9", border: "1px solid #4caf50", borderRadius: "5px", fontSize: "12px", color: "#2e7d32"}}>
+                  <strong>💡 Tips:</strong>
+                  <ul style={{margin: "6px 0 0 0", paddingLeft: "18px"}}>
+                    <li>Click & drag stickers to move them</li>
+                    <li>Hover over a sticker, then drag the blue circle to resize</li>
+                    <li>Click the ✕ icon or press Delete key to remove</li>
+                  </ul>
+                </div>
                 {selectedStickers.map((sticker) => (
-                  <div key={sticker.id} style={{marginBottom: "12px", padding: "10px", border: "1px solid #ddd", borderRadius: "5px", backgroundColor: "#fff"}}>
-                    <p style={{margin: "0 0 8px 0", fontSize: "12px", fontWeight: "bold"}}>{sticker.name} (Size: {stickerSizes[sticker.id] || 80}px)</p>
+                  <div key={sticker.id} style={{marginBottom: "12px", padding: "10px", border: selectedStickerId === sticker.id ? "2px solid #0b84ff" : "1px solid #ddd", borderRadius: "5px", backgroundColor: selectedStickerId === sticker.id ? "#e3f2fd" : "#fff", transition: "all 0.2s ease"}}>
+                    <p style={{margin: "0 0 8px 0", fontSize: "12px", fontWeight: "bold"}}>{sticker.name} (Size: {Math.round(stickerSizes[sticker.id] || 80)}px)</p>
                     <div style={styles.buttonGroup}>
                       <button
                         onClick={() => handleIncreaseStickerSize(sticker.id)}
                         style={{...styles.sizeBtn, backgroundColor: "#000", color: "#fff"}}
+                        title="Increase size (or use resize handle)"
                       >
                         + Increase
                       </button>
                       <button
                         onClick={() => handleDecreaseStickerSize(sticker.id)}
                         style={{...styles.sizeBtn, backgroundColor: "#000", color: "#fff"}}
+                        title="Decrease size (or use resize handle)"
                       >
                         − Decrease
                       </button>
                       <button
-                        onClick={() => handleDeleteSticker(sticker.id)}
+                        onClick={() => {
+                          handleDeleteSticker(sticker.id);
+                          setSelectedStickerId(null);
+                        }}
                         style={{...styles.sizeBtn, backgroundColor: "#ff6b6b", color: "#fff", gridColumn: "1 / -1"}}
+                        title="Delete sticker (or click ✕ icon on canvas / press Delete)"
                       >
                         🗑️ Delete
                       </button>
@@ -1559,11 +1730,11 @@ export default function CustomizationStudio() {
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
           >
-            {/* Product Image Background */}
-            {(view === "front" ? product?.frontImage : product?.backImage) && (
+            {/* Product Image Background - Uses selected color variant image if available */}
+            {(view === "front" ? frontDataUrl || product?.frontImage : backDataUrl || product?.backImage) && (
               <>
                 {/* Check if product image is SVG (data URL or file extension) */}
-                {isSVGImage(view === "front" ? product?.frontImage : product?.backImage) ? (
+                {isSVGImage(view === "front" ? frontDataUrl || product?.frontImage : backDataUrl || product?.backImage) ? (
                   <div
                     style={{
                       position: "absolute",
@@ -1576,14 +1747,14 @@ export default function CustomizationStudio() {
                     }}
                   >
                     <SVGShirtContainer
-                      svgUrl={view === "front" ? product?.frontImage : product?.backImage}
+                      svgUrl={view === "front" ? frontDataUrl || product?.frontImage : backDataUrl || product?.backImage}
                       shirtColor={shirtColor}
                       view={view}
                     />
                   </div>
                 ) : (
                   <img
-                    src={view === "front" ? product?.frontImage : product?.backImage}
+                    src={view === "front" ? frontDataUrl || product?.frontImage : backDataUrl || product?.backImage}
                     alt="product"
                     style={{
                       position: "absolute",
@@ -1614,14 +1785,16 @@ export default function CustomizationStudio() {
                   fontWeight: "bold",
                   color: selectedColor,
                   textAlign: "center",
-                  maxWidth: "250px",
+                  maxWidth: "350px",
                   wordWrap: "break-word",
+                  whiteSpace: "pre-wrap",
                   textShadow: "2px 2px 4px rgba(0,0,0,0.3)",
                   cursor: draggingElement === "text" ? "grabbing" : "grab",
                   transform: "translate(-50%, -50%)",
                   padding: "5px 10px",
                   userSelect: "none",
                   zIndex: draggingElement === "text" ? 1000 : 10,
+                  lineHeight: "1.3",
                 }}
               >
                 {designText}
@@ -1653,61 +1826,149 @@ export default function CustomizationStudio() {
 
             {/* Sticker */}
             {selectedStickers.map((sticker) => (
-              sticker.emoji ? (
-                <div
-                  key={sticker.id}
-                  onMouseDown={handleMouseDown}
-                  data-element={`sticker-${sticker.id}`}
-                  data-sticker-id={sticker.id}
-                  style={{
-                    position: "absolute",
-                    left: `${(stickerPositions[sticker.id]?.x || 70)}%`,
-                    top: `${(stickerPositions[sticker.id]?.y || 70)}%`,
-                    transform: "translate(-50%, -50%)",
-                    fontSize: `${stickerSizes[sticker.id] || 80}px`,
-                    cursor: draggingElement === `sticker-${sticker.id}` ? "grabbing" : "grab",
-                    userSelect: "none",
-                    zIndex: draggingElement === `sticker-${sticker.id}` ? 1000 : 10,
-                  }}
-                >
-                  {sticker.emoji}
-                </div>
-              ) : (
-                <img
-                  key={sticker.id}
-                  src={sticker.url}
-                  alt="sticker"
-                  onMouseDown={handleMouseDown}
-                  data-element={`sticker-${sticker.id}`}
-                  data-sticker-id={sticker.id}
-                  onError={(e) => {
-                    try {
-                      e.currentTarget.onerror = null;
-                      const fallback = `https://source.unsplash.com/600x600/?${encodeURIComponent(sticker.name || sticker.keywords || "design")}`;
-                      e.currentTarget.src = fallback;
-                      // persist fallback into selectedStickers
-                      setSelectedStickers((prev) =>
-                        prev.map((s) => (s.id === sticker.id ? { ...s, url: fallback } : s))
-                      );
-                    } catch (err) {
-                      console.warn("sticker canvas fallback failed", err);
-                    }
-                  }}
-                  style={{
-                    position: "absolute",
-                    left: `${(stickerPositions[sticker.id]?.x || 70)}%`,
-                    top: `${(stickerPositions[sticker.id]?.y || 70)}%`,
-                    transform: "translate(-50%, -50%)",
-                    width: `${stickerSizes[sticker.id] || 80}px`,
-                    height: `${stickerSizes[sticker.id] || 80}px`,
-                    objectFit: "contain",
-                    cursor: draggingElement === `sticker-${sticker.id}` ? "grabbing" : "grab",
-                    border: draggingElement === `sticker-${sticker.id}` ? "2px solid #ff6b6b" : "none",
-                    userSelect: "none",
-                    zIndex: draggingElement === `sticker-${sticker.id}` ? 1000 : 10,
-                  }}
-                />
-              )
+              <div
+                key={sticker.id}
+                style={{
+                  position: "absolute",
+                  left: `${(stickerPositions[sticker.id]?.x || 70)}%`,
+                  top: `${(stickerPositions[sticker.id]?.y || 70)}%`,
+                  transform: "translate(-50%, -50%)",
+                  zIndex: selectedStickerId === sticker.id ? 1000 : (draggingElement === `sticker-${sticker.id}` ? 999 : 10),
+                }}
+                onMouseEnter={() => setSelectedStickerId(sticker.id)}
+                onMouseLeave={() => {
+                  if (!draggingElement?.includes(`sticker-${sticker.id}`)) {
+                    setSelectedStickerId(null);
+                  }
+                }}
+              >
+                {sticker.emoji ? (
+                  <div
+                    onMouseDown={handleMouseDown}
+                    data-element={`sticker-${sticker.id}`}
+                    data-sticker-id={sticker.id}
+                    style={{
+                      position: "relative",
+                      fontSize: `${stickerSizes[sticker.id] || 80}px`,
+                      cursor: draggingElement === `sticker-${sticker.id}` ? "grabbing" : "grab",
+                      userSelect: "none",
+                      padding: selectedStickerId === sticker.id ? "8px" : "0",
+                      border: selectedStickerId === sticker.id ? "2px dashed #ff6b6b" : "none",
+                      borderRadius: "4px",
+                      backgroundColor: selectedStickerId === sticker.id ? "rgba(255,107,107,0.1)" : "transparent",
+                      transition: "all 0.2s ease",
+                    }}
+                  >
+                    {sticker.emoji}
+                  </div>
+                ) : (
+                  <img
+                    src={sticker.url}
+                    alt="sticker"
+                    onMouseDown={handleMouseDown}
+                    data-element={`sticker-${sticker.id}`}
+                    data-sticker-id={sticker.id}
+                    onError={(e) => {
+                      try {
+                        e.currentTarget.onerror = null;
+                        const fallback = `https://source.unsplash.com/600x600/?${encodeURIComponent(sticker.name || sticker.keywords || "design")}`;
+                        e.currentTarget.src = fallback;
+                        setSelectedStickers((prev) =>
+                          prev.map((s) => (s.id === sticker.id ? { ...s, url: fallback } : s))
+                        );
+                      } catch (err) {
+                        console.warn("sticker canvas fallback failed", err);
+                      }
+                    }}
+                    style={{
+                      position: "relative",
+                      width: `${stickerSizes[sticker.id] || 80}px`,
+                      height: `${stickerSizes[sticker.id] || 80}px`,
+                      objectFit: "contain",
+                      cursor: draggingElement === `sticker-${sticker.id}` ? "grabbing" : "grab",
+                      border: selectedStickerId === sticker.id ? "2px solid #ff6b6b" : "none",
+                      borderRadius: selectedStickerId === sticker.id ? "4px" : "0",
+                      boxShadow: selectedStickerId === sticker.id ? "0 0 8px rgba(255,107,107,0.5)" : "none",
+                      userSelect: "none",
+                      display: "block",
+                      transition: "all 0.2s ease",
+                    }}
+                  />
+                )}
+
+                {/* ✅ Delete Icon Button - Show on hover */}
+                {selectedStickerId === sticker.id && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDeleteSticker(sticker.id);
+                      setSelectedStickerId(null);
+                    }}
+                    style={{
+                      position: "absolute",
+                      top: "-10px",
+                      right: "-10px",
+                      width: "24px",
+                      height: "24px",
+                      borderRadius: "50%",
+                      backgroundColor: "#ff6b6b",
+                      color: "#fff",
+                      border: "none",
+                      cursor: "pointer",
+                      fontSize: "14px",
+                      fontWeight: "bold",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      boxShadow: "0 2px 8px rgba(255,107,107,0.4)",
+                      transition: "all 0.2s ease",
+                      zIndex: 1001,
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = "#ff5252";
+                      e.currentTarget.style.transform = "scale(1.1)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = "#ff6b6b";
+                      e.currentTarget.style.transform = "scale(1)";
+                    }}
+                    title="Delete sticker (or press Delete key)"
+                  >
+                    ✕
+                  </button>
+                )}
+
+                {/* ✅ Resize Handle - Bottom Right Corner */}
+                {selectedStickerId === sticker.id && (
+                  <div
+                    onMouseDown={handleMouseDown}
+                    data-element={`sticker-resize-${sticker.id}`}
+                    style={{
+                      position: "absolute",
+                      bottom: "-6px",
+                      right: "-6px",
+                      width: "16px",
+                      height: "16px",
+                      backgroundColor: "#0b84ff",
+                      border: "2px solid #fff",
+                      borderRadius: "50%",
+                      cursor: "nwse-resize",
+                      boxShadow: "0 2px 6px rgba(11,132,255,0.4)",
+                      transition: "all 0.2s ease",
+                      zIndex: 1002,
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = "#0a6fd1";
+                      e.currentTarget.style.transform = "scale(1.2)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = "#0b84ff";
+                      e.currentTarget.style.transform = "scale(1)";
+                    }}
+                    title="Drag to resize sticker"
+                  />
+                )}
+              </div>
             ))}
           </div>
 

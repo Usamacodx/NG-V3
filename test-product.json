@@ -1,0 +1,32 @@
+{
+  "name": "Test Shirt with Color Variants",
+  "price": 599,
+  "quantity": 100,
+  "category": "Male",
+  "subcategory": "T-Shirts",
+  "fabric": "Cotton",
+  "description": "Test product to verify color variants work",
+  "frontImage": "https://via.placeholder.com/400x500?text=Front+Default",
+  "backImage": "https://via.placeholder.com/400x500?text=Back+Default",
+  "colors": ["Red", "Blue", "Green"],
+  "colorVariants": [
+    {
+      "colorName": "Red",
+      "colorCode": "#FF0000",
+      "frontImage": "https://via.placeholder.com/400x500?text=Front+Red",
+      "backImage": "https://via.placeholder.com/400x500?text=Back+Red"
+    },
+    {
+      "colorName": "Blue",
+      "colorCode": "#0000FF",
+      "frontImage": "https://via.placeholder.com/400x500?text=Front+Blue",
+      "backImage": "https://via.placeholder.com/400x500?text=Back+Blue"
+    },
+    {
+      "colorName": "Green",
+      "colorCode": "#00BB00",
+      "frontImage": "https://via.placeholder.com/400x500?text=Front+Green",
+      "backImage": "https://via.placeholder.com/400x500?text=Back+Green"
+    }
+  ]
+}

@@ -41,6 +41,27 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  // ✅ NEW: Per-color variant images
+  colorVariants: [
+    {
+      colorName: {
+        type: String,
+        required: true,
+      },
+      colorCode: {
+        type: String,
+        required: true,
+      },
+      frontImage: {
+        type: String,
+        required: true,
+      },
+      backImage: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
   rating: {
     type: Number,
     default: 0,

@@ -6,22 +6,29 @@ export default function AdminLogin({ setIsAdmin }) {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+    const admins = [
+    { email: "amnashabbir@gmail.com", password: "Java*20" }
+  ];
+
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // ✅ Hardcoded admin check (OK for now)
-    if (email === "admin@nextgen.com" && password === "admin123") {
-      
-      // ✅ ADD THIS
+    // ✅ Check if entered credentials match any admin
+    const validAdmin = admins.find(
+      (admin) => admin.email === email && admin.password === password
+    );
+  
+    if (validAdmin) {
+      // Save login state
       localStorage.setItem("isAdminLoggedIn", "true");
 
-      // ✅ UPDATE STATE
+      // Update state
       setIsAdmin(true);
 
-      // ✅ Dispatch storage event to notify other tabs/windows
+      // Notify other tabs
       window.dispatchEvent(new Event("storage"));
 
-      // ✅ REDIRECT TO PRODUCT LISTING
+      // Redirect
       navigate("/products");
     } else {
       alert("Invalid admin credentials");
@@ -51,7 +58,7 @@ export default function AdminLogin({ setIsAdmin }) {
           style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
         />
 
-        <button type="submit" style={{ padding: "10px 15px" }}>
+        <button type="submit" style={{ padding: "10px 15px", width: "100%" }}>
           Login
         </button>
       </form>

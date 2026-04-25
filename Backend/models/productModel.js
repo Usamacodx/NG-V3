@@ -9,9 +9,25 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  quantity: {
+    type: Number,
+    default: 0,
+  },
   category: {
     type: String,
     required: true,
+  },
+  subcategory: {
+    type: String,
+    default: '',
+  },
+  fabric: {
+    type: String,
+    default: '',
+  },
+  colors: {
+    type: [String],
+    default: [],
   },
   image: {
     type: String,
@@ -25,6 +41,27 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  // ✅ Color variants with front and back images per color
+  colorVariants: [
+    {
+      colorName: {
+        type: String,
+        required: true,
+      },
+      colorCode: {
+        type: String,
+        required: true,
+      },
+      frontImage: {
+        type: String,
+        required: true,
+      },
+      backImage: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
   rating: {
     type: Number,
     default: 0,

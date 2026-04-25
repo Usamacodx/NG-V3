@@ -100,6 +100,10 @@ app.use('/api/orders', ordersRoutes);
 app.get("/api/products", async (req, res) => {
   try {
     const products = await Product.find();
+    console.log(`📤 [GET /api/products] Retrieved ${products.length} products`);
+    products.forEach((p, i) => {
+      console.log(`   [${i + 1}] ${p.name} - ${p.colorVariants?.length || 0} color variants`);
+    });
     res.json(products);
   } catch (error) {
     console.error("Error fetching products:", error.message);
@@ -111,6 +115,8 @@ app.get("/api/products", async (req, res) => {
 app.get("/api/products/:id", async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
+    console.log(`📤 [GET /api/products/:id] Retrieved product: ${product?.name}`);
+    console.log(`   - colorVariants: ${product?.colorVariants?.length || 0}`);
     res.json(product);
   } catch {
     res.status(404).json({ message: "Product not found" });
@@ -136,12 +142,21 @@ app.post("/api/products", async (req, res) => {
       frontImage: req.body.frontImage,
       backImage: req.body.backImage,
       image: req.body.image || null,
+      colorVariants: req.body.colorVariants || [],  // ✅ FIXED: Now saves color variants with images
     };
+
+    console.log("📨 [POST /api/products] Received colorVariants:", productData.colorVariants.length, "variants");
+    if (productData.colorVariants.length > 0) {
+      console.log("   First variant:", productData.colorVariants[0].colorName);
+    }
 
     const product = new Product(productData);
     const savedProduct = await product.save();
+    
+    console.log("✅ [POST /api/products] Product saved with", savedProduct.colorVariants?.length || 0, "color variants");
     res.status(201).json(savedProduct);
   } catch (error) {
+    console.error("❌ [POST /api/products] Error:", error.message);
     res.status(500).json({ 
       message: "Error adding product", 
       error: error.message,

@@ -15,6 +15,9 @@ function ProductDetail() {
   const [customizationPrice, setCustomizationPrice] = useState(0);
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [selectedColor, setSelectedColor] = useState(null);
+  const [currentFrontImage, setCurrentFrontImage] = useState("");
+  const [currentBackImage, setCurrentBackImage] = useState("");
 
   // ✅ Check login using context or token
   const isLoggedIn = user || !!localStorage.getItem("token");
@@ -30,6 +33,14 @@ function ProductDetail() {
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
+        setCurrentFrontImage(data.frontImage);
+        setCurrentBackImage(data.backImage);
+        // If there are color variants, select the first color by default
+        if (data.colorVariants && data.colorVariants.length > 0) {
+          setSelectedColor(data.colorVariants[0].colorName);
+          setCurrentFrontImage(data.colorVariants[0].frontImage);
+          setCurrentBackImage(data.colorVariants[0].backImage);
+        }
         setLoading(false);
       })
       .catch((err) => {
@@ -37,6 +48,22 @@ function ProductDetail() {
         setLoading(false);
       });
   }, [id]);
+
+  // Handle color selection
+  const handleColorSelect = (colorName) => {
+    setSelectedColor(colorName);
+    
+    // Find the color variant
+    const variant = product.colorVariants?.find(v => v.colorName === colorName);
+    if (variant) {
+      setCurrentFrontImage(variant.frontImage || product.frontImage);
+      setCurrentBackImage(variant.backImage || product.backImage);
+    } else {
+      // Fallback to default images if variant not found
+      setCurrentFrontImage(product.frontImage);
+      setCurrentBackImage(product.backImage);
+    }
+  };
 
   const handleAddToCart = () => {
     if (!isLoggedIn) {
@@ -57,7 +84,12 @@ function ProductDetail() {
       return;
     }
 
-    navigate(`/customize/${id}`);
+    console.log("🎨 ProductDetail - Passing product to CustomizationStudio:");
+    console.log("   Product object:", product);
+    console.log("   colorVariants:", product?.colorVariants);
+    console.log("   colorVariants length:", product?.colorVariants?.length);
+
+    navigate(`/customize/${id}`, { state: { product } });
   };
 
   const renderStars = (rating) => {
@@ -86,23 +118,23 @@ function ProductDetail() {
         {/* Image Section */}
         <div style={styles.imageSection}>
           <img
-            src={product.frontImage || "https://via.placeholder.com/500"}
+            src={currentFrontImage || "https://via.placeholder.com/500"}
             alt={product.name}
             style={styles.mainImage}
           />
 
           <div style={styles.thumbnailContainer}>
-            {product.frontImage && (
+            {currentFrontImage && (
               <img
-                src={product.frontImage}
+                src={currentFrontImage}
                 alt="Front View"
                 title="Front View"
                 style={styles.thumbnail}
               />
             )}
-            {product.backImage && (
+            {currentBackImage && (
               <img
-                src={product.backImage}
+                src={currentBackImage}
                 alt="Back View"
                 title="Back View"
                 style={styles.thumbnail}
@@ -144,8 +176,33 @@ function ProductDetail() {
               "High-quality fabric with a comfortable fit. Soft, breathable and perfect for daily wear. Ideal for summer and winter layering."}
           </p>
 
-          {/* Available Colors */}
-          {product.colors && product.colors.length > 0 && (
+          {/* ✅ Color Swatches with Dynamic Images */}
+          {product.colorVariants && product.colorVariants.length > 0 && (
+            <div style={styles.sectionGroup}>
+              <label style={styles.label}>🎨 Select Color</label>
+              <div style={styles.colorSwatchContainer}>
+                {product.colorVariants.map((variant) => (
+                  <button
+                    key={variant.colorName}
+                    style={{
+                      ...styles.colorSwatch,
+                      backgroundColor: variant.colorCode,
+                      border: selectedColor === variant.colorName ? "3px solid #000" : "2px solid #ccc",
+                      boxShadow: selectedColor === variant.colorName ? "0 0 12px rgba(0,0,0,0.4)" : "none",
+                    }}
+                    onClick={() => handleColorSelect(variant.colorName)}
+                    title={variant.colorName}
+                  />
+                ))}
+              </div>
+              <p style={styles.selectedColorText}>
+                Selected: <strong>{selectedColor || "None"}</strong>
+              </p>
+            </div>
+          )}
+
+          {/* Fallback: Show available colors as text if no variants */}
+          {(!product.colorVariants || product.colorVariants.length === 0) && product.colors && product.colors.length > 0 && (
             <div style={styles.sectionGroup}>
               <label style={styles.label}>Available Colors</label>
               <div style={styles.colorContainer}>
@@ -160,7 +217,7 @@ function ProductDetail() {
 
           {/* Size Selector */}
           <div style={styles.sectionGroup}>
-            <label style={styles.label}>Select Size</label>
+            <label style={styles.label}>📏 Select Size</label>
             <div style={styles.sizeOptions}>
               {["XS", "S", "M", "L", "XL", "XXL"].map((size) => (
                 <button
@@ -179,7 +236,7 @@ function ProductDetail() {
 
           {/* Quantity Selector */}
           <div style={styles.sectionGroup}>
-            <label style={styles.label}>Quantity</label>
+            <label style={styles.label}>📦 Quantity</label>
             <div style={styles.quantitySelector}>
               <button
                 style={styles.quantityBtn}
@@ -210,10 +267,10 @@ function ProductDetail() {
             {!isAdmin && (
               <>
                 <button style={styles.addToCartBtn} onClick={handleAddToCart}>
-                  Add to Cart
+                  🛒 Add to Cart
                 </button>
                 <button style={styles.customizeNowBtn} onClick={handleCustomizeNow}>
-                  Customize Now
+                  ✏️ Customize Now
                 </button>
               </>
             )}
@@ -301,6 +358,10 @@ const styles = {
   loading: { textAlign: "center", fontSize: "18px", color: "#666" },
   colorContainer: { display: "flex", gap: "8px", flexWrap: "wrap" },
   colorBadge: { display: "inline-block", padding: "8px 12px", backgroundColor: "#f0f0f0", border: "1px solid #ddd", borderRadius: "5px", fontSize: "13px", fontWeight: "500", color: "#333" },
+  // ✅ NEW: Color Swatches
+  colorSwatchContainer: { display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(60px, 1fr))", gap: "12px" },
+  colorSwatch: { width: "60px", height: "60px", borderRadius: "8px", cursor: "pointer", transition: "all 0.3s ease", position: "relative" },
+  selectedColorText: { fontSize: "13px", color: "#666", margin: "5px 0 0 0" },
 };
 
 export default ProductDetail;

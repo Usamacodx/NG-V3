@@ -14,8 +14,13 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
+    console.log("📤 GET /api/products/:id - Product retrieved:");
+    console.log("   ID:", product?._id);
+    console.log("   colorVariants:", product?.colorVariants);
+    console.log("   colorVariants length:", product?.colorVariants?.length);
     res.json(product);
   } catch (error) {
+    console.error("❌ Error fetching product:", error.message);
     res.status(404).json({ message: "Product not found" });
   }
 });
@@ -23,10 +28,22 @@ router.get("/:id", async (req, res) => {
 // ADD product
 router.post("/", async (req, res) => {
   try {
+    console.log("📥 POST /api/products - Request body received:");
+    console.log("   colorVariants:", req.body.colorVariants);
+    console.log("   colorVariants type:", typeof req.body.colorVariants);
+    console.log("   colorVariants length:", req.body.colorVariants?.length);
+    
     const product = new Product(req.body);
     const savedProduct = await product.save();
+    
+    console.log("✅ Product saved to MongoDB:");
+    console.log("   ID:", savedProduct._id);
+    console.log("   colorVariants saved:", savedProduct.colorVariants);
+    console.log("   colorVariants count:", savedProduct.colorVariants?.length);
+    
     res.status(201).json(savedProduct);
   } catch (error) {
+    console.error("❌ Error saving product:", error.message);
     res.status(500).json({ message: error.message });
   }
 });

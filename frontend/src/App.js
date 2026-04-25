@@ -32,6 +32,7 @@ import Shipping from "./pages/Shipping";
 import Returns from "./pages/Returns";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import SVGColorTest from "./pages/SVGColorTest";
+import CategoryPage from "./pages/CategoryPage";
 
 export default function App() {
   const [isAdmin, setIsAdmin] = useState(false); // Track admin login
@@ -56,6 +57,7 @@ export default function App() {
             <Route path="/" element={<ProductListing />} />
             <Route path="/products" element={<ProductListing />} />
             <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/category/:category/:subcategory" element={<CategoryPage />} />
             <Route path="/customize/:id" element={<CustomizationStudio />} />
             <Route path="/customize/:id/3d-view" element={<ShirtViewer3D />} />
             <Route path="/svg-test" element={<SVGColorTest />} />
