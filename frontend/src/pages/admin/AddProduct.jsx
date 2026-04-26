@@ -242,7 +242,7 @@ const AddProduct = () => {
       setImageFiles({ frontImage: null, backImage: null });
       setFieldErrors({});
       setExpandedColors({});
-      navigate("/products");
+      //navigate("/products");
     } catch (err) {
       setError(err.message || "Error adding product");
     } finally {
