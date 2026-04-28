@@ -44,13 +44,19 @@ function ProductListing() {
   const [subcategoryFilter, setSubcategoryFilter] = useState("all");
   const [expandedCategory, setExpandedCategory] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
   const navigate = useNavigate();
   const productSectionRef = useRef(null);
+  const observerTarget = useRef(null);
   const { addToCart } = useCart();
   const { user } = useAuth();
+
+  const ITEMS_PER_PAGE = 12;
 
   // Add CSS keyframes for animation
   useEffect(() => {
@@ -62,6 +68,19 @@ function ProductListing() {
       }
       .carousel-image {
         animation: fadeInOut 0.6s ease-in-out;
+      }
+      .loading-spinner {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #0b84ff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
       }
     `;
     document.head.appendChild(style);
@@ -161,29 +180,82 @@ function ProductListing() {
     setCurrentSlide((prev) => (prev - 1 + heroImages.length) % heroImages.length);
   };
 
-  // Fetch products
+  // ✅ OPTIMIZED: Fetch products with caching and pagination
+  const fetchProducts = async (page = 1) => {
+    try {
+      if (page === 1) setLoading(true);
+      else setLoadingMore(true);
+
+      // Fetch from API with pagination
+      const response = await fetch(
+        `http://localhost:5000/api/products/list?page=${page}&limit=${ITEMS_PER_PAGE}`
+      );
+      if (!response.ok) throw new Error("Failed to fetch products");
+
+      const data = await response.json();
+      const newProducts = data.products;
+
+      if (page === 1) {
+        setProducts(newProducts);
+        // Cache first page
+        if (newProducts.length > 0) {
+          localStorage.setItem("productsCache", JSON.stringify(newProducts));
+          localStorage.setItem("productsCache_time", String(Date.now()));
+        }
+      } else {
+        setProducts((prev) => [...prev, ...newProducts]);
+      }
+
+      setHasMore(data.hasMore || false);
+      setLoading(false);
+      setLoadingMore(false);
+    } catch (err) {
+      console.error("Error fetching products:", err);
+      setError("Backend not running or error fetching products");
+      setLoading(false);
+      setLoadingMore(false);
+    }
+  };
+
+  // ✅ Fetch initial products on mount
   useEffect(() => {
-    fetch("http://localhost:5000/api/products")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch products");
-        return res.json();
-      })
-      .then((data) => {
-        setProducts(data);
-        setLoading(false);
-      })
-      .catch(() => {
-        setError("Backend not running");
-        setLoading(false);
-      });
+    fetchProducts(1);
   }, []);
 
+  // ✅ Infinite scroll observer
+  useEffect(() => {
+    if (!observerTarget.current) return;
+    
+    const handleIntersection = (entries) => {
+      if (
+        entries[0].isIntersecting &&
+        hasMore &&
+        !loadingMore &&
+        !loading
+      ) {
+        setCurrentPage((prev) => {
+          fetchProducts(prev + 1);
+          return prev + 1;
+        });
+      }
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, { threshold: 0.1 });
+    observer.observe(observerTarget.current);
+
+    return () => observer.disconnect();
+  }, [hasMore, loadingMore, loading, fetchProducts]);
+
+  // Delete product
   // Delete product
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this product?")) return;
     try {
       await fetch(`http://localhost:5000/api/products/${id}`, { method: "DELETE" });
       setProducts(products.filter((p) => p._id !== id));
+      // Clear cache
+      localStorage.removeItem("productsCache");
+      localStorage.removeItem("productsCache_time");
     } catch {
       alert("Delete failed");
     }
@@ -547,6 +619,7 @@ function ProductListing() {
                 src={product.frontImage || "https://via.placeholder.com/300"}
                 alt={product.name}
                 style={imageStyle}
+                loading="lazy"
                 onClick={() => navigate(`/product/${product._id}`)}
                 className="cursor-pointer"
               />
@@ -640,13 +713,33 @@ function ProductListing() {
             </div>
           ))}
         </div>
+
+        {/* ✅ INFINITE SCROLL OBSERVER */}
+        <div
+          ref={observerTarget}
+          style={{
+            textAlign: "center",
+            padding: "40px 20px",
+            display: loadingMore ? "block" : "none",
+          }}
+        >
+          <div className="loading-spinner"></div>
+          <p style={{ marginTop: "10px", color: "#666" }}>Loading more products...</p>
+        </div>
+
+        {/* No more products message */}
+        {!hasMore && filteredProducts.length > 0 && (
+          <p style={{ textAlign: "center", color: "#999", padding: "20px" }}>
+            ✓ All products loaded
+          </p>
+        )}
       </div>
     </div>
   );
 }
 
 /* ===== STYLES ===== */
-const filterSectionStyle = { 
+const filterSectionStyle = {
   display: "flex", 
   flexDirection: "column", 
   gap: "15px", 
