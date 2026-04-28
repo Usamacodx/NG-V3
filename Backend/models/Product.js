@@ -80,4 +80,10 @@ const productSchema = new mongoose.Schema({
   },
 });
 
+// ✅ ADD INDEXES FOR FASTER QUERIES
+productSchema.index({ name: 1 });
+productSchema.index({ category: 1 });
+productSchema.index({ price: 1 });
+productSchema.index({ category: 1, subcategory: 1 });
+
 export default mongoose.model('Product', productSchema);
