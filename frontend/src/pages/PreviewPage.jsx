@@ -156,8 +156,9 @@ export default function PreviewPage() {
       // Handle array of stickers (new) and single sticker (old for backwards compatibility)
       const drawStickerFile = (sticker, stickerId, stickerPositions = {}) => {
         const stickerSize = (sticker.stickerSize || sticker.size || 80) * scale;
-        // Use actual saved position or fallback to default
-        const pos = stickerPositions[stickerId] || { x: 50, y: 50 };
+        // ✅ FIX: Use sticker.id if available to match the position key used in studio
+        const posKey = sticker.id || stickerId;
+        const pos = stickerPositions[posKey] || { x: 50, y: 50 };
         const stickerX = (pos.x / 100) * width;
         const stickerY = (pos.y / 100) * height;
 
@@ -185,8 +186,9 @@ export default function PreviewPage() {
 
       // Draw multiple stickers from array (new)
       if (design.stickers && design.stickers.length > 0) {
-        design.stickers.forEach((sticker, index) => {
-          drawStickerFile(sticker, `sticker-${index}`, design.stickerPositions || {});
+        design.stickers.forEach((sticker) => {
+          // ✅ FIX: Use sticker.id as the key to match positions saved in studio
+          drawStickerFile(sticker, sticker.id || sticker.name, design.stickerPositions || {});
         });
       } else if (design.sticker) {
         // Fallback to single sticker for backwards compatibility (old format)
