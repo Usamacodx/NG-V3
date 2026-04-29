@@ -303,6 +303,10 @@ function ProductListing() {
                   setExpandedCategory(
                     expandedCategory === cat.key ? null : cat.key
                   );
+                  // ✅ Scroll to products section
+                  setTimeout(() => {
+                    productSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+                  }, 100);
                 }}
               >
                 {cat.name}

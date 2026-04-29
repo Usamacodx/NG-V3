@@ -236,7 +236,8 @@ export default function CustomizationStudio() {
         setFrontDesign(customDetails.frontDesign);
         if (customDetails.frontDesign.designText) setDesignText(customDetails.frontDesign.designText);
         if (customDetails.frontDesign.selectedColor) setSelectedColor(customDetails.frontDesign.selectedColor);
-        if (customDetails.frontDesign.shirtColor) setShirtColor(customDetails.frontDesign.shirtColor);
+        // ✅ FIX: Always set shirtColor, use default if missing (for backwards compatibility)
+        setShirtColor(customDetails.frontDesign.shirtColor || "#FFFFFF");
         if (customDetails.frontDesign.selectedFont) setSelectedFont(customDetails.frontDesign.selectedFont);
         if (customDetails.frontDesign.fontSize) setFontSize(customDetails.frontDesign.fontSize);
         if (customDetails.frontDesign.logo) setLogo(customDetails.frontDesign.logo);
@@ -266,7 +267,8 @@ export default function CustomizationStudio() {
           const f = customDetails.frontDesign;
           if (f.designText) setDesignText(f.designText);
           if (f.selectedColor) setSelectedColor(f.selectedColor);
-          if (f.shirtColor) setShirtColor(f.shirtColor);
+          // ✅ FIX: Always set shirtColor, use default if missing
+          setShirtColor(f.shirtColor || "#FFFFFF");
           if (f.selectedFont) setSelectedFont(f.selectedFont);
           if (f.fontSize) setFontSize(f.fontSize);
           if (f.logo) setLogo(f.logo);
@@ -605,17 +607,26 @@ export default function CustomizationStudio() {
   };
 
   const handleMouseMove = (e) => {
-    // ✅ Handle sticker resizing
+    // ✅ Handle sticker resizing - FIXED to allow both increasing and decreasing
     if (resizingStickerId && canvasRef.current) {
       const rect = canvasRef.current.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       
+      // ✅ FIX: Use diagonal distance for more intuitive resize behavior
+      // Positive delta = move away = increase size
+      // Negative delta = move toward = decrease size
       const distX = x - resizeStart.x;
       const distY = y - resizeStart.y;
       const distance = Math.sqrt(distX * distX + distY * distY);
       
-      const newSize = Math.max(40, Math.min(200, resizeStart.size + distance / 2));
+      // ✅ FIX: Determine direction based on which diagonal we're moving
+      // If moving away from the resize handle (bottom-right), distance increases
+      // Calculate the direction to determine if we're increasing or decreasing
+      const direction = (distX > 0 && distY > 0) ? 1 : (distX < 0 && distY < 0) ? -1 : 
+                       (Math.abs(distX) > Math.abs(distY)) ? (distX > 0 ? 1 : -1) : (distY > 0 ? 1 : -1);
+      
+      const newSize = Math.max(40, Math.min(200, resizeStart.size + (distance * direction / 2)));
       setStickerSizes((prev) => ({
         ...prev,
         [resizingStickerId]: newSize,
@@ -915,30 +926,59 @@ export default function CustomizationStudio() {
     // Calculate total charges from both front and back designs
     const totalCustomizationPrice = getTotalCharges();
 
+    // ✅ FIX: Save current state to front/back design BEFORE switching views
+    // This prevents sticker duplication from race conditions during view switching
+    const currentSnapshot = {
+      designText,
+      selectedColor,
+      shirtColor,
+      fontSize,
+      selectedFont,
+      logo,
+      logoSize,
+      selectedStickers,
+      stickerSizes,
+      stickerPositions,
+      textPos,
+      logoPos,
+      instructions,
+    };
+    
+    if (view === "front") {
+      setFrontDesign(currentSnapshot);
+    } else {
+      setBackDesign(currentSnapshot);
+    }
+    
     // Capture current view before changing it
     const currentView = view;
     
-    // Capture front design
+    // Capture front design using the current state snapshot
+    setSuppressViewSync(true);
     setView("front");
-    await new Promise(resolve => setTimeout(resolve, 300)); // Wait for view to update
+    await new Promise(resolve => setTimeout(resolve, 100));
     const frontImageCapture = await captureDesignAsImage(canvasRef.current);
     
-    // Capture back design
+    // Capture back design using the current state snapshot
     setView("back");
-    await new Promise(resolve => setTimeout(resolve, 300)); // Wait for view to update
+    await new Promise(resolve => setTimeout(resolve, 100));
     const backImageCapture = await captureDesignAsImage(canvasRef.current);
     
-    // Restore original view
+    // Restore original view and re-enable sync
     setView(currentView);
+    setSuppressViewSync(false);
 
+    // ✅ FIX: Use the latest design states to ensure shirtColor is included
     // Save full design objects so preview and back-to-edit can fully restore state
     const customizationDetails = {
       frontDesign: {
         ...frontDesign,
+        shirtColor: frontDesign.shirtColor || "#FFFFFF",
         charge: calculateDesignPrice(frontDesign),
       },
       backDesign: {
         ...backDesign,
+        shirtColor: backDesign.shirtColor || "#FFFFFF",
         charge: calculateDesignPrice(backDesign),
       },
       instructions: instructions,
