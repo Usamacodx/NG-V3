@@ -1,0 +1,11 @@
+{
+  "total_products": 63,
+  "backup_date": "2026-04-29T18:08:37.357Z",
+  "backup_file": "D:\\amnaproject\\NG-V2\\Backend\\scripts\\backups\\products-backup-2026-04-29T18-08-35-596Z.json",
+  "images_per_product": {
+    "main_image": 0,
+    "front_image": 63,
+    "back_image": 63,
+    "color_variants": 219
+  }
+}

@@ -1,0 +1,6357 @@
+{
+  "migration_start": "2026-04-29T18:08:55.163Z",
+  "migration_end": "2026-04-29T18:30:26.072Z",
+  "duration_ms": 1290909,
+  "statistics": {
+    "total_products": 63,
+    "successfully_migrated": 63,
+    "failed_products": [],
+    "skipped_products": [],
+    "images_uploaded": 564,
+    "total_images": 564,
+    "errors": []
+  },
+  "errors": [],
+  "summary": [
+    {
+      "timestamp": "2026-04-29T18:08:55.164Z",
+      "type": "info",
+      "message": "🚀 Starting product image migration to Cloudinary..."
+    },
+    {
+      "timestamp": "2026-04-29T18:08:55.166Z",
+      "type": "info",
+      "message": "Cloud Name: dwsi75epm"
+    },
+    {
+      "timestamp": "2026-04-29T18:08:55.166Z",
+      "type": "info",
+      "message": "🔄 Connecting to MongoDB..."
+    },
+    {
+      "timestamp": "2026-04-29T18:08:57.207Z",
+      "type": "info",
+      "message": "✅ MongoDB connected"
+    },
+    {
+      "timestamp": "2026-04-29T18:08:57.208Z",
+      "type": "info",
+      "message": "📦 Fetching all products from MongoDB..."
+    },
+    {
+      "timestamp": "2026-04-29T18:12:56.283Z",
+      "type": "info",
+      "message": "✅ Found 63 products to migrate"
+    },
+    {
+      "timestamp": "2026-04-29T18:12:56.290Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 1/63: zevlic shirts"
+    },
+    {
+      "timestamp": "2026-04-29T18:12:59.064Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69e9fa86c63b338b28449ca5-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:12:59.073Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:00.357Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69e9fa86c63b338b28449ca5-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:00.358Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:01.623Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69e9fa86c63b338b28449ca5-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:01.627Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:02.749Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69e9fa86c63b338b28449ca5-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:02.750Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:04.796Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69e9fa86c63b338b28449ca5-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:04.798Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:06.252Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69e9fa86c63b338b28449ca5-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:06.252Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:07.561Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69e9fa86c63b338b28449ca5-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:07.562Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:08.893Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69e9fa86c63b338b28449ca5-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:08.896Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:15.554Z",
+      "type": "info",
+      "message": "✅ Product 1/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:15.556Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 2/63: Midnight Thread"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:18.388Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb284b947ef522e36b8b50-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:18.389Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:19.634Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb284b947ef522e36b8b50-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:19.636Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:20.876Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb284b947ef522e36b8b50-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:20.879Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:21.934Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb284b947ef522e36b8b50-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:21.936Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:23.052Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb284b947ef522e36b8b50-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:23.054Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:24.246Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb284b947ef522e36b8b50-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:24.250Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:25.310Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb284b947ef522e36b8b50-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:25.312Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:26.443Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb284b947ef522e36b8b50-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:26.445Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:27.529Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb284b947ef522e36b8b50-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:27.530Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:28.504Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb284b947ef522e36b8b50-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:28.508Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:30.513Z",
+      "type": "info",
+      "message": "✅ Product 2/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:30.514Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 3/63: Urban Eclipse Shirt"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:31.614Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2af11a374aac81138481-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:31.616Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:33.007Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2af11a374aac81138481-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:33.008Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:34.243Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2af11a374aac81138481-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:34.245Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:35.614Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2af11a374aac81138481-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:35.615Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:37.467Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2af11a374aac81138481-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:37.468Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:38.792Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2af11a374aac81138481-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:38.793Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:40.138Z",
+      "type": "info",
+      "message": "✅ Product 3/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:40.139Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 4/63: Elite Cut V-Neck"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:41.150Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2bdb1a374aac811384c9-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:41.152Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:42.377Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2bdb1a374aac811384c9-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:42.377Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:43.811Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2bdb1a374aac811384c9-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:43.813Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:46.473Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2bdb1a374aac811384c9-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:46.474Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:47.694Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2bdb1a374aac811384c9-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:47.695Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:49.132Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2bdb1a374aac811384c9-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:49.133Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:50.668Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2bdb1a374aac811384c9-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:50.668Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:51.795Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2bdb1a374aac811384c9-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:51.796Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:52.921Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2bdb1a374aac811384c9-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:52.922Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:54.019Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2bdb1a374aac811384c9-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:54.019Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:55.365Z",
+      "type": "info",
+      "message": "✅ Product 4/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:55.366Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 5/63: Shadow Line V Tee"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:56.506Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2c741a374aac8113852d-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:56.507Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:57.939Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2c741a374aac8113852d-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:57.939Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:59.884Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2c741a374aac8113852d-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:13:59.885Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:01.113Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2c741a374aac8113852d-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:01.114Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:02.271Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2c741a374aac8113852d-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:02.272Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:03.367Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2c741a374aac8113852d-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:03.368Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:04.596Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2c741a374aac8113852d-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:04.597Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:05.845Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2c741a374aac8113852d-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:05.846Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:06.607Z",
+      "type": "info",
+      "message": "✅ Product 5/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:06.608Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 6/63: Nova Edge V-Neck"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:08.021Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2cdc1a374aac81138554-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:08.022Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:09.306Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2cdc1a374aac81138554-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:09.306Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:11.003Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2cdc1a374aac81138554-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:11.004Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:12.067Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2cdc1a374aac81138554-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:12.067Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:13.402Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2cdc1a374aac81138554-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:13.403Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:14.663Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2cdc1a374aac81138554-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:14.664Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:15.247Z",
+      "type": "info",
+      "message": "✅ Product 6/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:15.248Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 7/63: Midnight Drift Long Sleeve"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:16.986Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2d9c1a374aac8113857e-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:16.987Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:18.113Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2d9c1a374aac8113857e-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:18.113Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:19.257Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2d9c1a374aac8113857e-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:19.258Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:20.754Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2d9c1a374aac8113857e-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:20.754Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:21.798Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2d9c1a374aac8113857e-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:21.799Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:22.925Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2d9c1a374aac8113857e-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:22.925Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:23.921Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2d9c1a374aac8113857e-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:23.922Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:24.877Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2d9c1a374aac8113857e-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:24.878Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:25.785Z",
+      "type": "info",
+      "message": "✅ Product 7/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:25.786Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 8/63: Eclipse Layer Long Sleeve"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:26.657Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2e1e1a374aac811385af-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:26.657Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:27.631Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2e1e1a374aac811385af-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:27.632Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:28.762Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2e1e1a374aac811385af-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:28.763Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:29.786Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2e1e1a374aac811385af-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:29.787Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:30.934Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2e1e1a374aac811385af-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:30.935Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:32.040Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2e1e1a374aac811385af-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:32.041Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:33.062Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2e1e1a374aac811385af-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:33.063Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:34.844Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2e1e1a374aac811385af-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:34.845Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:35.795Z",
+      "type": "info",
+      "message": "✅ Product 8/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:35.796Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 9/63: Phantom Grip Long Sleeve"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:37.169Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2ea71a374aac811385e6-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:37.170Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:38.292Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2ea71a374aac811385e6-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:38.302Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:39.925Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2ea71a374aac811385e6-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:39.926Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:41.869Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2ea71a374aac811385e6-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:41.870Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:43.176Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2ea71a374aac811385e6-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:43.177Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:44.273Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2ea71a374aac811385e6-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:44.274Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:45.352Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2ea71a374aac811385e6-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:45.354Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:46.525Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2ea71a374aac811385e6-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:46.526Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:47.608Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2ea71a374aac811385e6-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:47.609Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:48.727Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb2ea71a374aac811385e6-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:48.728Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:49.535Z",
+      "type": "info",
+      "message": "✅ Product 9/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:49.535Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 10/63: Regal Crest Polo"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:50.672Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30011a374aac81138660-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:50.673Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:51.904Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30011a374aac81138660-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:51.905Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:53.235Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30011a374aac81138660-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:53.237Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:54.462Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30011a374aac81138660-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:54.463Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:56.422Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30011a374aac81138660-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:56.423Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:57.708Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30011a374aac81138660-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:57.710Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:58.864Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30011a374aac81138660-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:14:58.865Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:00.095Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30011a374aac81138660-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:00.097Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:01.246Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30011a374aac81138660-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:01.248Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:02.449Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30011a374aac81138660-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:02.450Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:03.722Z",
+      "type": "info",
+      "message": "✅ Product 10/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:03.723Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 11/63: Monarch Fit Polo"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:04.907Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30a21a374aac811386a8-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:04.908Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:06.224Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30a21a374aac811386a8-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:06.225Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:07.858Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30a21a374aac811386a8-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:07.860Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:09.373Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30a21a374aac811386a8-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:09.375Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:12.281Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30a21a374aac811386a8-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:12.281Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:13.776Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30a21a374aac811386a8-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:13.777Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:15.257Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30a21a374aac811386a8-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:15.257Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:16.524Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30a21a374aac811386a8-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:16.525Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:18.526Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30a21a374aac811386a8-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:18.527Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:19.837Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb30a21a374aac811386a8-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:19.838Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:23.646Z",
+      "type": "info",
+      "message": "✅ Product 11/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:23.646Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 12/63: Elite Horizon Polo"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:24.773Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb31921a374aac811386f8-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:24.774Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:26.205Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb31921a374aac811386f8-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:26.206Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:27.290Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb31921a374aac811386f8-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:27.291Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:28.268Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb31921a374aac811386f8-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:28.269Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:29.483Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb31921a374aac811386f8-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:29.483Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:30.515Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb31921a374aac811386f8-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:30.516Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:32.351Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb31921a374aac811386f8-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:32.351Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:33.822Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb31921a374aac811386f8-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:33.822Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:34.440Z",
+      "type": "info",
+      "message": "✅ Product 12/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:34.440Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 13/63: Urban Core Tee"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:35.535Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb322c1a374aac8113874d-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:35.536Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:36.754Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb322c1a374aac8113874d-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:36.754Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:39.006Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb322c1a374aac8113874d-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:39.007Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:40.426Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb322c1a374aac8113874d-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:40.427Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:41.742Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb322c1a374aac8113874d-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:41.743Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:42.989Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb322c1a374aac8113874d-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:42.990Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:44.011Z",
+      "type": "info",
+      "message": "✅ Product 13/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:44.012Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 14/63: Eclipse Basic"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:44.946Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb32961a374aac811387a5-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:44.948Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:46.348Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb32961a374aac811387a5-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:46.349Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:47.499Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb32961a374aac811387a5-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:47.500Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:49.969Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb32961a374aac811387a5-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:49.974Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:51.356Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb32961a374aac811387a5-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:51.357Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:53.245Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb32961a374aac811387a5-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:53.245Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:55.086Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb32961a374aac811387a5-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:55.087Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:56.765Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb32961a374aac811387a5-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:56.766Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:58.159Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb32961a374aac811387a5-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:58.160Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:59.287Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb32961a374aac811387a5-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:15:59.288Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:00.729Z",
+      "type": "info",
+      "message": "✅ Product 14/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:00.731Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 15/63: Nova Essential Tee"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:01.745Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb33091a374aac81138807-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:01.747Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:03.178Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb33091a374aac81138807-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:03.180Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:04.469Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb33091a374aac81138807-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:04.470Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:05.773Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb33091a374aac81138807-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:05.774Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:07.306Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb33091a374aac81138807-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:07.307Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:08.502Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb33091a374aac81138807-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:08.503Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:09.789Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb33091a374aac81138807-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:09.789Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:12.085Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb33091a374aac81138807-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:12.086Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:14.173Z",
+      "type": "info",
+      "message": "✅ Product 15/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:14.173Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 16/63: Frost Core Sweatshirt"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:15.407Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb34271a374aac81138950-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:15.408Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:16.905Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb34271a374aac81138950-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:16.906Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:18.243Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb34271a374aac81138950-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:18.244Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:20.192Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb34271a374aac81138950-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:20.192Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:21.609Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb34271a374aac81138950-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:21.610Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:22.700Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb34271a374aac81138950-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:22.701Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:23.860Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb34271a374aac81138950-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:23.861Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:24.987Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb34271a374aac81138950-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:24.988Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:26.024Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb34271a374aac81138950-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:26.025Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:27.131Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb34271a374aac81138950-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:27.131Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:28.982Z",
+      "type": "info",
+      "message": "✅ Product 16/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:28.983Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 17/63: Nova Pulse Sweatshirt"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:29.845Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb351b1a374aac811389c0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:29.846Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:30.980Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb351b1a374aac811389c0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:30.981Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:32.227Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb351b1a374aac811389c0-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:32.228Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:33.249Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb351b1a374aac811389c0-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:33.250Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:34.452Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb351b1a374aac811389c0-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:34.453Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:35.585Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb351b1a374aac811389c0-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:35.586Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:36.792Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb351b1a374aac811389c0-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:36.793Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:37.973Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb351b1a374aac811389c0-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:37.975Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:39.065Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb351b1a374aac811389c0-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:39.066Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:40.349Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb351b1a374aac811389c0-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:40.350Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:42.366Z",
+      "type": "info",
+      "message": "✅ Product 17/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:42.366Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 18/63: Ember Drift Sweatshirt"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:44.035Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb35d11a374aac81138a38-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:44.035Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:45.571Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb35d11a374aac81138a38-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:45.571Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:47.769Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb35d11a374aac81138a38-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:47.770Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:49.618Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb35d11a374aac81138a38-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:49.619Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:50.815Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb35d11a374aac81138a38-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:50.816Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:52.022Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb35d11a374aac81138a38-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:52.023Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:53.097Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb35d11a374aac81138a38-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:53.098Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:54.273Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb35d11a374aac81138a38-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:54.274Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:55.565Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb35d11a374aac81138a38-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:55.565Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:56.750Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb35d11a374aac81138a38-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:56.751Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:58.796Z",
+      "type": "info",
+      "message": "✅ Product 18/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:58.797Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 19/63: Frostbite Hoodie"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:59.803Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb37001a374aac81138ab8-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:16:59.804Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:00.874Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb37001a374aac81138ab8-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:00.875Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:02.362Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb37001a374aac81138ab8-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:02.363Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:03.489Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb37001a374aac81138ab8-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:03.490Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:04.872Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb37001a374aac81138ab8-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:04.873Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:06.049Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb37001a374aac81138ab8-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:06.050Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:07.258Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb37001a374aac81138ab8-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:07.260Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:08.765Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb37001a374aac81138ab8-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:08.766Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:10.976Z",
+      "type": "info",
+      "message": "✅ Product 19/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:10.977Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 20/63: Shadow Pulse Hoodie"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:12.075Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb37e61a374aac81138b3d-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:12.076Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:13.218Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb37e61a374aac81138b3d-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:13.219Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:14.754Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb37e61a374aac81138b3d-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:14.758Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:16.494Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb37e61a374aac81138b3d-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:16.495Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:17.724Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb37e61a374aac81138b3d-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:17.726Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:18.952Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb37e61a374aac81138b3d-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:18.953Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:20.078Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb37e61a374aac81138b3d-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:20.079Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:21.410Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb37e61a374aac81138b3d-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:21.411Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:22.640Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb37e61a374aac81138b3d-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:22.641Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:23.851Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb37e61a374aac81138b3d-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:23.852Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:25.366Z",
+      "type": "info",
+      "message": "✅ Product 20/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:25.367Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 21/63: Nova Chill Hoodie"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:26.528Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb38a01a374aac81138bcb-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:26.529Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:27.756Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb38a01a374aac81138bcb-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:27.757Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:28.986Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb38a01a374aac81138bcb-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:28.987Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:30.112Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb38a01a374aac81138bcb-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:30.114Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:31.264Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb38a01a374aac81138bcb-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:31.265Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:32.467Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb38a01a374aac81138bcb-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:32.470Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:33.766Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb38a01a374aac81138bcb-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:33.767Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:35.128Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb38a01a374aac81138bcb-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:35.129Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:36.358Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb38a01a374aac81138bcb-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:36.360Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:37.615Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb38a01a374aac81138bcb-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:37.615Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:39.541Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb38a01a374aac81138bcb-color-4-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:39.543Z",
+      "type": "info",
+      "message": "  ✅ Color variant 4 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:41.276Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69eb38a01a374aac81138bcb-color-4-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:41.277Z",
+      "type": "info",
+      "message": "  ✅ Color variant 4 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:42.566Z",
+      "type": "info",
+      "message": "✅ Product 21/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:42.567Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 22/63: Shadow Form Sweatshirt"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:43.613Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec746dcca192755a6a730b-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:43.615Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:46.121Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec746dcca192755a6a730b-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:46.122Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:47.600Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec746dcca192755a6a730b-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:47.601Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:49.156Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec746dcca192755a6a730b-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:49.158Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:50.385Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec746dcca192755a6a730b-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:50.387Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:52.232Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec746dcca192755a6a730b-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:52.234Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:53.355Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec746dcca192755a6a730b-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:53.356Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:54.584Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec746dcca192755a6a730b-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:54.585Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:55.711Z",
+      "type": "info",
+      "message": "✅ Product 22/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:17:55.712Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 23/63: Cloud Nine Sweatshirt"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:02.223Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7544cca192755a6a73a8-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:02.224Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:03.595Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7544cca192755a6a73a8-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:03.596Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:05.308Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7544cca192755a6a73a8-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:05.310Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:06.615Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7544cca192755a6a73a8-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:06.617Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:07.692Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7544cca192755a6a73a8-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:07.693Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:08.877Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7544cca192755a6a73a8-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:08.878Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:10.046Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7544cca192755a6a73a8-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:10.047Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:11.991Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7544cca192755a6a73a8-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:11.993Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:13.425Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7544cca192755a6a73a8-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:13.425Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:14.859Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7544cca192755a6a73a8-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:14.860Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:15.906Z",
+      "type": "info",
+      "message": "✅ Product 23/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:15.907Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 24/63: Gravity Crew Sweatshirt"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:17.098Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec75facca192755a6a744e-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:17.099Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:18.545Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec75facca192755a6a744e-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:18.546Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:19.672Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec75facca192755a6a744e-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:19.673Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:20.797Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec75facca192755a6a744e-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:20.798Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:22.026Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec75facca192755a6a744e-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:22.028Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:23.135Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec75facca192755a6a744e-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:23.137Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:24.894Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec75facca192755a6a744e-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:24.895Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:26.829Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec75facca192755a6a744e-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:26.830Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:27.622Z",
+      "type": "info",
+      "message": "✅ Product 24/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:27.623Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 25/63: Velvet Edge"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:28.683Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec76a5cca192755a6a74f9-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:28.684Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:29.730Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec76a5cca192755a6a74f9-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:29.731Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:31.243Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec76a5cca192755a6a74f9-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:31.244Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:32.276Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec76a5cca192755a6a74f9-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:32.277Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:33.488Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec76a5cca192755a6a74f9-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:33.490Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:34.450Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec76a5cca192755a6a74f9-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:34.451Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:36.151Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec76a5cca192755a6a74f9-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:36.152Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:37.242Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec76a5cca192755a6a74f9-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:37.243Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:38.412Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec76a5cca192755a6a74f9-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:38.413Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:39.743Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec76a5cca192755a6a74f9-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:39.744Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:40.568Z",
+      "type": "info",
+      "message": "✅ Product 25/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:40.568Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 26/63: Noir Stitch"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:41.499Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec77afcca192755a6a7663-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:41.500Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:43.121Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec77afcca192755a6a7663-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:43.123Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:44.350Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec77afcca192755a6a7663-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:44.352Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:46.819Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec77afcca192755a6a7663-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:46.820Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:48.082Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec77afcca192755a6a7663-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:48.083Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:49.316Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec77afcca192755a6a7663-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:49.317Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:50.392Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec77afcca192755a6a7663-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:50.393Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:51.928Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec77afcca192755a6a7663-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:51.929Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:53.158Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec77afcca192755a6a7663-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:53.159Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:54.548Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec77afcca192755a6a7663-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:54.549Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:55.205Z",
+      "type": "info",
+      "message": "✅ Product 26/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:55.206Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 27/63: Phantom Weave"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:56.357Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7847cca192755a6a771f-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:56.358Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:57.496Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7847cca192755a6a771f-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:57.499Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:58.554Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7847cca192755a6a771f-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:18:58.555Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:00.017Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7847cca192755a6a771f-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:00.018Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:01.143Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7847cca192755a6a771f-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:01.144Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:02.179Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7847cca192755a6a771f-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:02.180Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:04.112Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7847cca192755a6a771f-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:04.114Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:05.648Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7847cca192755a6a771f-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:05.650Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:06.244Z",
+      "type": "info",
+      "message": "✅ Product 27/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:06.245Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 28/63: Phantom Shape V Tee"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:07.281Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec792dcca192755a6a77e0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:07.282Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:08.723Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec792dcca192755a6a77e0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:08.724Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:09.915Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec792dcca192755a6a77e0-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:09.917Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:11.179Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec792dcca192755a6a77e0-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:11.180Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:12.407Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec792dcca192755a6a77e0-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:12.408Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:13.636Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec792dcca192755a6a77e0-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:13.637Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:14.865Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec792dcca192755a6a77e0-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:14.866Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:16.400Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec792dcca192755a6a77e0-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:16.401Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:17.544Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec792dcca192755a6a77e0-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:17.545Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:18.626Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec792dcca192755a6a77e0-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:18.627Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:19.356Z",
+      "type": "info",
+      "message": "✅ Product 28/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:19.356Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 29/63: Eclipse Trim V-Neck"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:20.427Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7c2ccca192755a6a796e-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:20.428Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:21.623Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7c2ccca192755a6a796e-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:21.624Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:22.851Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7c2ccca192755a6a796e-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:22.852Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:23.979Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7c2ccca192755a6a796e-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:23.979Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:25.514Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7c2ccca192755a6a796e-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:25.515Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:26.539Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7c2ccca192755a6a796e-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:26.540Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:27.687Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7c2ccca192755a6a796e-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:27.688Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:28.792Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7c2ccca192755a6a796e-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:28.793Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:29.918Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7c2ccca192755a6a796e-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:29.919Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:31.044Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7c2ccca192755a6a796e-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:31.045Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:31.735Z",
+      "type": "info",
+      "message": "✅ Product 29/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:31.736Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 30/63: Ember Fit V Tee"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:32.711Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7cdfcca192755a6a7a40-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:32.712Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:34.164Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7cdfcca192755a6a7a40-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:34.165Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:35.550Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7cdfcca192755a6a7a40-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:35.550Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:36.799Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7cdfcca192755a6a7a40-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:36.800Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:38.314Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7cdfcca192755a6a7a40-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:38.315Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:39.309Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7cdfcca192755a6a7a40-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:39.310Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:40.382Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7cdfcca192755a6a7a40-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:40.384Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:41.413Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7cdfcca192755a6a7a40-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:41.415Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:42.778Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7cdfcca192755a6a7a40-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:42.779Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:44.147Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7cdfcca192755a6a7a40-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:44.149Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:44.797Z",
+      "type": "info",
+      "message": "✅ Product 30/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:44.798Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 31/63: Eclipse Core Hoodie"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:45.893Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7efacca192755a6a7b1a-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:45.894Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:47.272Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7efacca192755a6a7b1a-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:47.273Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:48.448Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7efacca192755a6a7b1a-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:48.450Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:50.385Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7efacca192755a6a7b1a-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:50.387Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:52.441Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7efacca192755a6a7b1a-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:52.441Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:53.472Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7efacca192755a6a7b1a-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:53.474Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:54.562Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7efacca192755a6a7b1a-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:54.563Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:56.537Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7efacca192755a6a7b1a-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:56.538Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:57.384Z",
+      "type": "info",
+      "message": "✅ Product 31/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:57.385Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 32/63: Stormborn Hoodie"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:58.285Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7f77cca192755a6a7b1f-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:58.286Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:59.404Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7f77cca192755a6a7b1f-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:19:59.404Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:00.546Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7f77cca192755a6a7b1f-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:00.548Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:01.760Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7f77cca192755a6a7b1f-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:01.761Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:02.989Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7f77cca192755a6a7b1f-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:02.990Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:04.115Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7f77cca192755a6a7b1f-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:04.116Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:05.651Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7f77cca192755a6a7b1f-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:05.652Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:06.777Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7f77cca192755a6a7b1f-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:06.778Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:07.233Z",
+      "type": "info",
+      "message": "✅ Product 32/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:07.234Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 33/63: Midnight Aura Hoodie"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:08.518Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7fc3cca192755a6a7b24-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:08.519Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:10.035Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7fc3cca192755a6a7b24-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:10.036Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:11.795Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7fc3cca192755a6a7b24-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:11.797Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:18.987Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7fc3cca192755a6a7b24-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:18.987Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:20.042Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7fc3cca192755a6a7b24-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:20.043Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:21.180Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7fc3cca192755a6a7b24-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:21.181Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:22.753Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7fc3cca192755a6a7b24-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:22.754Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:23.981Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec7fc3cca192755a6a7b24-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:23.982Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:24.481Z",
+      "type": "info",
+      "message": "✅ Product 33/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:24.481Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 34/63: Arctic Veil Long Sleeve"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:25.649Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8022cca192755a6a7b29-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:25.649Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:26.765Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8022cca192755a6a7b29-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:26.766Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:28.455Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8022cca192755a6a7b29-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:28.457Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:30.412Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8022cca192755a6a7b29-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:30.412Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:31.455Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8022cca192755a6a7b29-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:31.456Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:32.585Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8022cca192755a6a7b29-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:32.586Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:33.914Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8022cca192755a6a7b29-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:33.915Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:35.083Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8022cca192755a6a7b29-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:35.084Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:35.684Z",
+      "type": "info",
+      "message": "✅ Product 34/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:35.685Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 35/63: Emberline Long Sleeve"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:37.329Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec808fcca192755a6a7b2e-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:37.330Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:39.089Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec808fcca192755a6a7b2e-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:39.090Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:40.467Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec808fcca192755a6a7b2e-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:40.467Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:41.579Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec808fcca192755a6a7b2e-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:41.579Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:43.418Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec808fcca192755a6a7b2e-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:43.419Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:44.533Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec808fcca192755a6a7b2e-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:44.534Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:45.821Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec808fcca192755a6a7b2e-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:45.822Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:47.122Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec808fcca192755a6a7b2e-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:47.123Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:48.360Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec808fcca192755a6a7b2e-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:48.361Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:49.771Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec808fcca192755a6a7b2e-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:49.772Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:50.397Z",
+      "type": "info",
+      "message": "✅ Product 35/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:50.398Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 36/63: Shadow Knit Long Sleeve"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:51.432Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec80ddcca192755a6a7b34-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:51.433Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:52.558Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec80ddcca192755a6a7b34-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:52.558Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:53.686Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec80ddcca192755a6a7b34-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:53.687Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:54.811Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec80ddcca192755a6a7b34-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:54.811Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:56.040Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec80ddcca192755a6a7b34-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:56.041Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:57.167Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec80ddcca192755a6a7b34-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:57.168Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:58.230Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec80ddcca192755a6a7b34-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:58.231Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:59.289Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec80ddcca192755a6a7b34-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:59.290Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:59.875Z",
+      "type": "info",
+      "message": "✅ Product 36/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:20:59.876Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 37/63: Ivory League Polo"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:00.926Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8143cca192755a6a7b39-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:00.926Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:02.114Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8143cca192755a6a7b39-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:02.115Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:03.106Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8143cca192755a6a7b39-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:03.108Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:04.233Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8143cca192755a6a7b39-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:04.234Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:05.207Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8143cca192755a6a7b39-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:05.208Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:06.410Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8143cca192755a6a7b39-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:06.411Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:07.676Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8143cca192755a6a7b39-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:07.677Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:08.944Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8143cca192755a6a7b39-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:08.945Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:10.991Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8143cca192755a6a7b39-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:10.992Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:12.118Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8143cca192755a6a7b39-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:12.119Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:12.634Z",
+      "type": "info",
+      "message": "✅ Product 37/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:12.635Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 38/63: Urban Crown Polo"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:14.371Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec81c2cca192755a6a7b3f-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:14.372Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:15.599Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec81c2cca192755a6a7b3f-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:15.600Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:16.827Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec81c2cca192755a6a7b3f-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:16.828Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:17.954Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec81c2cca192755a6a7b3f-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:17.956Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:19.096Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec81c2cca192755a6a7b3f-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:19.097Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:20.104Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec81c2cca192755a6a7b3f-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:20.105Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:21.303Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec81c2cca192755a6a7b3f-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:21.304Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:22.513Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec81c2cca192755a6a7b3f-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:22.514Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:22.921Z",
+      "type": "info",
+      "message": "✅ Product 38/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:22.921Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 39/63: Noble Thread Polo"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:24.030Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8226cca192755a6a7b44-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:24.030Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:25.122Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8226cca192755a6a7b44-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:25.123Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:26.659Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8226cca192755a6a7b44-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:26.660Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:27.756Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8226cca192755a6a7b44-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:27.757Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:28.917Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8226cca192755a6a7b44-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:28.918Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:29.912Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8226cca192755a6a7b44-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:29.914Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:31.267Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8226cca192755a6a7b44-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:31.268Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:33.109Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8226cca192755a6a7b44-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:33.110Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:34.645Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8226cca192755a6a7b44-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:34.646Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:35.699Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8226cca192755a6a7b44-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:35.699Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:36.226Z",
+      "type": "info",
+      "message": "✅ Product 39/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:36.227Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 40/63: Shadow Fit Tee"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:37.544Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8299cca192755a6a7b4a-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:37.545Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:38.701Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8299cca192755a6a7b4a-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:38.701Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:40.085Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8299cca192755a6a7b4a-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:40.086Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:41.507Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8299cca192755a6a7b4a-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:41.509Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:42.698Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8299cca192755a6a7b4a-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:42.699Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:43.965Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8299cca192755a6a7b4a-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:43.966Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:46.083Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8299cca192755a6a7b4a-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:46.085Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:47.242Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8299cca192755a6a7b4a-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:47.243Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:48.367Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8299cca192755a6a7b4a-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:48.368Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:49.698Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8299cca192755a6a7b4a-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:49.699Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:50.269Z",
+      "type": "info",
+      "message": "✅ Product 40/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:50.269Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 41/63: Cloudsoft Crew"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:51.336Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec82ebcca192755a6a7b50-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:51.337Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:52.640Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec82ebcca192755a6a7b50-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:52.641Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:54.714Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec82ebcca192755a6a7b50-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:54.715Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:56.137Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec82ebcca192755a6a7b50-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:56.138Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:57.314Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec82ebcca192755a6a7b50-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:57.315Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:58.504Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec82ebcca192755a6a7b50-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:21:58.505Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:00.095Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec82ebcca192755a6a7b50-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:00.096Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:01.165Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec82ebcca192755a6a7b50-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:01.166Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:01.662Z",
+      "type": "info",
+      "message": "✅ Product 41/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:01.663Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 42/63: Phantom Lite Tee"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:02.726Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8385cca192755a6a7b55-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:02.727Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:03.726Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8385cca192755a6a7b55-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:03.726Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:04.852Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8385cca192755a6a7b55-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:04.853Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:06.081Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8385cca192755a6a7b55-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:06.083Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:07.148Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8385cca192755a6a7b55-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:07.149Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:08.797Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8385cca192755a6a7b55-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:08.798Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:09.870Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8385cca192755a6a7b55-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:09.871Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:11.794Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ec8385cca192755a6a7b55-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:11.796Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:12.300Z",
+      "type": "info",
+      "message": "✅ Product 42/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:12.301Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 43/63: Lunar Drift Shirt"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:13.271Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf1da400a05bffe7ae422-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:13.272Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:14.978Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf1da400a05bffe7ae422-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:14.979Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:16.149Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf1da400a05bffe7ae422-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:16.150Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:17.386Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf1da400a05bffe7ae422-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:17.387Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:18.575Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf1da400a05bffe7ae422-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:18.576Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:19.895Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf1da400a05bffe7ae422-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:19.896Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:21.034Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf1da400a05bffe7ae422-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:21.035Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:22.141Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf1da400a05bffe7ae422-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:22.142Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:23.337Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf1da400a05bffe7ae422-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:23.338Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:24.411Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf1da400a05bffe7ae422-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:24.412Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:25.052Z",
+      "type": "info",
+      "message": "✅ Product 43/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:25.053Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 44/63: Royal Ash Shirt"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:26.051Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf29f400a05bffe7ae428-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:26.052Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:27.176Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf29f400a05bffe7ae428-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:27.176Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:28.302Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf29f400a05bffe7ae428-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:28.303Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:29.736Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf29f400a05bffe7ae428-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:29.737Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:30.843Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf29f400a05bffe7ae428-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:30.844Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:32.512Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf29f400a05bffe7ae428-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:32.513Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:33.643Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf29f400a05bffe7ae428-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:33.645Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:34.754Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf29f400a05bffe7ae428-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:34.755Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:35.951Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf29f400a05bffe7ae428-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:35.952Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:37.005Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf29f400a05bffe7ae428-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:37.006Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:37.574Z",
+      "type": "info",
+      "message": "✅ Product 44/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:37.574Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 45/63: Obsidian Fit"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:39.669Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf2ef400a05bffe7ae42e-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:39.670Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:40.782Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf2ef400a05bffe7ae42e-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:40.782Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:42.023Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf2ef400a05bffe7ae42e-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:42.024Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:43.152Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf2ef400a05bffe7ae42e-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:43.155Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:44.378Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf2ef400a05bffe7ae42e-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:44.379Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:45.505Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf2ef400a05bffe7ae42e-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:45.506Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:47.072Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf2ef400a05bffe7ae42e-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:47.073Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:48.169Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf2ef400a05bffe7ae42e-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:48.170Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:48.690Z",
+      "type": "info",
+      "message": "✅ Product 45/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:48.691Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 46/63: Urban Sleek V-Neck"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:50.813Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf3de400a05bffe7ae433-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:50.813Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:52.367Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf3de400a05bffe7ae433-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:52.368Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:53.494Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf3de400a05bffe7ae433-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:53.495Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:54.620Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf3de400a05bffe7ae433-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:54.621Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:55.793Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf3de400a05bffe7ae433-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:55.794Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:57.180Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf3de400a05bffe7ae433-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:57.181Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:59.126Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf3de400a05bffe7ae433-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:22:59.127Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:00.252Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf3de400a05bffe7ae433-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:00.253Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:01.353Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf3de400a05bffe7ae433-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:01.354Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:03.017Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf3de400a05bffe7ae433-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:03.018Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:03.632Z",
+      "type": "info",
+      "message": "✅ Product 46/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:03.633Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 47/63: Obsidian V Flow"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:04.655Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf462400a05bffe7ae439-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:04.656Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:05.884Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf462400a05bffe7ae439-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:05.885Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:07.028Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf462400a05bffe7ae439-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:07.044Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:08.148Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf462400a05bffe7ae439-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:08.149Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:09.263Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf462400a05bffe7ae439-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:09.264Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:10.799Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf462400a05bffe7ae439-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:10.800Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:12.232Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf462400a05bffe7ae439-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:12.233Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:13.401Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf462400a05bffe7ae439-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:13.402Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:14.520Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf462400a05bffe7ae439-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:14.521Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:15.713Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf462400a05bffe7ae439-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:15.714Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:18.455Z",
+      "type": "info",
+      "message": "✅ Product 47/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:18.456Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 48/63: Precision V Tee"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:19.502Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf4c7400a05bffe7ae43f-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:19.503Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:20.630Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf4c7400a05bffe7ae43f-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:20.630Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:21.700Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf4c7400a05bffe7ae43f-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:21.701Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:22.882Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf4c7400a05bffe7ae43f-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:22.883Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:23.922Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf4c7400a05bffe7ae43f-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:23.923Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:25.033Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf4c7400a05bffe7ae43f-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:25.034Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:26.104Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf4c7400a05bffe7ae43f-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:26.104Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:27.183Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf4c7400a05bffe7ae43f-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:27.183Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:28.254Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf4c7400a05bffe7ae43f-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:28.255Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:29.644Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf4c7400a05bffe7ae43f-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:29.645Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:30.463Z",
+      "type": "info",
+      "message": "✅ Product 48/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:30.463Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 49/63: Arctic Drift Hoodie"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:31.375Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf53a400a05bffe7ae445-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:31.376Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:32.688Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf53a400a05bffe7ae445-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:32.689Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:34.659Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf53a400a05bffe7ae445-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:34.660Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:38.242Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf53a400a05bffe7ae445-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:38.243Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:40.187Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf53a400a05bffe7ae445-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:40.189Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:42.030Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf53a400a05bffe7ae445-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:42.031Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:45.272Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf53a400a05bffe7ae445-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:45.274Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:49.238Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf53a400a05bffe7ae445-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:49.239Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:49.783Z",
+      "type": "info",
+      "message": "✅ Product 49/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:49.784Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 50/63: Phantom Layer Hoodie"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:52.780Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf5c8400a05bffe7ae44a-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:52.780Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:56.669Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf5c8400a05bffe7ae44a-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:23:56.670Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:01.587Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf5c8400a05bffe7ae44a-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:01.588Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:06.194Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf5c8400a05bffe7ae44a-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:06.195Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:10.290Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf5c8400a05bffe7ae44a-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:10.291Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:14.696Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf5c8400a05bffe7ae44a-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:14.697Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:18.621Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf5c8400a05bffe7ae44a-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:18.622Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:22.168Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf5c8400a05bffe7ae44a-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:22.169Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:26.548Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf5c8400a05bffe7ae44a-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:26.549Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:29.881Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf5c8400a05bffe7ae44a-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:29.882Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:30.448Z",
+      "type": "info",
+      "message": "✅ Product 50/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:30.449Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 51/63: Ember Storm Hoodie"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:34.456Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf60d400a05bffe7ae450-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:34.457Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:39.782Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf60d400a05bffe7ae450-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:39.783Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:45.902Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf60d400a05bffe7ae450-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:45.903Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:49.588Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf60d400a05bffe7ae450-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:49.589Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:54.530Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf60d400a05bffe7ae450-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:54.531Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:58.387Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf60d400a05bffe7ae450-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:24:58.388Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:00.743Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf60d400a05bffe7ae450-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:00.745Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:04.066Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf60d400a05bffe7ae450-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:04.067Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:05.120Z",
+      "type": "info",
+      "message": "✅ Product 51/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:05.121Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 52/63: Obsidian Flow Long Sleeve"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:09.097Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf69c400a05bffe7ae455-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:09.098Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:11.937Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf69c400a05bffe7ae455-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:11.939Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:15.349Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf69c400a05bffe7ae455-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:15.350Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:18.080Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf69c400a05bffe7ae455-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:18.081Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:20.775Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf69c400a05bffe7ae455-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:20.776Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:23.340Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf69c400a05bffe7ae455-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:23.341Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:26.565Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf69c400a05bffe7ae455-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:26.566Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:29.345Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf69c400a05bffe7ae455-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:29.346Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:30.056Z",
+      "type": "info",
+      "message": "✅ Product 52/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:30.057Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 53/63: Lunar Edge Long Sleeve"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:34.133Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf715400a05bffe7ae45a-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:34.133Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:38.766Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf715400a05bffe7ae45a-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:38.767Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:45.749Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf715400a05bffe7ae45a-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:45.751Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:51.052Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf715400a05bffe7ae45a-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:51.053Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:55.451Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf715400a05bffe7ae45a-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:55.452Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:58.612Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf715400a05bffe7ae45a-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:25:58.613Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:04.182Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf715400a05bffe7ae45a-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:04.183Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:07.926Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf715400a05bffe7ae45a-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:07.927Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:14.173Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf715400a05bffe7ae45a-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:14.174Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:19.312Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf715400a05bffe7ae45a-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:19.313Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:19.981Z",
+      "type": "info",
+      "message": "✅ Product 53/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:19.982Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 54/63: Storm Weave Long Sleeve"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:22.894Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf77a400a05bffe7ae460-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:22.895Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:26.023Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf77a400a05bffe7ae460-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:26.024Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:28.835Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf77a400a05bffe7ae460-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:28.836Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:31.985Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf77a400a05bffe7ae460-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:31.986Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:36.513Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf77a400a05bffe7ae460-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:36.514Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:40.917Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf77a400a05bffe7ae460-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:40.918Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:44.320Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf77a400a05bffe7ae460-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:44.321Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:47.305Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf77a400a05bffe7ae460-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:47.306Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:47.838Z",
+      "type": "info",
+      "message": "✅ Product 54/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:47.839Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 55/63: Signature Edge Polo"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:50.946Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf803400a05bffe7ae465-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:50.946Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:53.688Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf803400a05bffe7ae465-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:53.689Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:56.796Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf803400a05bffe7ae465-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:26:56.797Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:00.475Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf803400a05bffe7ae465-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:00.477Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:04.374Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf803400a05bffe7ae465-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:04.375Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:07.660Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf803400a05bffe7ae465-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:07.661Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:13.180Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf803400a05bffe7ae465-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:13.181Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:16.508Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf803400a05bffe7ae465-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:16.509Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:19.500Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf803400a05bffe7ae465-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:19.501Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:22.750Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf803400a05bffe7ae465-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:22.751Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:23.326Z",
+      "type": "info",
+      "message": "✅ Product 55/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:23.327Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 56/63: Prestige Line Polo"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:27.310Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf85c400a05bffe7ae46b-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:27.311Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:29.768Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf85c400a05bffe7ae46b-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:29.769Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:31.919Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf85c400a05bffe7ae46b-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:31.920Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:33.758Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf85c400a05bffe7ae46b-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:33.759Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:37.450Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf85c400a05bffe7ae46b-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:37.451Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:40.417Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf85c400a05bffe7ae46b-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:40.418Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:42.976Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf85c400a05bffe7ae46b-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:42.977Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:45.436Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf85c400a05bffe7ae46b-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:45.437Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:46.063Z",
+      "type": "info",
+      "message": "✅ Product 56/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:46.068Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 57/63: Classic Aura Polo"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:48.201Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf8f9400a05bffe7ae470-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:48.202Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:50.047Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf8f9400a05bffe7ae470-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:50.048Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:51.684Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf8f9400a05bffe7ae470-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:51.685Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:53.781Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf8f9400a05bffe7ae470-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:53.782Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:55.474Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf8f9400a05bffe7ae470-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:55.475Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:56.667Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf8f9400a05bffe7ae470-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:56.669Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:57.934Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf8f9400a05bffe7ae470-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:57.935Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:59.263Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf8f9400a05bffe7ae470-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:27:59.264Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:28:20.979Z",
+      "type": "warn",
+      "message": "⚠️  Upload failed for product-69edf8f9400a05bffe7ae470-color-3-front, retrying (1/3)..."
+    },
+    {
+      "timestamp": "2026-04-29T18:28:31.211Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf8f9400a05bffe7ae470-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:28:31.213Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:28:36.038Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf8f9400a05bffe7ae470-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:28:36.039Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:28:36.528Z",
+      "type": "info",
+      "message": "✅ Product 57/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:28:36.529Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 58/63: Ember Basic Tee"
+    },
+    {
+      "timestamp": "2026-04-29T18:28:40.939Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf951400a05bffe7ae476-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:28:40.940Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:28:45.707Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf951400a05bffe7ae476-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:28:45.707Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:28:50.456Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf951400a05bffe7ae476-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:28:50.458Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:28:53.836Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf951400a05bffe7ae476-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:28:53.837Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:28:57.337Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf951400a05bffe7ae476-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:28:57.338Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:28:59.413Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf951400a05bffe7ae476-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:28:59.414Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:01.620Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf951400a05bffe7ae476-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:01.621Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:04.692Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf951400a05bffe7ae476-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:04.693Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:05.189Z",
+      "type": "info",
+      "message": "✅ Product 58/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:05.190Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 59/63: Drift Classic Tee"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:09.299Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf99c400a05bffe7ae47b-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:09.300Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:13.907Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf99c400a05bffe7ae47b-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:13.908Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:18.121Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf99c400a05bffe7ae47b-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:18.122Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:22.713Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf99c400a05bffe7ae47b-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:22.714Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:28.325Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf99c400a05bffe7ae47b-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:28.326Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:31.119Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf99c400a05bffe7ae47b-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:31.120Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:34.592Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf99c400a05bffe7ae47b-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:34.593Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:37.475Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf99c400a05bffe7ae47b-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:37.476Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:37.956Z",
+      "type": "info",
+      "message": "✅ Product 59/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:37.957Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 60/63: Obsidian Everyday Tee"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:40.388Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf9ff400a05bffe7ae480-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:40.389Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:42.374Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf9ff400a05bffe7ae480-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:42.375Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:44.319Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf9ff400a05bffe7ae480-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:44.321Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:45.757Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf9ff400a05bffe7ae480-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:45.758Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:47.596Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf9ff400a05bffe7ae480-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:47.597Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:48.646Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf9ff400a05bffe7ae480-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:48.647Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:49.943Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf9ff400a05bffe7ae480-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:49.943Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:50.983Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf9ff400a05bffe7ae480-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:50.984Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:52.237Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf9ff400a05bffe7ae480-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:52.238Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:53.527Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69edf9ff400a05bffe7ae480-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:53.527Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:54.116Z",
+      "type": "info",
+      "message": "✅ Product 60/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:54.116Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 61/63: Stormline Sweatshirt"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:55.437Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1dd3c81b9a75f50186af-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:55.438Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:56.448Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1dd3c81b9a75f50186af-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:56.449Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:57.523Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1dd3c81b9a75f50186af-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:57.524Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:58.611Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1dd3c81b9a75f50186af-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:58.612Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:59.775Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1dd3c81b9a75f50186af-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:29:59.777Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:01.002Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1dd3c81b9a75f50186af-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:01.003Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:02.129Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1dd3c81b9a75f50186af-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:02.129Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:03.261Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1dd3c81b9a75f50186af-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:03.262Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:03.874Z",
+      "type": "info",
+      "message": "✅ Product 61/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:03.875Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 62/63: Phantom Comfort Sweatshirt"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:04.791Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1e36c81b9a75f50186b4-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:04.791Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:05.781Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1e36c81b9a75f50186b4-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:05.782Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:06.943Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1e36c81b9a75f50186b4-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:06.944Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:08.013Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1e36c81b9a75f50186b4-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:08.014Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:09.092Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1e36c81b9a75f50186b4-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:09.093Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:10.424Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1e36c81b9a75f50186b4-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:10.425Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:11.551Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1e36c81b9a75f50186b4-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:11.552Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:12.882Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1e36c81b9a75f50186b4-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:12.883Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:14.007Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1e36c81b9a75f50186b4-color-3-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:14.007Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:15.393Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1e36c81b9a75f50186b4-color-3-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:15.394Z",
+      "type": "info",
+      "message": "  ✅ Color variant 3 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:16.049Z",
+      "type": "info",
+      "message": "✅ Product 62/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:16.050Z",
+      "type": "info",
+      "message": "\n🔄 Processing product 63/63: Arctic Luxe Sweatshirt"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:17.182Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1e84c81b9a75f50186ba-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:17.183Z",
+      "type": "info",
+      "message": "  ✅ Front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:18.427Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1e84c81b9a75f50186ba-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:18.427Z",
+      "type": "info",
+      "message": "  ✅ Back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:19.537Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1e84c81b9a75f50186ba-color-0-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:19.538Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:20.663Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1e84c81b9a75f50186ba-color-0-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:20.664Z",
+      "type": "info",
+      "message": "  ✅ Color variant 0 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:21.890Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1e84c81b9a75f50186ba-color-1-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:21.890Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:23.326Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1e84c81b9a75f50186ba-color-1-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:23.327Z",
+      "type": "info",
+      "message": "  ✅ Color variant 1 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:24.452Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1e84c81b9a75f50186ba-color-2-front"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:24.452Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 front image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:25.477Z",
+      "type": "info",
+      "message": "✅ Uploaded: product-69ee1e84c81b9a75f50186ba-color-2-back"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:25.478Z",
+      "type": "info",
+      "message": "  ✅ Color variant 2 back image uploaded"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:26.061Z",
+      "type": "info",
+      "message": "✅ Product 63/63 saved successfully"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:26.066Z",
+      "type": "info",
+      "message": "\n============================================================"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:26.067Z",
+      "type": "info",
+      "message": "📊 MIGRATION SUMMARY"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:26.068Z",
+      "type": "info",
+      "message": "============================================================"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:26.069Z",
+      "type": "info",
+      "message": "✅ Successfully migrated: 63/63"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:26.069Z",
+      "type": "info",
+      "message": "⏭️  Skipped (already migrated): 0"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:26.070Z",
+      "type": "info",
+      "message": "❌ Failed: 0"
+    },
+    {
+      "timestamp": "2026-04-29T18:30:26.070Z",
+      "type": "info",
+      "message": "📸 Images uploaded: 564/564"
+    }
+  ]
+}
