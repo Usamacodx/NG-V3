@@ -80,17 +80,17 @@ router.get("/:id/variants", async (req, res) => {
   }
 });
 
-// ✅ GET SINGLE PRODUCT WITH FULL DETAILS & VARIANTS
+// ✅ GET SINGLE PRODUCT WITH FULL DETAILS & VARIANTS - OPTIMIZED
 router.get("/:id", async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id)
+      .select('_id name price category subcategory fabric colors image frontImage backImage colorVariants rating description inStock createdAt') // ✅ Only needed fields (exclude backup_urls & cloudinary)
+      .lean(); // ✅ Return plain JS object (much faster)
+    
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
     }
-    console.log("📤 GET /api/products/:id - Product retrieved:");
-    console.log("   ID:", product?._id);
-    console.log("   colorVariants:", product?.colorVariants);
-    console.log("   colorVariants length:", product?.colorVariants?.length);
+
     res.json(product);
   } catch (error) {
     console.error("❌ Error fetching product:", error.message);

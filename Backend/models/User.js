@@ -3,6 +3,14 @@ import mongoose from "mongoose";
 const UserSchema = new mongoose.Schema({
   email: String,
   password: String,
+  profilePicture: {
+    type: String,
+    default: null,
+  },
+  profilePictureId: {
+    type: String,
+    default: null,
+  },
   cart: [
     {
       _id: String,

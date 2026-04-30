@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import html2canvas from 'html2canvas';
 
 const STATUS_OPTIONS = ['pending', 'processing', 'shipped', 'delivered', 'cancelled'];
+const API = import.meta.env.VITE_API_URL || 'http://localhost:5000'; // ✅ Use env variable
 
 function tryParse(json) {
   if (!json) return null;
@@ -239,10 +240,12 @@ async function renderAndDownloadDesign(design, baseImageSrc, filename) {
 export default function AdminOrders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [expandedOrderId, setExpandedOrderId] = useState(null); // ✅ Track which order is expanded
+  const [orderDetails, setOrderDetails] = useState({}); // ✅ Cache full order details
 
   const fetchOrders = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/orders/admin');
+      const res = await fetch(`${API}/api/orders/admin`); // ✅ Use env variable
       const json = await res.json();
       setOrders(json.orders || []);
     } catch (err) {
@@ -253,13 +256,29 @@ export default function AdminOrders() {
     }
   };
 
+  // ✅ NEW: Fetch full order details only when needed
+  const fetchOrderDetails = async (orderId) => {
+    if (orderDetails[orderId]) {
+      setExpandedOrderId(expandedOrderId === orderId ? null : orderId);
+      return;
+    }
+    try {
+      const res = await fetch(`${API}/api/orders/${orderId}`); // ✅ Use env variable
+      const json = await res.json();
+      setOrderDetails(prev => ({ ...prev, [orderId]: json.order }));
+      setExpandedOrderId(orderId);
+    } catch (err) {
+      console.error('Failed to fetch order details', err);
+    }
+  };
+
   useEffect(() => {
     fetchOrders();
   }, []);
 
   const handleStatusChange = async (orderId, newStatus) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/orders/${orderId}/status`, {
+      const res = await fetch(`${API}/api/orders/${orderId}/status`, { // ✅ Use env variable
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus }),
@@ -283,9 +302,15 @@ export default function AdminOrders() {
       <div className="flex flex-col gap-4">
         {orders.map((o) => {
           const total = Number(o.total || 0).toFixed(2);
+          const isExpanded = expandedOrderId === o._id;
+          const fullOrder = orderDetails[o._id] || o;
+          
           return (
             <div key={o._id} className="border rounded p-4">
-              <div className="flex justify-between items-center mb-2">
+              <div 
+                className="flex justify-between items-center mb-2 cursor-pointer hover:bg-gray-50 p-2 rounded"
+                onClick={() => fetchOrderDetails(o._id)} // ✅ Lazy load on click
+              >
                 <div>
                   <div className="font-semibold">Order ID: {o._id}</div>
                   <div className="text-sm text-gray-600">Placed: {new Date(o.createdAt).toLocaleString()}</div>
@@ -295,7 +320,10 @@ export default function AdminOrders() {
                   <div className="text-sm">Status:
                     <select
                       value={o.status}
-                      onChange={(e) => handleStatusChange(o._id, e.target.value)}
+                      onChange={(e) => {
+                        e.stopPropagation();
+                        handleStatusChange(o._id, e.target.value);
+                      }}
                       className="ml-2 border rounded p-1"
                     >
                       {STATUS_OPTIONS.map((s) => (
@@ -303,98 +331,104 @@ export default function AdminOrders() {
                       ))}
                     </select>
                   </div>
+                  <div className="text-sm text-blue-600">{isExpanded ? '▼ Click to collapse' : '▶ Click to expand'}</div>
                 </div>
               </div>
 
-              <div>
-                <div className="mb-3">
-                  <div className="font-semibold">Customer</div>
-                  <div className="text-sm text-gray-700">Name: {o.address?.name || 'N/A'}</div>
-                  <div className="text-sm text-gray-700">Email: {o.address?.email ? <a href={`mailto:${o.address.email}`} className="text-blue-600 underline">{o.address.email}</a> : 'N/A'}</div>
-                  <div className="text-sm text-gray-700">Phone: {o.address?.phone ? <a href={`tel:${o.address.phone}`} className="text-blue-600 underline">{o.address.phone}</a> : 'N/A'}</div>
-                  <div className="text-sm text-gray-700">Address: {o.address?.address || ''}{o.address?.city ? `, ${o.address.city}` : ''}{o.address?.postal ? `, ${o.address.postal}` : ''}</div>
-                </div>
-                <div className="font-semibold mb-2">Items ({o.items?.length || 0})</div>
-                <div className="flex flex-col gap-3">
-                  {(o.items || []).map((it) => {
-                    const customization = tryParse(it.customization) || {};
-                    const front = customization.frontDesign || customization.front || null;
-                    const back = customization.backDesign || customization.back || null;
-                    const frontSrc = resolveImgSrc(front);
-                    const backSrc = resolveImgSrc(back);
-                    const productPrice = Number(it.price || it.productPrice || 0);
-                    const customizationPrice = Number(it.customizationPrice || customization.totalCharge || customization.totalCharge || 0);
-                    const lineTotal = ((productPrice + customizationPrice) * (it.quantity || 1)).toFixed(2);
-                    
-                    // Get the captured design image, prioritizing it over base product image
-                    const capturedFrontDesignImage = customization?.frontDesignImage;
-                    const capturedBackDesignImage = customization?.backDesignImage;
-                    const displayImage = capturedFrontDesignImage || it.frontImage || it.image;
-                    
-                    return (
-                      <div key={it._id || it.productId} className="flex gap-3 items-start">
-                        <img src={displayImage} alt={it.name} className="w-20 h-20 object-cover border" />
-                        <div className="flex-1">
-                          <div className="font-semibold">{it.name} x{it.quantity}</div>
-                          <div className="text-sm text-gray-600">Size: {it.size || 'N/A'}</div>
-                          <div className="text-sm">Product price: PKR {productPrice.toFixed(2)}</div>
-                          <div className="text-sm">Customization price: PKR {customizationPrice.toFixed(2)}</div>
-                          <div className="text-sm font-semibold">Line total: PKR {lineTotal}</div>
+              {/* ✅ Only show items when expanded */}
+              {isExpanded && (
+                <>
+                  <div>
+                    <div className="mb-3">
+                      <div className="font-semibold">Customer</div>
+                      <div className="text-sm text-gray-700">Name: {fullOrder.address?.name || 'N/A'}</div>
+                      <div className="text-sm text-gray-700">Email: {fullOrder.address?.email ? <a href={`mailto:${fullOrder.address.email}`} className="text-blue-600 underline">{fullOrder.address.email}</a> : 'N/A'}</div>
+                      <div className="text-sm text-gray-700">Phone: {fullOrder.address?.phone ? <a href={`tel:${fullOrder.address.phone}`} className="text-blue-600 underline">{fullOrder.address.phone}</a> : 'N/A'}</div>
+                      <div className="text-sm text-gray-700">Address: {fullOrder.address?.address || ''}{fullOrder.address?.city ? `, ${fullOrder.address.city}` : ''}{fullOrder.address?.postal ? `, ${fullOrder.address.postal}` : ''}</div>
+                    </div>
+                    <div className="font-semibold mb-2">Items ({fullOrder.items?.length || 0})</div>
+                    <div className="flex flex-col gap-3">
+                      {(fullOrder.items || []).map((it) => {
+                        const customization = tryParse(it.customization) || {};
+                        const front = customization.frontDesign || customization.front || null;
+                        const back = customization.backDesign || customization.back || null;
+                        const frontSrc = resolveImgSrc(front);
+                        const backSrc = resolveImgSrc(back);
+                        const productPrice = Number(it.price || it.productPrice || 0);
+                        const customizationPrice = Number(it.customizationPrice || customization.totalCharge || customization.totalCharge || 0);
+                        const lineTotal = ((productPrice + customizationPrice) * (it.quantity || 1)).toFixed(2);
+                        
+                        // Get the captured design image, prioritizing it over base product image
+                        const capturedFrontDesignImage = customization?.frontDesignImage;
+                        const capturedBackDesignImage = customization?.backDesignImage;
+                        const displayImage = capturedFrontDesignImage || it.frontImage || it.image;
+                        
+                        return (
+                          <div key={it._id || it.productId} className="flex gap-3 items-start">
+                            <img src={displayImage} alt={it.name} className="w-20 h-20 object-cover border" />
+                            <div className="flex-1">
+                              <div className="font-semibold">{it.name} x{it.quantity}</div>
+                              <div className="text-sm text-gray-600">Size: {it.size || 'N/A'}</div>
+                              <div className="text-sm">Product price: PKR {productPrice.toFixed(2)}</div>
+                              <div className="text-sm">Customization price: PKR {customizationPrice.toFixed(2)}</div>
+                              <div className="text-sm font-semibold">Line total: PKR {lineTotal}</div>
 
-                          <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-2">
-                            <div>
-                              <div className="font-semibold">Front Design</div>
-                              {capturedFrontDesignImage && (
-                                <div className="mb-2 border rounded p-2 bg-gray-50">
-                                  <img src={capturedFrontDesignImage} alt="Front Design Preview" className="w-full h-auto object-contain" />
+                              <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-2">
+                                <div>
+                                  <div className="font-semibold">Front Design</div>
+                                  {capturedFrontDesignImage && (
+                                    <div className="mb-2 border rounded p-2 bg-gray-50">
+                                      <img src={capturedFrontDesignImage} alt="Front Design Preview" className="w-full h-auto object-contain" />
+                                    </div>
+                                  )}
+                                  <DesignView design={front} />
+                                  {(front || capturedFrontDesignImage) && (
+                                    <button
+                                      onClick={() => {
+                                        if (capturedFrontDesignImage) {
+                                          downloadImage(capturedFrontDesignImage, `${o._id}_${it._id || it.productId}_front.png`);
+                                        } else {
+                                          renderAndDownloadDesign(front, it.frontImage || it.image, `${o._id}_${it._id || it.productId}_front.png`);
+                                        }
+                                      }}
+                                      className="mt-2 inline-block bg-indigo-600 text-white text-sm px-3 py-1 rounded"
+                                    >
+                                      Download Front Design
+                                    </button>
+                                  )}
                                 </div>
-                              )}
-                              <DesignView design={front} />
-                              {(front || capturedFrontDesignImage) && (
-                                <button
-                                  onClick={() => {
-                                    if (capturedFrontDesignImage) {
-                                      downloadImage(capturedFrontDesignImage, `${o._id}_${it._id || it.productId}_front.png`);
-                                    } else {
-                                      renderAndDownloadDesign(front, it.frontImage || it.image, `${o._id}_${it._id || it.productId}_front.png`);
-                                    }
-                                  }}
-                                  className="mt-2 inline-block bg-indigo-600 text-white text-sm px-3 py-1 rounded"
-                                >
-                                  Download Front Design
-                                </button>
-                              )}
-                            </div>
-                            <div>
-                              <div className="font-semibold">Back Design</div>
-                              {capturedBackDesignImage && (
-                                <div className="mb-2 border rounded p-2 bg-gray-50">
-                                  <img src={capturedBackDesignImage} alt="Back Design Preview" className="w-full h-auto object-contain" />
+                                <div>
+                                  <div className="font-semibold">Back Design</div>
+                                  {capturedBackDesignImage && (
+                                    <div className="mb-2 border rounded p-2 bg-gray-50">
+                                      <img src={capturedBackDesignImage} alt="Back Design Preview" className="w-full h-auto object-contain" />
+                                    </div>
+                                  )}
+                                  <DesignView design={back} />
+                                  {(back || capturedBackDesignImage) && (
+                                    <button
+                                      onClick={() => {
+                                        if (capturedBackDesignImage) {
+                                          downloadImage(capturedBackDesignImage, `${o._id}_${it._id || it.productId}_back.png`);
+                                        } else {
+                                          renderAndDownloadDesign(back, it.frontImage || it.image, `${o._id}_${it._id || it.productId}_back.png`);
+                                        }
+                                      }}
+                                      className="mt-2 inline-block bg-indigo-600 text-white text-sm px-3 py-1 rounded"
+                                    >
+                                      Download Back Design
+                                    </button>
+                                  )}
                                 </div>
-                              )}
-                              <DesignView design={back} />
-                              {(back || capturedBackDesignImage) && (
-                                <button
-                                  onClick={() => {
-                                    if (capturedBackDesignImage) {
-                                      downloadImage(capturedBackDesignImage, `${o._id}_${it._id || it.productId}_back.png`);
-                                    } else {
-                                      renderAndDownloadDesign(back, it.frontImage || it.image, `${o._id}_${it._id || it.productId}_back.png`);
-                                    }
-                                  }}
-                                  className="mt-2 inline-block bg-indigo-600 text-white text-sm px-3 py-1 rounded"
-                                >
-                                  Download Back Design
-                                </button>
-                              )}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           );
         })}

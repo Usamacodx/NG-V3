@@ -14,13 +14,22 @@ const orderItemSchema = new mongoose.Schema({
 
 const orderSchema = new mongoose.Schema({
   id: String,
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false },
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false, index: true }, // ✅ Index for user queries
   items: [orderItemSchema],
   shippingMethod: String,
   shippingCost: Number,
   shipping: Number,
   tax: Number,
   total: Number,
+  // ✅ NEW: Design preview image from Cloudinary
+  designImage: {
+    type: String,
+    default: null,
+  },
+  designImageId: {
+    type: String,
+    default: null,
+  },
   address: {
     name: String,
     email: String,
@@ -31,8 +40,8 @@ const orderSchema = new mongoose.Schema({
   },
   paymentMethod: String,
   paymentDetails: mongoose.Schema.Types.Mixed,
-  status: { type: String, default: 'pending' },
-  createdAt: { type: Date, default: Date.now },
+  status: { type: String, default: 'pending', index: true }, // ✅ Index for status filters
+  createdAt: { type: Date, default: Date.now, index: -1 }, // ✅ Index for sorting by date
 });
 
 const Order = mongoose.model('Order', orderSchema);

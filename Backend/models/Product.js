@@ -60,8 +60,35 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true,
       },
+      // ✅ Cloudinary tracking for color variants
+      cloudinary: {
+        frontImage_id: String,
+        backImage_id: String,
+        migrated_at: Date,
+      },
     },
   ],
+  // ✅ Cloudinary tracking for main images
+  cloudinary: {
+    image_id: String,
+    frontImage_id: String,
+    backImage_id: String,
+    migrated_at: Date,
+  },
+  // ✅ Backup of original URLs before migration
+  backup_urls: {
+    image: String,
+    frontImage: String,
+    backImage: String,
+    colorVariants: [
+      {
+        colorName: String,
+        frontImage: String,
+        backImage: String,
+      },
+    ],
+    backed_up_at: Date,
+  },
   rating: {
     type: Number,
     default: 0,
