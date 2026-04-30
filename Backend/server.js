@@ -7,6 +7,7 @@ import jwt from "jsonwebtoken";
 import authRoutes from "./routes/auth.js";
 import ordersRoutes from "./routes/orders.js";
 import productRoutes from "./routes/productRoutes.js";
+import stickersRoutes from "./routes/stickersRoutes.js";
 import Product from "./models/Product.js";
 
 dotenv.config();
@@ -25,8 +26,15 @@ app.use((err, req, res, next) => {
    MongoDB Connection
 ========================= */
 mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB connected"))
+  .connect(process.env.MONGO_URI, {
+    maxPoolSize: 10, // ✅ Connection pool size
+    minPoolSize: 2,  // ✅ Minimum connections to keep alive
+    socketTimeoutMS: 45000, // ✅ Socket timeout
+    serverSelectionTimeoutMS: 5000, // ✅ Server selection timeout
+    retryWrites: true, // ✅ Retry failed writes
+    w: 'majority', // ✅ Write concern
+  })
+  .then(() => console.log("✅ MongoDB connected with optimized pooling"))
   .catch((err) => {
     console.error("❌ MongoDB error:", err.message);
     process.exit(1);
@@ -100,6 +108,9 @@ app.use('/api/orders', ordersRoutes);
 // Product routes (optimized with pagination, lazy loading, etc.)
 app.use('/api/products', productRoutes);
 
+// ✅ Sticker routes
+app.use('/api/stickers', stickersRoutes);
+
 /* =========================
    TEST ROUTE
 ========================= */
@@ -114,6 +125,32 @@ app.get("/api/health", (req, res) => {
     mongoState: ["disconnected", "connected", "connecting", "disconnecting"][mongoose.connection.readyState],
     timestamp: new Date().toISOString()
   });
+});
+
+// 🔍 DIAGNOSTIC: Check database collection sizes
+app.get("/api/db-stats", async (req, res) => {
+  try {
+    const db = mongoose.connection.db;
+    const collections = await db.listCollections().toArray();
+    
+    let stats = {};
+    for (const coll of collections) {
+      const count = await db.collection(coll.name).countDocuments();
+      const size = await db.collection(coll.name).stats();
+      stats[coll.name] = {
+        documentCount: count,
+        sizeBytes: size.size || 0,
+        sizeMB: ((size.size || 0) / (1024 * 1024)).toFixed(2),
+      };
+    }
+    
+    res.json({ 
+      stats,
+      totalMB: Object.values(stats).reduce((sum, s) => sum + parseFloat(s.sizeMB), 0).toFixed(2)
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 /* =========================

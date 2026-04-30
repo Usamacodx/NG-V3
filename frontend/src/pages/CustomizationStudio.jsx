@@ -203,6 +203,29 @@ export default function CustomizationStudio() {
   const fonts = ["Arial", "Helvetica", "Times New Roman", "Georgia", "Verdana", "Impact"];
   const canvasRef = useRef(null);
 
+  // ✅ NEW: Fetch stickers from API instead of hardcoding
+  useEffect(() => {
+    const fetchStickers = async () => {
+      try {
+        setStickerLoading(true);
+        setStickerError(null);
+        const response = await fetch('http://localhost:5000/api/stickers');
+        if (!response.ok) throw new Error('Failed to fetch stickers');
+        const stickers = await response.json();
+        setApiStickers(stickers);
+      } catch (error) {
+        console.error('Error fetching stickers:', error);
+        setStickerError('Failed to load stickers');
+        // Fallback to popular stickers if API fails
+        setApiStickers(popularStickers);
+      } finally {
+        setStickerLoading(false);
+      }
+    };
+
+    fetchStickers();
+  }, []);
+
   // Helper function to validate and use design positions correctly
   const getDesignWithCorrectPositions = () => {
     const currentDesign = view === "front" ? frontDesign : backDesign;
