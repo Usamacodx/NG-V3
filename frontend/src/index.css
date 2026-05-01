@@ -5,6 +5,26 @@
 /* Google Font (same feel as modern Figma designs) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+
+:root {
+  --bg: #1a1810;
+  --card: #111111;
+  --surface: #0d0d0d;
+  --text-primary: #e8d5a0;
+  --text-secondary: #6B7280;
+  --accent: #c9a84c;
+  --accent-hover: #e8d5a0;
+  --border: #1e1e1e;
+  --nav-inactive: #9CA3AF;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -16,3 +36,5 @@ body {
   background-color: #f9fafb;
   color: #111827;
 }
+
+
