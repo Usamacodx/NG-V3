@@ -3,26 +3,7 @@ import { useState, useEffect } from "react";
 import { FaUserCircle, FaChevronDown } from "react-icons/fa";
 import { ShoppingCart, LogOut, LogIn, UserPlus, Heart, Settings, Package, HelpCircle, MapPin, Home, Info, Mail, Palette } from 'lucide-react';
 import { useAuth } from "../context/AuthContext";
-
-// Import the NG logo
-const NGLogo = () => (
-  <svg width="85" height="85" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: "drop-shadow(0 2px 8px rgba(11, 132, 255, 0.3))" }}>
-    {/* Circle Border */}
-    <circle cx="140" cy="140" r="130" stroke="#000000" strokeWidth="10" fill="white"/>
-    
-    {/* N - Black */}
-    <g>
-      <rect x="90" y="95" width="28" height="100" fill="#000000"/>
-      <polygon points="118,95 165,95 118,195" fill="#000000"/>
-      <rect x="160" y="95" width="28" height="100" fill="#000000"/>
-    </g>
-    
-    {/* G - Gold */}
-    <g>
-      <path d="M 215 105 Q 245 105 245 145 Q 245 185 215 185 Q 190 185 185 165 L 210 165 Q 215 180 215 180 Q 230 180 230 145 Q 230 120 215 120 Q 200 120 200 145 L 200 165 L 175 165 Q 175 120 215 120" fill="#C9A227" stroke="#C9A227" strokeWidth="3"/>
-    </g>
-  </svg>
-);
+import ngLogo from "../assets/ng-logo.png";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -30,11 +11,9 @@ const Header = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
-  // Admin login status
   useEffect(() => {
     const adminStatus = localStorage.getItem("isAdminLoggedIn") === "true";
     setIsAdmin(adminStatus);
-
     const handleStorageChange = () => {
       setIsAdmin(localStorage.getItem("isAdminLoggedIn") === "true");
     };
@@ -42,7 +21,6 @@ const Header = () => {
     return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
-  // Admin logout
   const handleAdminLogout = () => {
     localStorage.removeItem("isAdminLoggedIn");
     setIsAdmin(false);
@@ -50,20 +28,11 @@ const Header = () => {
     navigate("/");
   };
 
-  // Customer logout
   const handleCustomerLogout = () => {
-    // Clear user-specific cart before logout
     const user = JSON.parse(localStorage.getItem("user") || "{}");
-    if (user._id) {
-      localStorage.removeItem(`cart_${user._id}`);
-    }
-    
-    // Clear token
+    if (user._id) localStorage.removeItem(`cart_${user._id}`);
     localStorage.removeItem("token");
-    
-    // Call AuthContext logout to update user state and localStorage
     logout();
-    
     setShowProfileDropdown(false);
     window.dispatchEvent(new Event("storage"));
     alert("Logout successfully!");
@@ -72,295 +41,182 @@ const Header = () => {
 
   return (
     <header style={headerStyle}>
-      {/* Left: Logo and Brand */}
+
+      {/* LEFT — Nav Links */}
+      <nav style={leftNavStyle}>
+        {[
+          { label: 'Home', icon: <Home size={16} />, path: '/' },
+          { label: 'Products', icon: <Palette size={16} />, path: '/products' },
+          { label: 'About', icon: <Info size={16} />, path: '/about' },
+          { label: 'Contact', icon: <Mail size={16} />, path: '/contact' },
+        ].map(({ label, icon, path }) => (
+          <button
+            key={label}
+            style={navBtnStyle}
+            onClick={() => navigate(path)}
+            onMouseEnter={e => {
+              e.currentTarget.style.color = '#c9a84c';
+              e.currentTarget.style.background = 'rgba(201,168,76,0.08)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.color = '#cbd5e1';
+              e.currentTarget.style.background = 'transparent';
+            }}
+          >
+            {icon}
+            <span>{label}</span>
+          </button>
+        ))}
+
+        {/* Admin buttons — left side when admin */}
+        {isAdmin && (
+          <>
+            <button
+              style={adminNavBtnStyle}
+              onClick={() => navigate('/admin/orders')}
+              onMouseEnter={e => e.currentTarget.style.background = '#d45f00'}
+              onMouseLeave={e => e.currentTarget.style.background = '#ff6b00'}
+            >
+              <Package size={16} />
+              <span>Orders</span>
+            </button>
+            <button
+              style={adminLogoutBtnStyle}
+              onClick={handleAdminLogout}
+              onMouseEnter={e => e.currentTarget.style.background = '#c82333'}
+              onMouseLeave={e => e.currentTarget.style.background = '#dc3545'}
+            >
+              <LogOut size={16} />
+            </button>
+          </>
+        )}
+      </nav>
+
+      {/* CENTER — Logo */}
       <div style={brandContainerStyle} onClick={() => navigate("/")}>
-        <NGLogo />
+        <div style={logoWrapStyle}>
+          <img
+            src={ngLogo}
+            alt="NextGen Logo"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              borderRadius: '50%',
+              filter: 'invert(1)',
+            }}
+          />
+        </div>
         <div style={brandTextStyle}>
           <div style={brandNameStyle}>NextGen</div>
           <div style={brandSubtextStyle}>Apparel Studio</div>
         </div>
       </div>
 
-      {/* Center: Navigation Menu */}
-      <nav style={navContainerStyle}>
-        <button 
-          style={navBtnStyle} 
-          onClick={() => navigate("/")}
-          title="Home"
-          onMouseEnter={(e) => e.target.style.color = "#0b84ff"}
-          onMouseLeave={(e) => e.target.style.color = "#fff"}
-        >
-          <Home size={20} />
-          <span style={navBtnTextStyle}>Home</span>
-        </button>
-        
-        <button 
-          style={navBtnStyle} 
-          onClick={() => navigate("/products")}
-          title="Products"
-          onMouseEnter={(e) => e.target.style.color = "#0b84ff"}
-          onMouseLeave={(e) => e.target.style.color = "#fff"}
-        >
-          <Palette size={20} />
-          <span style={navBtnTextStyle}>Products</span>
-        </button>
+      {/* RIGHT — Cart + Profile */}
+      <div style={rightActionsStyle}>
 
-        <button 
-          style={navBtnStyle} 
-          onClick={() => navigate("/about")}
-          title="About Us"
-          onMouseEnter={(e) => e.target.style.color = "#0b84ff"}
-          onMouseLeave={(e) => e.target.style.color = "#fff"}
-        >
-          <Info size={20} />
-          <span style={navBtnTextStyle}>About</span>
-        </button>
-
-        <button 
-          style={navBtnStyle} 
-          onClick={() => navigate("/contact")}
-          title="Contact"
-          onMouseEnter={(e) => e.target.style.color = "#0b84ff"}
-          onMouseLeave={(e) => e.target.style.color = "#fff"}
-        >
-          <Mail size={20} />
-          <span style={navBtnTextStyle}>Contact</span>
-        </button>
-        {/* Cart button - hide for admin */}
+        {/* Cart */}
         {!isAdmin && (
-          <button 
+          <button
             style={cartBtnStyle}
             onClick={() => navigate("/cart")}
-            title="Shopping Cart"
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = "#0b84ff";
-              e.target.style.transform = "scale(1.05)";
+            onMouseEnter={e => {
+              e.currentTarget.style.background = '#c9a84c';
+              e.currentTarget.style.color = '#0f172a';
+              e.currentTarget.style.borderColor = '#c9a84c';
             }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = "transparent";
-              e.target.style.transform = "scale(1)";
+            onMouseLeave={e => {
+              e.currentTarget.style.background = 'transparent';
+              e.currentTarget.style.color = '#c9a84c';
+              e.currentTarget.style.borderColor = '#c9a84c';
             }}
           >
-            <ShoppingCart size={22} />
+            <ShoppingCart size={20} />
           </button>
         )}
 
-        {/* Admin Panel */}
-        {isAdmin && (
-          <>
-            <button 
-              style={adminNavBtnStyle}
-              onClick={() => navigate('/admin/orders')}
-              title="Orders"
-              onMouseEnter={(e) => {
-                e.target.style.backgroundColor = "#0b84ff";
-                e.target.style.transform = "scale(1.05)";
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.backgroundColor = "#ff6b00";
-                e.target.style.transform = "scale(1)";
-              }}
-            >
-              <Package size={20} />
-              <span style={navBtnTextStyle}>Orders</span>
-            </button>
-            <button 
-              style={adminLogoutBtnStyle}
-              onClick={handleAdminLogout}
-              title="Admin Logout"
-              onMouseEnter={(e) => {
-                e.target.style.backgroundColor = "#c82333";
-                e.target.style.transform = "scale(1.05)";
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.backgroundColor = "#dc3545";
-                e.target.style.transform = "scale(1)";
-              }}
-            >
-              <LogOut size={20} />
-            </button>
-          </>
-        )}
-
-        {/* Professional Account Dropdown */}
+        {/* Profile Dropdown */}
         <div style={profileContainerStyle}>
           <div
             style={profileBtnStyle}
             onMouseEnter={() => setShowProfileDropdown(true)}
             onMouseLeave={() => setShowProfileDropdown(false)}
-            title="Account Menu"
           >
-            <FaUserCircle size={24} />
-            <FaChevronDown size={12} style={{ marginLeft: "5px" }} />
+            <FaUserCircle size={22} />
+            <FaChevronDown size={11} />
           </div>
-          
+
           {showProfileDropdown && (
-            <div 
+            <div
               style={dropdownStyle}
               onMouseEnter={() => setShowProfileDropdown(true)}
               onMouseLeave={() => setShowProfileDropdown(false)}
             >
-              {/* If user is logged in */}
               {user && user.name ? (
                 <>
-                  {/* User Profile Header */}
                   <div style={userProfileHeaderStyle}>
-                    <FaUserCircle size={48} style={{ color: "#0b84ff" }} />
-                    <div style={userHeaderTextStyle}>
+                    <FaUserCircle size={44} style={{ color: '#c9a84c', flexShrink: 0 }} />
+                    <div>
                       <div style={userNameStyle}>{user.name}</div>
                       <div style={userEmailStyle}>{user.email || "customer@apparel.com"}</div>
                       <div style={userStatusStyle}>Premium Member</div>
                     </div>
                   </div>
-                  
-                  <div style={dividerStyle}></div>
-                  
-                  {/* Main Options */}
-                  <button
-                    style={dropdownOptionStyle}
-                    onMouseEnter={(e) => e.target.style.backgroundColor = "#f5f5f5"}
-                    onMouseLeave={(e) => e.target.style.backgroundColor = "#fff"}
-                    onClick={() => {
-                      navigate("/cart");
-                      setShowProfileDropdown(false);
-                    }}
+                  <div style={dividerStyle} />
+                  {[
+                    { icon: <ShoppingCart size={16} />, label: 'My Cart', action: () => { navigate("/cart"); setShowProfileDropdown(false); } },
+                    { icon: <Package size={16} />, label: 'My Orders', action: () => { setShowProfileDropdown(false); alert("Coming soon!"); } },
+                    { icon: <Heart size={16} />, label: 'Wishlist', action: () => { setShowProfileDropdown(false); alert("Coming soon!"); } },
+                    { icon: <MapPin size={16} />, label: 'Delivery Address', action: () => { setShowProfileDropdown(false); alert("Coming soon!"); } },
+                    { icon: <Settings size={16} />, label: 'Settings', action: () => { setShowProfileDropdown(false); alert("Coming soon!"); } },
+                    { icon: <HelpCircle size={16} />, label: 'Help & Support', action: () => { navigate("/contact"); setShowProfileDropdown(false); } },
+                  ].map(({ icon, label, action }) => (
+                    <button key={label} style={dropdownOptionStyle} onClick={action}
+                      onMouseEnter={e => e.currentTarget.style.background = '#f8f9fa'}
+                      onMouseLeave={e => e.currentTarget.style.background = '#fff'}
+                    >
+                      <span style={{ marginRight: 10, color: '#c9a84c' }}>{icon}</span>
+                      {label}
+                    </button>
+                  ))}
+                  <div style={dividerStyle} />
+                  <button style={dropdownLogoutStyle} onClick={handleCustomerLogout}
+                    onMouseEnter={e => e.currentTarget.style.background = '#c82333'}
+                    onMouseLeave={e => e.currentTarget.style.background = '#dc3545'}
                   >
-                    <ShoppingCart size={18} style={{ marginRight: "10px" }} />
-                    My Cart
-                  </button>
-                  
-                  <button
-                    style={dropdownOptionStyle}
-                    onMouseEnter={(e) => e.target.style.backgroundColor = "#f5f5f5"}
-                    onMouseLeave={(e) => e.target.style.backgroundColor = "#fff"}
-                    onClick={() => {
-                      setShowProfileDropdown(false);
-                      alert("Order tracking coming soon!");
-                    }}
-                  >
-                    <Package size={18} style={{ marginRight: "10px" }} />
-                    My Orders
-                  </button>
-                  
-                  <button
-                    style={dropdownOptionStyle}
-                    onMouseEnter={(e) => e.target.style.backgroundColor = "#f5f5f5"}
-                    onMouseLeave={(e) => e.target.style.backgroundColor = "#fff"}
-                    onClick={() => {
-                      setShowProfileDropdown(false);
-                      alert("Wishlist feature coming soon!");
-                    }}
-                  >
-                    <Heart size={18} style={{ marginRight: "10px" }} />
-                    Wishlist
-                  </button>
-                  
-                  <button
-                    style={dropdownOptionStyle}
-                    onMouseEnter={(e) => e.target.style.backgroundColor = "#f5f5f5"}
-                    onMouseLeave={(e) => e.target.style.backgroundColor = "#fff"}
-                    onClick={() => {
-                      setShowProfileDropdown(false);
-                      alert("Address settings coming soon!");
-                    }}
-                  >
-                    <MapPin size={18} style={{ marginRight: "10px" }} />
-                    Delivery Address
-                  </button>
-                  
-                  <div style={dividerStyle}></div>
-                  
-                  {/* Settings & Support */}
-                  <button
-                    style={dropdownOptionStyle}
-                    onMouseEnter={(e) => e.target.style.backgroundColor = "#f5f5f5"}
-                    onMouseLeave={(e) => e.target.style.backgroundColor = "#fff"}
-                    onClick={() => {
-                      setShowProfileDropdown(false);
-                      alert("Account settings coming soon!");
-                    }}
-                  >
-                    <Settings size={18} style={{ marginRight: "10px" }} />
-                    Settings
-                  </button>
-                  
-                  <button
-                    style={dropdownOptionStyle}
-                    onMouseEnter={(e) => e.target.style.backgroundColor = "#f5f5f5"}
-                    onMouseLeave={(e) => e.target.style.backgroundColor = "#fff"}
-                    onClick={() => {
-                      navigate("/contact");
-                      setShowProfileDropdown(false);
-                    }}
-                  >
-                    <HelpCircle size={18} style={{ marginRight: "10px" }} />
-                    Help & Support
-                  </button>
-                  
-                  <div style={dividerStyle}></div>
-                  
-                  {/* Logout */}
-                  <button
-                    style={dropdownLogoutStyle}
-                    onMouseEnter={(e) => e.target.style.backgroundColor = "#c82333"}
-                    onMouseLeave={(e) => e.target.style.backgroundColor = "#dc3545"}
-                    onClick={handleCustomerLogout}
-                  >
-                    <LogOut size={18} style={{ marginRight: "10px" }} />
-                    Logout
+                    <LogOut size={16} style={{ marginRight: 8 }} /> Logout
                   </button>
                 </>
               ) : (
                 <>
-                  {/* Not Logged In State */}
                   <div style={notLoggedInHeaderStyle}>
-                    <FaUserCircle size={56} style={{ color: "#ccc" }} />
+                    <FaUserCircle size={52} style={{ color: '#c9a84c' }} />
                     <div style={notLoggedTextStyle}>Welcome to NextGen</div>
                     <div style={notLoggedSubtextStyle}>Sign in to your account</div>
                   </div>
-                  
-                  <div style={dividerStyle}></div>
-                  
-                  {/* Login & Signup Buttons */}
-                  <button
-                    style={dropdownLoginStyle}
-                    onMouseEnter={(e) => e.target.style.backgroundColor = "#1e7e34"}
-                    onMouseLeave={(e) => e.target.style.backgroundColor = "#28a745"}
-                    onClick={() => {
-                      navigate("/login");
-                      setShowProfileDropdown(false);
-                    }}
+                  <div style={dividerStyle} />
+                  <button style={dropdownLoginStyle}
+                    onClick={() => { navigate("/login"); setShowProfileDropdown(false); }}
+                    onMouseEnter={e => e.currentTarget.style.background = '#b8923e'}
+                    onMouseLeave={e => e.currentTarget.style.background = '#c9a84c'}
                   >
-                    <LogIn size={18} style={{ marginRight: "10px" }} />
-                    Login
+                    <LogIn size={16} style={{ marginRight: 8 }} /> Login
                   </button>
-                  
-                  <button
-                    style={dropdownSignupStyle}
-                    onMouseEnter={(e) => e.target.style.backgroundColor = "#0056b3"}
-                    onMouseLeave={(e) => e.target.style.backgroundColor = "#0b84ff"}
-                    onClick={() => {
-                      navigate("/signup");
-                      setShowProfileDropdown(false);
-                    }}
+                  <button style={dropdownSignupStyle}
+                    onClick={() => { navigate("/signup"); setShowProfileDropdown(false); }}
+                    onMouseEnter={e => e.currentTarget.style.background = '#1e293b'}
+                    onMouseLeave={e => e.currentTarget.style.background = '#0f172a'}
                   >
-                    <UserPlus size={18} style={{ marginRight: "10px" }} />
-                    Create Account
+                    <UserPlus size={16} style={{ marginRight: 8 }} /> Create Account
                   </button>
-                  
-                  <div style={dividerStyle}></div>
-                  
-                  {/* Help for guests */}
-                  <button
-                    style={dropdownOptionStyle}
-                    onMouseEnter={(e) => e.target.style.backgroundColor = "#f5f5f5"}
-                    onMouseLeave={(e) => e.target.style.backgroundColor = "#fff"}
-                    onClick={() => {
-                      navigate("/contact");
-                      setShowProfileDropdown(false);
-                    }}
+                  <div style={dividerStyle} />
+                  <button style={dropdownOptionStyle}
+                    onClick={() => { navigate("/contact"); setShowProfileDropdown(false); }}
+                    onMouseEnter={e => e.currentTarget.style.background = '#f8f9fa'}
+                    onMouseLeave={e => e.currentTarget.style.background = '#fff'}
                   >
-                    <HelpCircle size={18} style={{ marginRight: "10px" }} />
+                    <span style={{ marginRight: 10, color: '#c9a84c' }}><HelpCircle size={16} /></span>
                     Help & Support
                   </button>
                 </>
@@ -368,140 +224,145 @@ const Header = () => {
             </div>
           )}
         </div>
-      </nav>
+      </div>
     </header>
   );
 };
 
-/* ===== MODERN HEADER STYLES ===== */
+/* ── STYLES ── */
 const headerStyle = {
-  display: "flex",
-  justifyContent: "space-between",
+  display: "grid",
+  gridTemplateColumns: "1fr auto 1fr",  // left | center | right
   alignItems: "center",
-  padding: "14px 30px",
-  backgroundColor: "#0a0e27",
+  padding: "16px 2.5rem",
+  backgroundColor: "#0f172a",
   color: "#fff",
-  boxShadow: "0 4px 20px rgba(11, 132, 255, 0.15)",
-  borderBottom: "2px solid rgba(11, 132, 255, 0.2)",
-  minHeight: "75px",
+  boxShadow: "0 4px 24px rgba(0,0,0,0.3)",
+  borderBottom: "1px solid #1e293b",
+  minHeight: "80px",
+  fontFamily: "'DM Sans', sans-serif",
+  position: "sticky",
+  top: 0,
+  zIndex: 999,
+ 
+  paddingBottom: '30px'
 };
 
-/* Brand Section */
+const leftNavStyle = {
+  display: "flex",
+  gap: "4px",
+  alignItems: "center",
+  justifyContent: "flex-start",  // anchors to left
+};
+
+const rightActionsStyle = {
+  display: "flex",
+  gap: "8px",
+  alignItems: "center",
+  justifyContent: "flex-end",  // anchors to right
+};
+
 const brandContainerStyle = {
   display: "flex",
   alignItems: "center",
-  gap: "14px",
+  justifyContent: "center",  // true center
+  gap: "12px",
   cursor: "pointer",
-  transition: "all 0.3s ease",
-  padding: "8px 16px",
-  borderRadius: "8px",
-  minWidth: "auto",
 };
 
-const ngLogoStyle = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  width: "56px",
-  height: "56px",
+const logoWrapStyle = {
+  width: 52,
+  height: 52,
+  borderRadius: '50%',
+  background: '#c9a84c',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  overflow: 'hidden',
+  padding: '5px',
+  flexShrink: 0,
 };
 
 const brandTextStyle = {
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
   gap: "2px",
 };
 
 const brandNameStyle = {
-  fontSize: "26px",
-  fontWeight: "900",
-  color: "#0b84ff",
-  letterSpacing: "-0.5px",
+  fontSize: "1.6rem",
+  fontWeight: "700",
+  color: "#e8d5a0",
+  letterSpacing: "0.02em",
   lineHeight: "1.2",
+  fontFamily: "'Playfair Display', serif",
 };
 
 const brandSubtextStyle = {
-  fontSize: "13px",
-  color: "#888",
-  fontWeight: "700",
-  letterSpacing: "1.5px",
+  fontSize: "0.6rem",
+  color: "#475569",
+  fontWeight: "600",
+  letterSpacing: "0.18em",
   textTransform: "uppercase",
-  lineHeight: "1",
-};
-
-/* Navigation Container */
-const navContainerStyle = {
-  display: "flex",
-  gap: "8px",
-  alignItems: "center",
 };
 
 const navBtnStyle = {
   display: "flex",
   alignItems: "center",
-  gap: "8px",
-  padding: "11px 16px",
+  gap: "6px",
+  padding: "9px 13px",
   backgroundColor: "transparent",
-  color: "#fff",
+  color: "#cbd5e1",
   border: "none",
   borderRadius: "6px",
   cursor: "pointer",
-  fontWeight: "700",
-  fontSize: "16px",
-  transition: "all 0.3s ease",
+  fontWeight: "500",
+  fontSize: "0.6 rem",
+  transition: "all 0.2s ease",
   whiteSpace: "nowrap",
-};
-
-const navBtnTextStyle = {
-  display: "inline",
-  fontWeight: "600",
+  fontFamily: "'DM Sans', sans-serif",
 };
 
 const cartBtnStyle = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  padding: "11px 15px",
+  padding: "9px 14px",
   backgroundColor: "transparent",
-  color: "#0b84ff",
-  border: "2px solid #0b84ff",
+  color: "#c9a84c",
+  border: "2px solid #c9a84c",
   borderRadius: "8px",
   cursor: "pointer",
-  transition: "all 0.3s ease",
-  fontWeight: "700",
-  fontSize: "16px",
+  transition: "all 0.2s ease",
 };
 
 const adminNavBtnStyle = {
   display: "flex",
   alignItems: "center",
-  gap: "8px",
-  padding: "11px 16px",
+  gap: "6px",
+  padding: "9px 13px",
   backgroundColor: "#ff6b00",
   color: "#fff",
   border: "none",
   borderRadius: "6px",
   cursor: "pointer",
-  fontWeight: "700",
-  fontSize: "16px",
-  transition: "all 0.3s ease",
-  whiteSpace: "nowrap",
+  fontWeight: "600",
+  fontSize: "1rem",
+  transition: "all 0.2s ease",
+  fontFamily: "'DM Sans', sans-serif",
 };
 
 const adminLogoutBtnStyle = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  padding: "11px 15px",
+  padding: "9px 14px",
   backgroundColor: "#dc3545",
   color: "#fff",
   border: "none",
   borderRadius: "6px",
   cursor: "pointer",
-  transition: "all 0.3s ease",
-  fontWeight: "700",
-  fontSize: "16px",
+  transition: "all 0.2s ease",
 };
 
 const profileContainerStyle = {
@@ -512,183 +373,154 @@ const profileContainerStyle = {
 const profileBtnStyle = {
   display: "flex",
   alignItems: "center",
-  gap: "8px",
-  padding: "11px 16px",
-  backgroundColor: "#0b84ff",
-  color: "#fff",
+  gap: "6px",
+  padding: "9px 14px",
+  backgroundColor: "#c9a84c",
+  color: "#0f172a",
   border: "none",
   borderRadius: "8px",
   cursor: "pointer",
   fontWeight: "700",
-  fontSize: "16px",
-  transition: "all 0.3s ease",
+  fontSize: "1rem",
+  transition: "all 0.2s ease",
 };
 
 const dropdownStyle = {
   position: "absolute",
-  top: "50px",
+  top: "48px",
   right: "0",
   backgroundColor: "#fff",
-  border: "2px solid rgba(11, 132, 255, 0.1)",
+  border: "1px solid #e2e8f0",
   borderRadius: "10px",
-  boxShadow: "0 12px 48px rgba(0,0,0,0.2)",
+  boxShadow: "0 12px 48px rgba(0,0,0,0.15)",
   zIndex: 100,
-  minWidth: "340px",
+  minWidth: "300px",
   display: "flex",
   flexDirection: "column",
   overflow: "hidden",
   maxHeight: "80vh",
+  overflowY: "auto",
 };
 
 const userProfileHeaderStyle = {
   display: "flex",
   alignItems: "center",
-  gap: "14px",
-  padding: "18px",
-  backgroundColor: "#f0f7ff",
-  borderBottom: "2px solid #e0e0e0",
-};
-
-const userHeaderTextStyle = {
-  flex: 1,
-};
-
-const userProfileSection = {
-  display: "flex",
-  alignItems: "center",
   gap: "12px",
   padding: "16px",
-  backgroundColor: "#f8f9fa",
-};
-
-const userInfoStyle = {
-  padding: "12px 16px",
-  backgroundColor: "#f8f9fa",
+  backgroundColor: "#f8fafc",
+  borderBottom: "1px solid #e2e8f0",
 };
 
 const userNameStyle = {
-  fontSize: "18px",
-  fontWeight: "800",
-  color: "#000",
-  marginBottom: "4px",
-  letterSpacing: "-0.3px",
+  fontSize: "1rem",
+  fontWeight: "700",
+  color: "#0f172a",
+  marginBottom: "2px",
 };
 
 const userEmailStyle = {
-  fontSize: "14px",
-  color: "#666",
+  fontSize: "0.82rem",
+  color: "#64748b",
   marginBottom: "2px",
-  fontWeight: "500",
 };
 
 const userStatusStyle = {
-  fontSize: "13px",
+  fontSize: "0.7rem",
   fontWeight: "700",
-  color: "#0b84ff",
-  marginTop: "4px",
+  color: "#c9a84c",
   textTransform: "uppercase",
-  letterSpacing: "0.8px",
-};
-
-const notLoggedInStyle = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  gap: "8px",
-  padding: "20px 16px",
-  backgroundColor: "#f8f9fa",
+  letterSpacing: "0.08em",
 };
 
 const notLoggedInHeaderStyle = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  gap: "8px",
-  padding: "24px 16px",
-  backgroundColor: "#f0f7ff",
-  borderBottom: "1px solid #e0e0e0",
+  gap: "6px",
+  padding: "20px 16px",
+  backgroundColor: "#f8fafc",
+  borderBottom: "1px solid #e2e8f0",
 };
 
 const notLoggedTextStyle = {
-  fontSize: "16px",
+  fontSize: "1rem",
   fontWeight: "700",
-  color: "#333",
-  marginTop: "8px",
+  color: "#0f172a",
 };
 
 const notLoggedSubtextStyle = {
-  fontSize: "12px",
-  color: "#999",
+  fontSize: "0.82rem",
+  color: "#94a3b8",
 };
 
 const dividerStyle = {
   height: "1px",
-  backgroundColor: "#e0e0e0",
-  margin: "0",
+  backgroundColor: "#f1f5f9",
 };
 
 const dropdownOptionStyle = {
   width: "100%",
-  padding: "14px 18px",
+  padding: "12px 16px",
   backgroundColor: "#fff",
-  color: "#333",
+  color: "#334155",
   border: "none",
   textAlign: "left",
   cursor: "pointer",
-  fontWeight: "600",
-  fontSize: "15px",
+  fontWeight: "500",
+  fontSize: "0.95rem",
   transition: "all 0.2s ease",
   display: "flex",
   alignItems: "center",
-  borderBottom: "1px solid #f5f5f5",
-  lineHeight: "1.4",
-};
-
-const dropdownBtnStyle = {
-  width: "100%",
-  padding: "14px 18px",
-  backgroundColor: "#fff",
-  color: "#333",
-  border: "none",
-  textAlign: "left",
-  cursor: "pointer",
-  fontWeight: "600",
-  fontSize: "15px",
-  transition: "all 0.2s ease",
-  display: "flex",
-  alignItems: "center",
+  borderBottom: "1px solid #f8fafc",
+  fontFamily: "'DM Sans', sans-serif",
 };
 
 const dropdownLoginStyle = {
-  ...dropdownBtnStyle,
-  backgroundColor: "#28a745",
-  color: "#fff",
+  width: "100%",
+  padding: "12px 16px",
+  backgroundColor: "#c9a84c",
+  color: "#0f172a",
   border: "none",
-  justifyContent: "center",
-  marginBottom: "8px",
+  cursor: "pointer",
   fontWeight: "700",
-  fontSize: "15px",
+  fontSize: "0.95rem",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  transition: "all 0.2s ease",
+  fontFamily: "'DM Sans', sans-serif",
 };
 
 const dropdownSignupStyle = {
-  ...dropdownBtnStyle,
-  backgroundColor: "#0b84ff",
-  color: "#fff",
+  width: "100%",
+  padding: "12px 16px",
+  backgroundColor: "#0f172a",
+  color: "#e8d5a0",
   border: "none",
-  justifyContent: "center",
-  marginBottom: "0",
+  cursor: "pointer",
   fontWeight: "700",
-  fontSize: "15px",
+  fontSize: "0.95rem",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  transition: "all 0.2s ease",
+  fontFamily: "'DM Sans', sans-serif",
 };
 
 const dropdownLogoutStyle = {
-  ...dropdownBtnStyle,
+  width: "100%",
+  padding: "12px 16px",
   backgroundColor: "#dc3545",
   color: "#fff",
   border: "none",
-  justifyContent: "center",
+  cursor: "pointer",
   fontWeight: "700",
-  fontSize: "15px",
+  fontSize: "0.95rem",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  transition: "all 0.2s ease",
+  fontFamily: "'DM Sans', sans-serif",
 };
 
 export default Header;

@@ -5,6 +5,17 @@ import { useCart } from "../context/CartContext";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import SVGShirtContainer from "../components/SVGShirtContainer";
+import ColorWheel from "../components/ColorWheel";
+
+const loadImageCORS = (src) =>
+  new Promise((resolve, reject) => {
+    if (!src) return reject(new Error("No src"));
+    const img = new Image();
+    img.crossOrigin = "anonymous"; // MUST be before .src
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error(`Failed: ${src}`));
+    img.src = src.startsWith("data:") ? src : (src.includes("?") ? `${src}&_cors=1` : `${src}?_cors=1`);
+  });
 
 // Helper function to check if image is SVG (works with base64 or file paths)
 const isSVGImage = (imageData) => {
@@ -125,6 +136,7 @@ export default function CustomizationStudio() {
   const [draggingElement, setDraggingElement] = useState(null);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [suppressViewSync, setSuppressViewSync] = useState(false);
+  const isSwitchingView = useRef(false);
 
   // ✅ NEW: Selected sticker & resize state for better UX
   const [selectedStickerId, setSelectedStickerId] = useState(null);
@@ -174,32 +186,30 @@ export default function CustomizationStudio() {
 
   // Popular stickers with search keywords - High Quality Flaticon Stickers
   const popularStickers = [
-    { id: 1, name: "Location", keywords: "star special celebration", url: "https://cdn-icons-png.flaticon.com/512/1144/1144687.png" },
-    { id: 2, name: "Red Heart", keywords: "heart love romantic valentine", url: "https://cdn-icons-png.flaticon.com/512/833/833472.png" },
-    { id: 3, name: "Doctor", keywords: "smile happy face emoji", url: "https://cdn-icons-png.flaticon.com/512/2752/2752090.png" },
-    { id: 4, name: "Lightning Bolt", keywords: "thunder lightning bolt power energy", url: "https://cdn-icons-png.flaticon.com/512/414/414927.png" },
-    { id: 5, name: "Musical Note", keywords: "music note sound audio", url: "https://cdn-icons-png.flaticon.com/512/2922/2922500.png" },
-    { id: 6, name: "Way", keywords: "leaf nature green plant tree", url: "https://cdn-icons-png.flaticon.com/512/714/714534.png" },
-    { id: 7, name: "Network", keywords: "flower floral bloom garden", url: "https://cdn-icons-png.flaticon.com/512/2540/2540275.png" },
-    { id: 8, name: "Mom", keywords: "snowflake winter christmas cold", url: "https://cdn-icons-png.flaticon.com/512/414/414999.png" },
-    { id: 9, name: "Tea Cup", keywords: "birthday cake party celebrate", url: "https://cdn-icons-png.flaticon.com/512/924/924514.png" },
-    { id: 10, name: "Telescoope", keywords: "balloon birthday party celebration", url: "https://cdn-icons-png.flaticon.com/512/1995/1995567.png" },
-    { id: 11, name: "Windy", keywords: "gift present birthday box", url: "https://cdn-icons-png.flaticon.com/512/1762/1762506.png" },
-    { id: 12, name: "Dog", keywords: "crown royal king queen anniversary", url: "https://cdn-icons-png.flaticon.com/512/1462/1462133.png" },
-    { id: 13, name: "Community", keywords: "sun sunshine bright warm", url: "https://cdn-icons-png.flaticon.com/512/681/681494.png" },
-    { id: 14, name: "Profile", keywords: "sparkle shine glitter special", url: "https://cdn-icons-png.flaticon.com/512/747/747376.png" },
-    { id: 15, name: "Cloud", keywords: "fire flame hot burn cool", url: "https://cdn-icons-png.flaticon.com/512/414/414927.png" },
-    { id: 16, name: "Stethoscope", keywords: "cloud weather sky blue", url: "https://cdn-icons-png.flaticon.com/512/822/822144.png" },
-    { id: 17, name: "Innovation", keywords: "rainbow colors spectrum", url: "https://cdn-icons-png.flaticon.com/512/1087/1087840.png" },
-    { id: 18, name: "Butterfly", keywords: "butterfly insect nature", url: "https://cdn-icons-png.flaticon.com/512/921/921489.png" },
-    { id: 19, name: "Puppy", keywords: "paw pet animal dog cat", url: "https://cdn-icons-png.flaticon.com/512/616/616408.png" },
-    { id: 20, name: "Google", keywords: "camera photo vintage picture", url: "https://cdn-icons-png.flaticon.com/512/2991/2991148.png" },
-    { id: 21, name: "Partly Sunny", keywords: "anchor nautical sea boat", url: "https://cdn-icons-png.flaticon.com/512/1163/1163661.png" },
-    { id: 22, name: "Sea Waves", keywords: "peace sign hippie calm", url: "https://cdn-icons-png.flaticon.com/512/616/616545.png" },
-    { id: 23, name: "Thumbs Up", keywords: "like approve good", url: "https://cdn-icons-png.flaticon.com/512/633/633759.png" },
-    { id: 24, name: "Message", keywords: "rocket space launch", url: "https://cdn-icons-png.flaticon.com/512/3062/3062634.png" },
-  ];
+       { id: 1, name: "Crying", keywords: "tear sad", url: "https://cdn-icons-png.flaticon.com/512/742/742784.png" },
 
+    { id: 2, name: "Red Heart", keywords: "heart love romantic valentine", url: "https://cdn-icons-png.flaticon.com/512/833/833472.png" },
+
+    { id: 3, name: "Network", keywords: "flower floral bloom garden", url: "https://cdn-icons-png.flaticon.com/512/2540/2540275.png" },
+    { id: 4, name: "Mom", keywords: "snowflake winter christmas cold", url: "https://cdn-icons-png.flaticon.com/512/414/414999.png" },
+    { id: 5, name: "Tea Cup", keywords: "birthday cake party celebrate", url: "https://cdn-icons-png.flaticon.com/512/924/924514.png" },
+    { id: 6, name: "Telescoope", keywords: "balloon birthday party celebration", url: "https://cdn-icons-png.flaticon.com/512/1995/1995567.png" },
+    { id: 7, name: "Dog", keywords: "crown royal king queen anniversary", url: "https://cdn-icons-png.flaticon.com/512/1462/1462133.png" },
+    { id: 8, name: "Community", keywords: "sun sunshine bright warm", url: "https://cdn-icons-png.flaticon.com/512/681/681494.png" },
+    { id: 9, name: "Profile", keywords: "sparkle shine glitter special", url: "https://cdn-icons-png.flaticon.com/512/747/747376.png" },
+    { id: 10, name: "Cloud", keywords: "fire flame hot burn cool", url: "https://cdn-icons-png.flaticon.com/512/414/414927.png" },
+    { id: 11, name: "Cool", keywords: "sunglasses swag", url: "https://cdn-icons-png.flaticon.com/512/742/742910.png" },
+    { id: 12, name: "Innovation", keywords: "rainbow colors spectrum", url: "https://cdn-icons-png.flaticon.com/512/1087/1087840.png" },
+    { id: 13, name: "Butterfly", keywords: "butterfly insect nature", url: "https://cdn-icons-png.flaticon.com/512/921/921489.png" },
+    { id: 14, name: "Puppy", keywords: "paw pet animal dog cat", url: "https://cdn-icons-png.flaticon.com/512/616/616408.png" },
+    { id: 15, name: "Google", keywords: "camera photo vintage picture", url: "https://cdn-icons-png.flaticon.com/512/2991/2991148.png" },
+    { id: 16, name: "Partly Sunny", keywords: "anchor nautical sea boat", url: "https://cdn-icons-png.flaticon.com/512/1163/1163661.png" },
+    { id: 17, name: "Sea Waves", keywords: "peace sign hippie calm", url: "https://cdn-icons-png.flaticon.com/512/616/616545.png" },
+    { id: 18, name: "Thumbs Up", keywords: "like approve good", url: "https://cdn-icons-png.flaticon.com/512/633/633759.png" },
+    { id: 19, name: "Message", keywords: "rocket space launch", url: "https://cdn-icons-png.flaticon.com/512/3062/3062634.png" },
+ { id: 20, name: "Party", keywords: "celebration", url: "https://cdn-icons-png.flaticon.com/512/742/742751.png" }
+];
+  
   const fonts = ["Arial", "Helvetica", "Times New Roman", "Georgia", "Verdana", "Impact"];
   const canvasRef = useRef(null);
 
@@ -499,6 +509,8 @@ export default function CustomizationStudio() {
 
     setStickerLoading(true);
     setStickerError(null);
+    let fetchedStickers = []; // ← ADD THIS LINE
+
 
     try {
       // Prefer Pexels if the developer has set an API key in .env as REACT_APP_PEXELS_API_KEY
@@ -522,6 +534,8 @@ export default function CustomizationStudio() {
                 keywords: query,
                 url: photo.src && (photo.src.medium || photo.src.small || photo.src.large) || null,
               }));
+              fetchedStickers = stickers;   // ← ADD before
+
               setApiStickers(stickers);
               return;
             }
@@ -542,7 +556,8 @@ export default function CustomizationStudio() {
         keywords: query,
         url: `https://source.unsplash.com/600x600/?${encodeURIComponent(query)}&sig=${i}`,
       }));
-
+     
+      fetchedStickers = unsplashResults;  // ← ADD before
       setApiStickers(unsplashResults);
       return;
     } catch (error) {
@@ -550,7 +565,7 @@ export default function CustomizationStudio() {
     } finally {
       // If we have no apiStickers by now, fall back to emoji stickers so the UI isn't empty
       setStickerLoading(false);
-      if (!apiStickers || apiStickers.length === 0) {
+      if (fetchedStickers.length === 0) {
         const lowerQuery = query.toLowerCase();
         let emojiResults = [];
 
@@ -612,11 +627,27 @@ export default function CustomizationStudio() {
       return;
     }
 
+    // ✅ Check if clicking on a resize handle for logo
+    if (element === "logo-resize-") {
+      const rect = canvasRef.current.getBoundingClientRect();
+      setResizingStickerId("logo"); // Reuse resizingStickerId for logo
+      setResizeStart({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+        size: logoSize,
+      });
+      e.preventDefault();
+      return;
+    }
+
     setDraggingElement(element);
     const rect = canvasRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
+ 
+
+    
     if (element === "text") {
       setOffset({ x: x - (textPos.x / 100) * rect.width, y: y - (textPos.y / 100) * rect.height });
     } else if (element === "logo") {
@@ -630,30 +661,33 @@ export default function CustomizationStudio() {
   };
 
   const handleMouseMove = (e) => {
-    // ✅ Handle sticker resizing - FIXED to allow both increasing and decreasing
+    // ✅ Handle resizing for both stickers and logo
     if (resizingStickerId && canvasRef.current) {
       const rect = canvasRef.current.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       
-      // ✅ FIX: Use diagonal distance for more intuitive resize behavior
-      // Positive delta = move away = increase size
-      // Negative delta = move toward = decrease size
+      // ✅ Use diagonal distance for intuitive resize behavior
       const distX = x - resizeStart.x;
       const distY = y - resizeStart.y;
       const distance = Math.sqrt(distX * distX + distY * distY);
       
-      // ✅ FIX: Determine direction based on which diagonal we're moving
-      // If moving away from the resize handle (bottom-right), distance increases
-      // Calculate the direction to determine if we're increasing or decreasing
+      // Determine direction based on diagonal movement
       const direction = (distX > 0 && distY > 0) ? 1 : (distX < 0 && distY < 0) ? -1 : 
                        (Math.abs(distX) > Math.abs(distY)) ? (distX > 0 ? 1 : -1) : (distY > 0 ? 1 : -1);
       
       const newSize = Math.max(40, Math.min(200, resizeStart.size + (distance * direction / 2)));
-      setStickerSizes((prev) => ({
-        ...prev,
-        [resizingStickerId]: newSize,
-      }));
+      
+      // Handle logo resize
+      if (resizingStickerId === "logo") {
+        setLogoSize(newSize);
+      } else {
+        // Handle sticker resize
+        setStickerSizes((prev) => ({
+          ...prev,
+          [resizingStickerId]: newSize,
+        }));
+      }
       return;
     }
 
@@ -698,21 +732,7 @@ export default function CustomizationStudio() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedStickerId]);
 
-  // Sticker size controls
-  const handleIncreaseStickerSize = (stickerId) => {
-    setStickerSizes((prev) => ({
-      ...prev,
-      [stickerId]: Math.min((prev[stickerId] || 80) + 20, 200),
-    }));
-  };
-
-  const handleDecreaseStickerSize = (stickerId) => {
-    setStickerSizes((prev) => ({
-      ...prev,
-      [stickerId]: Math.max((prev[stickerId] || 80) - 20, 40),
-    }));
-  };
-
+  // Handle sticker deletion
   const handleDeleteSticker = (stickerId) => {
     setSelectedStickers((prev) => prev.filter((s) => s.id !== stickerId));
     setStickerSizes((prev) => {
@@ -832,14 +852,7 @@ export default function CustomizationStudio() {
     }
   };
 
-  // Logo size controls
-  const handleIncreaseLogoSize = () => {
-    setLogoSize(Math.min(logoSize + 20, 200));
-  };
-
-  const handleDecreaseLogoSize = () => {
-    setLogoSize(Math.max(logoSize - 20, 40));
-  };
+  // Logo size controls - Removed (using drag-to-resize instead)
 
   const handleDeleteLogo = () => {
     setLogo(null);
@@ -857,49 +870,55 @@ export default function CustomizationStudio() {
 
   // When switching view, load that side's design into the UI state
   // NOTE: depend only on `view` to avoid re-loading on every internal save
+  // CRITICAL FIX: Properly reset stickers, sizes, and positions for each view
   useEffect(() => {
-    if (suppressViewSync) return;
-    const current = view === "front" ? frontDesign : backDesign;
-    setDesignText(current.designText || "");
-    setSelectedColor(current.selectedColor || "#000000");
-    setShirtColor(current.shirtColor || "#FFFFFF");
-    setFontSize(current.fontSize || 24);
-    setSelectedFont(current.selectedFont || "Arial");
-    setLogo(current.logo || null);
-    setLogoSize(current.logoSize || 100);
-    setSelectedStickers(current.selectedStickers || []);
-    setStickerSizes(current.stickerSizes || {});
-    setStickerPositions(current.stickerPositions || {});
-    setTextPos(current.textPos || { x: 50, y: 50 });
-    setLogoPos(current.logoPos || { x: 20, y: 20 });
-    setInstructions(current.instructions || "");
+     if (suppressViewSync) return;
+  isSwitchingView.current = true;
+  const current = view === "front" ? frontDesign : backDesign;
+  setDesignText(current.designText !== undefined ? current.designText : "");
+  setSelectedColor(current.selectedColor !== undefined ? current.selectedColor : "#000000");
+  setShirtColor(current.shirtColor !== undefined ? current.shirtColor : "#FFFFFF");
+  setFontSize(current.fontSize !== undefined ? current.fontSize : 24);
+  setSelectedFont(current.selectedFont || "Arial");
+  setLogo(current.logo || null);
+  setLogoSize(current.logoSize !== undefined ? current.logoSize : 100);
+  setSelectedStickers(Array.isArray(current.selectedStickers) ? [...current.selectedStickers] : []);
+  setStickerSizes({ ...(current.stickerSizes || {}) });
+  setStickerPositions({ ...(current.stickerPositions || {}) });
+  setTextPos(current.textPos || { x: 50, y: 50 });
+  setLogoPos(current.logoPos || { x: 20, y: 20 });
+  setInstructions(current.instructions || "");
+  setSelectedStickerId(null);
+  // Unblock persist after all state setters have flushed
+  setTimeout(() => { isSwitchingView.current = false; }, 0);
   }, [view]);
 
   // Persist UI changes into the current side's design object
   // Skip persisting while we are restoring state from preview/back-to-edit to avoid overwriting
   useEffect(() => {
     if (suppressViewSync) return;
+  if (isSwitchingView.current) return;   // ← KEY FIX: don't persist stale state mid-switch
 
-    const snapshot = {
-      designText,
-      selectedColor,
-      shirtColor,
-      fontSize,
-      selectedFont,
-      logo,
-      logoSize,
-      selectedStickers,
-      stickerSizes,
-      stickerPositions,
-      textPos,
-      logoPos,
-      instructions,
-    };
-    if (view === "front") {
-      setFrontDesign(snapshot);
-    } else {
-      setBackDesign(snapshot);
-    }
+  const snapshot = {
+    designText,
+    selectedColor,
+    shirtColor,
+    fontSize,
+    selectedFont,
+    logo,
+    logoSize,
+    selectedStickers,
+    stickerSizes,
+    stickerPositions,
+    textPos,
+    logoPos,
+    instructions,
+  };
+  if (view === "front") {
+    setFrontDesign(snapshot);
+  } else {
+    setBackDesign(snapshot);
+  }
   }, [designText, selectedColor, shirtColor, fontSize, selectedFont, logo, logoSize, selectedStickers, stickerSizes, stickerPositions, textPos, logoPos, instructions, view, suppressViewSync]);
 
   const handleReset = () => {
@@ -932,129 +951,140 @@ export default function CustomizationStudio() {
     setInstructions(defaults.instructions);
     setTextPos(defaults.textPos);
     setLogoPos(defaults.logoPos);
-    // reset only the current side's saved design
-    if (view === "front") setFrontDesign(defaults);
-    else setBackDesign(defaults);
+    // reset only the current side's saved design, but preserve shirtColor
+    if (view === "front") setFrontDesign({...defaults, shirtColor: frontDesign.shirtColor || defaults.shirtColor});
+    else setBackDesign({...defaults, shirtColor: backDesign.shirtColor || defaults.shirtColor});
     // clear history globally
     setHistory([]);
     setHistoryIndex(-1);
   };
 
   const handleAddToCart = async () => {
-    if (!product) {
-      alert("Product not found");
-      return;
-    }
+  if (!product) { alert("Product not found"); return; }
 
-    // Calculate total charges from both front and back designs
-    const totalCustomizationPrice = getTotalCharges();
+  // Save current live UI into the correct side FIRST before any view switching
+  const liveSnapshot = {
+    designText, selectedColor, shirtColor, fontSize, selectedFont,
+    logo, logoSize,
+    selectedStickers: selectedStickers.filter(s => s && s.id),
+    stickerSizes, stickerPositions, textPos, logoPos, instructions,
+  };
 
-    // ✅ FIX: Save current state to front/back design BEFORE switching views
-    // This prevents sticker duplication from race conditions during view switching
-    const currentSnapshot = {
-      designText,
-      selectedColor,
-      shirtColor,
-      fontSize,
-      selectedFont,
-      logo,
-      logoSize,
-      selectedStickers,
-      stickerSizes,
-      stickerPositions,
-      textPos,
-      logoPos,
-      instructions,
-    };
-    
-    if (view === "front") {
-      setFrontDesign(currentSnapshot);
-    } else {
-      setBackDesign(currentSnapshot);
-    }
-    
-    // Capture current view before changing it
-    const currentView = view;
-    
-    // Capture front design using the current state snapshot
-    setSuppressViewSync(true);
-    setView("front");
-    await new Promise(resolve => setTimeout(resolve, 100));
-    const frontImageCapture = await captureDesignAsImage(canvasRef.current);
-    
-    // Capture back design using the current state snapshot
-    setView("back");
-    await new Promise(resolve => setTimeout(resolve, 100));
-    const backImageCapture = await captureDesignAsImage(canvasRef.current);
-    
-    // Restore original view and re-enable sync
-    setView(currentView);
-    setSuppressViewSync(false);
+  // Capture immutable copies of both designs right now
+  const savedFrontDesign = view === "front"
+    ? { ...liveSnapshot }
+    : { ...frontDesign };
+  const savedBackDesign = view === "back"
+    ? { ...liveSnapshot }
+    : { ...backDesign };
 
-    // ✅ FIX: Use the latest design states to ensure shirtColor is included
-    // Save full design objects so preview and back-to-edit can fully restore state
-    const customizationDetails = {
-      frontDesign: {
-        ...frontDesign,
-        shirtColor: frontDesign.shirtColor || "#FFFFFF",
-        charge: calculateDesignPrice(frontDesign),
-      },
-      backDesign: {
-        ...backDesign,
-        shirtColor: backDesign.shirtColor || "#FFFFFF",
-        charge: calculateDesignPrice(backDesign),
-      },
-      instructions: instructions,
-      totalCharge: totalCustomizationPrice,
-      // Add captured design images
-      frontDesignImage: frontImageCapture,
-      backDesignImage: backImageCapture,
-    };
+  const totalCustomizationPrice =
+    calculateDesignPrice(savedFrontDesign) + calculateDesignPrice(savedBackDesign);
 
-    const customizationString = JSON.stringify(customizationDetails);
+  // Capture front image — switch view but suppress persist
+  setSuppressViewSync(true);
 
-    // If user is not logged in, save pending action and redirect to login/signup
-    if (!user) {
-      const pending = {
-        type: "add",
-        payload: {
-          product,
-          quantity,
-          size: selectedSize,
-          customization: customizationString,
-          customizationPrice: totalCustomizationPrice,
-        },
-      };
-      localStorage.setItem("pendingAction", JSON.stringify(pending));
-      alert("Please sign in or sign up to complete adding to cart.");
-      navigate("/login");
-      return;
-    }
+  // Load front design into UI for capture
+  setDesignText(savedFrontDesign.designText || "");
+  setSelectedColor(savedFrontDesign.selectedColor || "#000000");
+  setShirtColor(savedFrontDesign.shirtColor || "#FFFFFF");
+  setFontSize(savedFrontDesign.fontSize || 24);
+  setSelectedFont(savedFrontDesign.selectedFont || "Arial");
+  setLogo(savedFrontDesign.logo || null);
+  setLogoSize(savedFrontDesign.logoSize || 100);
+  setSelectedStickers(savedFrontDesign.selectedStickers || []);
+  setStickerSizes(savedFrontDesign.stickerSizes || {});
+  setStickerPositions(savedFrontDesign.stickerPositions || {});
+  setTextPos(savedFrontDesign.textPos || { x: 50, y: 50 });
+  setLogoPos(savedFrontDesign.logoPos || { x: 20, y: 20 });
+  setView("front");
+  await new Promise(r => setTimeout(r, 150));
+  const frontImageCapture = await captureDesignAsImage(canvasRef.current);
 
-    if (location.state?.item) {
-      // Editing an existing cart item - replace it
-      const cartItem = location.state.item;
-      const newItem = {
-        _id: product._id,
-        name: product.name,
-        image: product.image,
-        price: product.price,
-        quantity,
-        size: selectedSize,
+  // Load back design into UI for capture
+  setDesignText(savedBackDesign.designText || "");
+  setSelectedColor(savedBackDesign.selectedColor || "#000000");
+  setShirtColor(savedBackDesign.shirtColor || "#FFFFFF");
+  setFontSize(savedBackDesign.fontSize || 24);
+  setSelectedFont(savedBackDesign.selectedFont || "Arial");
+  setLogo(savedBackDesign.logo || null);
+  setLogoSize(savedBackDesign.logoSize || 100);
+  setSelectedStickers(savedBackDesign.selectedStickers || []);
+  setStickerSizes(savedBackDesign.stickerSizes || {});
+  setStickerPositions(savedBackDesign.stickerPositions || {});
+  setTextPos(savedBackDesign.textPos || { x: 50, y: 50 });
+  setLogoPos(savedBackDesign.logoPos || { x: 20, y: 20 });
+  setView("back");
+  await new Promise(r => setTimeout(r, 150));
+  const backImageCapture = await captureDesignAsImage(canvasRef.current);
+
+  // Restore the original view and live state
+  const originalDesign = view === "front" ? savedFrontDesign : savedBackDesign;
+  setDesignText(originalDesign.designText || "");
+  setSelectedColor(originalDesign.selectedColor || "#000000");
+  setShirtColor(originalDesign.shirtColor || "#FFFFFF");
+  setFontSize(originalDesign.fontSize || 24);
+  setSelectedFont(originalDesign.selectedFont || "Arial");
+  setLogo(originalDesign.logo || null);
+  setLogoSize(originalDesign.logoSize || 100);
+  setSelectedStickers(originalDesign.selectedStickers || []);
+  setStickerSizes(originalDesign.stickerSizes || {});
+  setStickerPositions(originalDesign.stickerPositions || {});
+  setTextPos(originalDesign.textPos || { x: 50, y: 50 });
+  setLogoPos(originalDesign.logoPos || { x: 20, y: 20 });
+
+  // Commit clean designs to state
+  setFrontDesign({ ...savedFrontDesign, charge: calculateDesignPrice(savedFrontDesign) });
+  setBackDesign({ ...savedBackDesign, charge: calculateDesignPrice(savedBackDesign) });
+  setSuppressViewSync(false);
+
+  const customizationDetails = {
+    frontDesign: { ...savedFrontDesign, charge: calculateDesignPrice(savedFrontDesign) },
+    backDesign:  { ...savedBackDesign,  charge: calculateDesignPrice(savedBackDesign) },
+    instructions,
+    totalCharge: totalCustomizationPrice,
+    shirtColor: shirtColor || "#FFFFFF",
+    frontDesignImage: frontImageCapture,
+    backDesignImage:  backImageCapture,
+  };
+
+  const customizationString = JSON.stringify(customizationDetails);
+
+  if (!user) {
+    const pending = {
+      type: "add",
+      payload: {
+        product, quantity, size: selectedSize,
         customization: customizationString,
         customizationPrice: totalCustomizationPrice,
-        frontImage: frontImageCapture || product.frontImage || null,
-        backImage: backImageCapture || product.backImage || null,
-      };
-      updateCartItem(cartItem._id, cartItem.size, cartItem.customization, newItem);
-      alert('Updated cart item with new customization');
-      navigate('/cart');
-    } else {
-      addToCart(product, quantity, selectedSize, customizationString, totalCustomizationPrice, frontImageCapture, backImageCapture);
-      alert(`Added to cart with Rs.${totalCustomizationPrice} customization charge!`);
-      navigate("/cart");
-    }
-  };
+      },
+    };
+    localStorage.setItem("pendingAction", JSON.stringify(pending));
+    alert("Please sign in or sign up to complete adding to cart.");
+    navigate("/login");
+    return;
+  }
+
+  if (location.state?.item) {
+    const cartItem = location.state.item;
+    const newItem = {
+      _id: product._id, name: product.name, image: product.image,
+      price: product.price, quantity, size: selectedSize,
+      customization: customizationString,
+      customizationPrice: totalCustomizationPrice,
+      frontImage: frontImageCapture || product.frontImage || null,
+      backImage:  backImageCapture  || product.backImage  || null,
+    };
+    updateCartItem(cartItem._id, cartItem.size, cartItem.customization, newItem);
+    alert("Updated cart item with new customization");
+    navigate("/cart");
+  } else {
+    addToCart(product, quantity, selectedSize, customizationString,
+      totalCustomizationPrice, frontImageCapture, backImageCapture);
+    alert(`Added to cart with Rs.${totalCustomizationPrice} customization charge!`);
+    navigate("/cart");
+  }
+};
 
   const handleView3D = async () => {
     // Capture current front view
@@ -1083,264 +1113,143 @@ export default function CustomizationStudio() {
   };
 
   const handleDownloadDesign = async () => {
-    const canvas = canvasRef.current;
-    if (!canvas) {
-      alert("Canvas not found!");
-      return;
+  if (!downloadFormat) {
+    alert("Please select a download format.");
+    return;
+  }
+
+  const W = 800, H = 960;
+  const canvasRect = canvasRef.current.getBoundingClientRect();
+  const scaleX = W / canvasRect.width;
+  const scaleY = H / canvasRect.height;
+
+  try {
+    const offscreen = document.createElement("canvas");
+    offscreen.width = W;
+    offscreen.height = H;
+    const ctx = offscreen.getContext("2d");
+
+    // Background
+    ctx.fillStyle = "#f0f0f0";
+    ctx.fillRect(0, 0, W, H);
+
+    // 1. Shirt image (already a data URL — no CORS issue)
+    const shirtSrc = view === "front"
+      ? (frontDataUrl || product?.frontImage)
+      : (backDataUrl  || product?.backImage);
+
+    if (shirtSrc) {
+      try {
+        const shirtImg = await loadImageCORS(shirtSrc);
+        const scale = Math.min(W / shirtImg.width, H / shirtImg.height);
+        const sw = shirtImg.width * scale;
+        const sh = shirtImg.height * scale;
+        ctx.drawImage(shirtImg, (W - sw) / 2, (H - sh) / 2, sw, sh);
+      } catch (e) {
+        console.warn("Shirt draw failed:", e.message);
+      }
     }
 
-    if (!downloadFormat) {
-      alert("Please select a download format (PNG, JPG or PDF).");
-      return;
+    // 2. Stickers
+    for (const sticker of selectedStickers.filter(s => s && s.id)) {
+      const pos  = stickerPositions[sticker.id] || { x: 70, y: 70 };
+      const size = (stickerSizes[sticker.id] || 80) * scaleX;
+      const cx   = (pos.x / 100) * W;
+      const cy   = (pos.y / 100) * H;
+
+      if (sticker.emoji) {
+        ctx.font = `${size}px serif`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(sticker.emoji, cx, cy);
+      } else if (sticker.url) {
+        try {
+          const img = await loadImageCORS(sticker.url);
+          ctx.drawImage(img, cx - size / 2, cy - size / 2, size, size);
+        } catch (e) {
+          console.warn(`Sticker ${sticker.id} skipped (CORS):`, e.message);
+          // Grey placeholder
+          ctx.fillStyle = "rgba(180,180,180,0.5)";
+          ctx.fillRect(cx - size / 2, cy - size / 2, size, size);
+          ctx.fillStyle = "#888";
+          ctx.font = "11px Arial";
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.fillText("sticker", cx, cy);
+        }
+      }
     }
 
-    try {
-      // First, persist current UI state to the design object to ensure positions are saved
-      const currentDesignSnapshot = {
-        designText,
-        selectedColor,
-        fontSize,
-        selectedFont,
-        logo,
-        logoSize,
-        selectedStickers,
-        stickerSizes,
-        stickerPositions,
-        textPos,
-        logoPos,
-        instructions,
-      };
-    
-      if (view === "front") {
-        setFrontDesign(currentDesignSnapshot);
-      } else {
-        setBackDesign(currentDesignSnapshot);
+    // 3. Logo (base64 data URL — no CORS issue)
+    if (logo) {
+      try {
+        const logoImg = await loadImageCORS(logo);
+        const lx = (logoPos.x / 100) * W;
+        const ly = (logoPos.y / 100) * H;
+        const scaledLogoSize = logoSize * scaleX;
+        ctx.drawImage(logoImg, lx - scaledLogoSize / 2, ly - scaledLogoSize / 2, scaledLogoSize, scaledLogoSize);      } catch (e) {
+        console.warn("Logo draw failed:", e.message);
       }
-
-      // Log positions for debugging
-      console.log("Download started for", view, "view with positions:", {
-        textPos,
-        logoPos,
-        stickerPositions,
-      });
-
-      // Verify that customization elements exist before proceeding
-      if (!designText && !logo && selectedStickers.length === 0) {
-        alert("Warning: No customizations found. Downloading blank design.");
-      }
-
-      const timestamp = new Date().toISOString().split("T")[0];
-      const filename = `design_${view}_${timestamp}`;
-
-      // Find the image element in the canvas
-      const imgElement = canvas.querySelector("img");
-      
-      if (!imgElement) {
-        alert("Product image not found!");
-        return;
-      }
-
-      // Wait for image to load
-      await new Promise((resolve) => {
-        if (imgElement.complete) {
-          resolve();
-        } else {
-          imgElement.onload = resolve;
-          imgElement.onerror = resolve;
-          setTimeout(resolve, 1000);
-        }
-      });
-
-      // Get the actual image dimensions
-      const imgWidth = imgElement.naturalWidth;
-      const imgHeight = imgElement.naturalHeight;
-
-      if (!imgWidth || !imgHeight) {
-        alert("Could not determine image dimensions!");
-        return;
-      }
-
-      // Create a temporary container with desired output dimensions.
-      // For the BACK view we force 1122x1350 as required; otherwise use the image's natural size.
-      let desiredWidth = imgWidth;
-      let desiredHeight = imgHeight;
-      if (view === "back") {
-        desiredWidth = 1122;
-        desiredHeight = 1350;
-      }
-
-      const rect = canvas.getBoundingClientRect();
-      const scaleFactor = rect.width > 0 ? desiredWidth / rect.width : 1;
-
-      const tempContainer = document.createElement("div");
-      tempContainer.style.position = "absolute";
-      tempContainer.style.width = `${desiredWidth}px`;
-      tempContainer.style.height = `${desiredHeight}px`;
-      tempContainer.style.left = "-9999px";
-      tempContainer.style.top = "-9999px";
-      tempContainer.style.overflow = "hidden";
-      document.body.appendChild(tempContainer);
-
-      // Clone the canvas and resize to desired output pixels
-      const clonedContainer = canvas.cloneNode(true);
-      clonedContainer.style.width = `${desiredWidth}px`;
-      clonedContainer.style.height = `${desiredHeight}px`;
-      clonedContainer.style.position = "relative";
-      clonedContainer.style.overflow = "hidden";
-
-      // Ensure product image fills the cloned area
-      const clonedImg = clonedContainer.querySelector("img");
-      if (clonedImg) {
-        clonedImg.style.width = "100%";
-        clonedImg.style.height = "100%";
-        clonedImg.style.objectFit = "contain";
-        clonedImg.style.position = "absolute"; 
-        clonedImg.style.top = "0";
-        clonedImg.style.left = "0";
-        clonedImg.style.zIndex = "0";
-      }
-
-      // Scale element sizes (font, logo, sticker) so they appear the same relative size
-      // IMPORTANT: Percentages for left/top will automatically scale with the new container size
-      const textEl = clonedContainer.querySelector('[data-element="text"]');
-      const logoEl = clonedContainer.querySelector('[data-element="logo"]');
-      const stickerEls = clonedContainer.querySelectorAll('[data-element^="sticker-"]');
-
-      if (textEl) {
-        textEl.style.pointerEvents = "none";
-        textEl.style.fontSize = `${fontSize * scaleFactor}px`;
-        textEl.style.position = "absolute";
-        textEl.style.zIndex = "10";
-        // Ensure percentage positioning is applied
-        textEl.style.left = `${textPos.x}%`;
-        textEl.style.top = `${textPos.y}%`;
-        textEl.style.transform = "translate(-50%, -50%)";
-        // Ensure text is centered
-        textEl.style.textAlign = "center";
-      }
-
-      if (logoEl) {
-        logoEl.style.pointerEvents = "none";
-        logoEl.style.width = `${logoSize * scaleFactor}px`;
-        logoEl.style.height = `${logoSize * scaleFactor}px`;
-        logoEl.style.position = "absolute";
-        logoEl.style.zIndex = "10";
-        // Ensure percentage positioning is applied
-        logoEl.style.left = `${logoPos.x}%`;
-        logoEl.style.top = `${logoPos.y}%`;
-        logoEl.style.transform = "translate(-50%, -50%)";
-        logoEl.style.objectFit = "contain";
-      }
-
-      // Handle multiple stickers
-      stickerEls.forEach((stickerEl) => {
-        const element = stickerEl.getAttribute("data-element");
-        const stickerId = element.substring(8); // Remove "sticker-" prefix
-        const size = stickerSizes[stickerId] || 80;
-        const pos = stickerPositions[stickerId] || { x: 70, y: 70 };
-
-        stickerEl.style.pointerEvents = "none";
-        stickerEl.style.position = "absolute";
-        stickerEl.style.zIndex = "10";
-        // emoji stickers use fontSize; image stickers use width/height
-        stickerEl.style.fontSize = `${size * scaleFactor}px`;
-        stickerEl.style.width = `${size * scaleFactor}px`;
-        stickerEl.style.height = `${size * scaleFactor}px`;
-        // Ensure percentage positioning is applied
-        stickerEl.style.left = `${pos.x}%`;
-        stickerEl.style.top = `${pos.y}%`;
-        stickerEl.style.transform = "translate(-50%, -50%)";
-        if (stickerEl.tagName === "IMG") {
-          stickerEl.style.objectFit = "contain";
-        }
-      });
-
-      tempContainer.appendChild(clonedContainer);
-
-      // Capture with exact desired pixel dimensions (use scale: 1 because we already sized DOM)
-      const screenshotCanvas = await html2canvas(clonedContainer, {
-        backgroundColor: "#f0f0f0",
-        scale: 1,
-        useCORS: true,
-        allowTaint: true,
-        logging: false,
-        width: desiredWidth,
-        height: desiredHeight,
-        imageTimeout: 0,
-      });
-
-      // Remove temporary container
-      document.body.removeChild(tempContainer);
-
-      console.log("Captured canvas size:", screenshotCanvas.width, "x", screenshotCanvas.height);
-
-      const link = document.createElement("a");
-
-      if (downloadFormat === "png") {
-        link.href = screenshotCanvas.toDataURL("image/png");
-        link.download = `${filename}.png`;
-        link.click();
-      } else if (downloadFormat === "jpg") {
-        // Create white background for JPG
-        const jpgCanvas = document.createElement("canvas");
-        jpgCanvas.width = screenshotCanvas.width;
-        jpgCanvas.height = screenshotCanvas.height;
-        const jpgCtx = jpgCanvas.getContext("2d");
-        jpgCtx.fillStyle = "#FFFFFF";
-        jpgCtx.fillRect(0, 0, jpgCanvas.width, jpgCanvas.height);
-        jpgCtx.drawImage(screenshotCanvas, 0, 0);
-        link.href = jpgCanvas.toDataURL("image/jpeg", 0.95);
-        link.download = `${filename}.jpg`;
-        link.click();
-      } else if (downloadFormat === "pdf") {
-        // Use standard PDF sizes for better compatibility
-        const pdfWidth = 210; // mm (A4 width)
-        const pdfHeight = 297; // mm (A4 height)
-        let orientation = "portrait";
-        let finalWidth = pdfWidth;
-        let finalHeight = pdfHeight;
-
-        // Adjust if image is landscape
-        if (screenshotCanvas.width > screenshotCanvas.height) {
-          orientation = "landscape";
-          finalWidth = 297;
-          finalHeight = 210;
-        }
-
-        const pdf = new jsPDF({
-          orientation: orientation,
-          unit: "mm",
-          format: "a4",
-        });
-
-        // Calculate scale to fit image in PDF while maintaining aspect ratio
-        const imgAspectRatio = screenshotCanvas.width / screenshotCanvas.height;
-        const pdfAspectRatio = finalWidth / finalHeight;
-        let pdfImgWidth, pdfImgHeight, pdfX, pdfY;
-
-        if (imgAspectRatio > pdfAspectRatio) {
-          // Image is wider, fit by width
-          pdfImgWidth = finalWidth - 10;
-          pdfImgHeight = pdfImgWidth / imgAspectRatio;
-        } else {
-          // Image is taller, fit by height
-          pdfImgHeight = finalHeight - 10;
-          pdfImgWidth = pdfImgHeight * imgAspectRatio;
-        }
-
-        pdfX = (finalWidth - pdfImgWidth) / 2;
-        pdfY = (finalHeight - pdfImgHeight) / 2;
-
-        pdf.addImage(screenshotCanvas.toDataURL("image/png"), "PNG", pdfX, pdfY, pdfImgWidth, pdfImgHeight);
-        pdf.save(`${filename}.pdf`);
-      }
-
-      alert(`✅ Complete design with ${view.toUpperCase()} product + customizations downloaded as ${downloadFormat.toUpperCase()}!`);
-    } catch (err) {
-      console.error("Download error:", err);
-      alert("Failed to download. Please try again.");
     }
-  };
+
+    // 4. Text (multi-line support)
+    if (designText) {
+      const tx = (textPos.x / 100) * W;
+      const ty = (textPos.y / 100) * H;
+      ctx.font = `bold ${fontSize * scaleX}px ${selectedFont}`;
+      ctx.fillStyle = selectedColor || "#000";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.shadowColor = "rgba(0,0,0,0.3)";
+      ctx.shadowOffsetX = 2;
+      ctx.shadowOffsetY = 2;
+      ctx.shadowBlur = 4;
+
+      const lines = designText.split("\n");
+      const lineH = fontSize * 1.3;
+      const startY = ty - (lines.length * lineH) / 2 + lineH / 2;
+      lines.forEach((line, i) => ctx.fillText(line, tx, startY + i * lineH));
+
+      ctx.shadowColor = "transparent";
+    }
+
+    // 5. Export
+    const filename = `design_${view}_${new Date().toISOString().split("T")[0]}`;
+
+    if (downloadFormat === "pdf") {
+      const pdf = new jsPDF({ orientation: "portrait", unit: "px", format: [W, H] });
+      pdf.addImage(offscreen.toDataURL("image/png"), "PNG", 0, 0, W, H);
+      pdf.save(`${filename}.pdf`);
+
+    } else if (downloadFormat === "jpg") {
+      const jpgC = document.createElement("canvas");
+      jpgC.width = W; jpgC.height = H;
+      const jCtx = jpgC.getContext("2d");
+      jCtx.fillStyle = "#fff";
+      jCtx.fillRect(0, 0, W, H);
+      jCtx.drawImage(offscreen, 0, 0);
+      jpgC.toBlob(blob => {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = `${filename}.jpg`;
+        a.click();
+      }, "image/jpeg", 0.95);
+
+    } else {
+      offscreen.toBlob(blob => {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = `${filename}.png`;
+        a.click();
+      });
+    }
+
+    alert(`✅ Downloaded as ${downloadFormat.toUpperCase()}!`);
+  } catch (err) {
+    console.error("Download error:", err);
+    alert("Download failed: " + err.message);
+  }
+};
 
   const filteredStickers = popularStickers.filter((sticker) => {
     const searchTerm = stickerSearch.toLowerCase();
@@ -1349,6 +1258,12 @@ export default function CustomizationStudio() {
       sticker.keywords.toLowerCase().includes(searchTerm)
     );
   });
+
+  // ✅ CRITICAL FIX: Compute the correct stickers for the current view
+  // This ensures we ALWAYS render stickers from the current side's design, never mix front/back
+  const currentDesignStickers = view === "front" ? (frontDesign.selectedStickers || []) : (backDesign.selectedStickers || []);
+  const currentStickerSizes = view === "front" ? (frontDesign.stickerSizes || {}) : (backDesign.stickerSizes || {});
+  const currentStickerPositions = view === "front" ? (frontDesign.stickerPositions || {}) : (backDesign.stickerPositions || {});
 
   if (!product) {
     return <h2 style={{ textAlign: "center", padding: "50px" }}>Loading customization studio...</h2>;
@@ -1439,23 +1354,13 @@ export default function CustomizationStudio() {
             </div>
           )}
 
-          {/* Text Color */}
+          {/* Text Color - Interactive Color Wheel */}
           <div style={styles.card}>
             <h4 style={styles.cardTitle}>Text Color</h4>
-            <div style={styles.colorGrid}>
-              {fabricColors.map((c) => (
-                <button
-                  key={c.name}
-                  onClick={() => setSelectedColor(c.color)}
-                  style={{
-                    ...styles.colorButton,
-                    backgroundColor: c.color,
-                    border: selectedColor === c.color ? "3px solid #000" : "1px solid #ddd",
-                  }}
-                  title={c.name}
-                />
-              ))}
-            </div>
+            <ColorWheel
+              selectedColor={selectedColor}
+              onColorSelect={(color) => setSelectedColor(color)}
+            />
           </div>
 
           {/* Text Editor */}
@@ -1522,19 +1427,8 @@ export default function CustomizationStudio() {
             {logo && (
               <div>
                 <p style={styles.uploadedText}>✓ Logo uploaded (Size: {logoSize}px)</p>
+                <p style={{fontSize: "11px", color: "#666", marginBottom: "8px"}}>Drag the corner handle on the logo to resize</p>
                 <div style={styles.buttonGroup}>
-                  <button
-                    onClick={handleIncreaseLogoSize}
-                    style={{...styles.sizeBtn, backgroundColor: "#000", color: "#fff"}}
-                  >
-                    + Increase
-                  </button>
-                  <button
-                    onClick={handleDecreaseLogoSize}
-                    style={{...styles.sizeBtn, backgroundColor: "#000", color: "#fff"}}
-                  >
-                    − Decrease
-                  </button>
                   <button
                     onClick={handleDeleteLogo}
                     style={{...styles.sizeBtn, backgroundColor: "#ff6b6b", color: "#fff"}}
@@ -1607,9 +1501,15 @@ export default function CustomizationStudio() {
                     <button
                       key={sticker.id}
                       onClick={() => {
+                        // ✅ FIX: Log sticker addition to debug front/back issue
+                        console.log(`[STICKER ADD] Adding sticker to ${view} view:`, sticker.id);
                         // Add sticker to array if not already present
                         if (!selectedStickers.find((s) => s.id === sticker.id)) {
-                          setSelectedStickers((prev) => [...prev, sticker]);
+                          setSelectedStickers((prev) => {
+                            const newStickers = [...prev, sticker];
+                            console.log(`[STICKER ADD] New stickers array for ${view}:`, newStickers.map(s => s.id));
+                            return newStickers;
+                          });
                           // Initialize size for this sticker
                           setStickerSizes((prev) => ({
                             ...prev,
@@ -1620,6 +1520,8 @@ export default function CustomizationStudio() {
                             ...prev,
                             [sticker.id]: { x: 70 + (selectedStickers.length * 5), y: 70 + (selectedStickers.length * 5) },
                           }));
+                        } else {
+                          console.log(`[STICKER ADD] Sticker already exists in ${view} view:`, sticker.id);
                         }
                       }}
                       style={{
@@ -1672,9 +1574,15 @@ export default function CustomizationStudio() {
                     <button
                       key={sticker.id}
                       onClick={() => {
+                        // ✅ FIX: Log sticker addition to debug front/back issue
+                        console.log(`[STICKER ADD] Adding popular sticker to ${view} view:`, sticker.id);
                         // Add sticker to array if not already present
                         if (!selectedStickers.find((s) => s.id === sticker.id)) {
-                          setSelectedStickers((prev) => [...prev, sticker]);
+                          setSelectedStickers((prev) => {
+                            const newStickers = [...prev, sticker];
+                            console.log(`[STICKER ADD] New stickers array for ${view}:`, newStickers.map(s => s.id));
+                            return newStickers;
+                          });
                           // Initialize size for this sticker
                           setStickerSizes((prev) => ({
                             ...prev,
@@ -1685,6 +1593,8 @@ export default function CustomizationStudio() {
                             ...prev,
                             [sticker.id]: { x: 70 + (selectedStickers.length * 5), y: 70 + (selectedStickers.length * 5) },
                           }));
+                        } else {
+                          console.log(`[STICKER ADD] Sticker already exists in ${view} view:`, sticker.id);
                         }
                       }}
                       style={{
@@ -1708,38 +1618,17 @@ export default function CustomizationStudio() {
             {selectedStickers.length > 0 && (
               <div>
                 <p style={styles.selectedText}>✓ {selectedStickers.length} sticker(s) added</p>
-                <div style={{marginBottom: "12px", padding: "10px", backgroundColor: "#e8f5e9", border: "1px solid #4caf50", borderRadius: "5px", fontSize: "12px", color: "#2e7d32"}}>
-                  <strong>💡 Tips:</strong>
-                  <ul style={{margin: "6px 0 0 0", paddingLeft: "18px"}}>
-                    <li>Click & drag stickers to move them</li>
-                    <li>Hover over a sticker, then drag the blue circle to resize</li>
-                    <li>Click the ✕ icon or press Delete key to remove</li>
-                  </ul>
-                </div>
                 {selectedStickers.map((sticker) => (
                   <div key={sticker.id} style={{marginBottom: "12px", padding: "10px", border: selectedStickerId === sticker.id ? "2px solid #0b84ff" : "1px solid #ddd", borderRadius: "5px", backgroundColor: selectedStickerId === sticker.id ? "#e3f2fd" : "#fff", transition: "all 0.2s ease"}}>
                     <p style={{margin: "0 0 8px 0", fontSize: "12px", fontWeight: "bold"}}>{sticker.name} (Size: {Math.round(stickerSizes[sticker.id] || 80)}px)</p>
                     <div style={styles.buttonGroup}>
-                      <button
-                        onClick={() => handleIncreaseStickerSize(sticker.id)}
-                        style={{...styles.sizeBtn, backgroundColor: "#000", color: "#fff"}}
-                        title="Increase size (or use resize handle)"
-                      >
-                        + Increase
-                      </button>
-                      <button
-                        onClick={() => handleDecreaseStickerSize(sticker.id)}
-                        style={{...styles.sizeBtn, backgroundColor: "#000", color: "#fff"}}
-                        title="Decrease size (or use resize handle)"
-                      >
-                        − Decrease
-                      </button>
+                      <p style={{margin: "0 0 8px 0", fontSize: "11px", color: "#666"}}>Drag the corner handle on the sticker to resize</p>
                       <button
                         onClick={() => {
                           handleDeleteSticker(sticker.id);
                           setSelectedStickerId(null);
                         }}
-                        style={{...styles.sizeBtn, backgroundColor: "#ff6b6b", color: "#fff", gridColumn: "1 / -1"}}
+                        style={{...styles.sizeBtn, backgroundColor: "#ff6b6b", color: "#fff"}}
                         title="Delete sticker (or click ✕ icon on canvas / press Delete)"
                       >
                         🗑️ Delete
@@ -1866,35 +1755,72 @@ export default function CustomizationStudio() {
 
             {/* Logo */}
             {logo && (
-              <img
-                src={logo}
-                alt="logo"
-                onMouseDown={handleMouseDown}
-                data-element="logo"
+              <div
                 style={{
                   position: "absolute",
                   left: `${logoPos.x}%`,
                   top: `${logoPos.y}%`,
                   transform: "translate(-50%, -50%)",
-                  width: `${logoSize}px`,
-                  height: `${logoSize}px`,
-                  objectFit: "contain",
-                  cursor: draggingElement === "logo" ? "grabbing" : "grab",
-                  border: draggingElement === "logo" ? "2px solid #ff6b6b" : "none",
-                  userSelect: "none",
                   zIndex: draggingElement === "logo" ? 1000 : 10,
                 }}
-              />
+              >
+                <img
+                  src={logo}
+                  alt="logo"
+                  onMouseDown={handleMouseDown}
+                  data-element="logo"
+                  style={{
+                    width: `${logoSize}px`,
+                    height: `${logoSize}px`,
+                    objectFit: "contain",
+                    cursor: draggingElement === "logo" ? "grabbing" : "grab",
+                    border: draggingElement === "logo" ? "2px solid #ff6b6b" : "none",
+                    borderRadius: draggingElement === "logo" ? "4px" : "0",
+                    userSelect: "none",
+                    display: "block",
+                    transition: "all 0.2s ease",
+                  }}
+                />
+
+                {/* ✅ Resize Handle - Show on logo */}
+                <div
+                  onMouseDown={handleMouseDown}
+                  data-element="logo-resize-"
+                  style={{
+                    position: "absolute",
+                    bottom: "-6px",
+                    right: "-6px",
+                    width: "16px",
+                    height: "16px",
+                    backgroundColor: "#0b84ff",
+                    border: "2px solid #fff",
+                    borderRadius: "2px",
+                    cursor: "nwse-resize",
+                    boxShadow: "0 2px 8px rgba(11,132,255,0.6)",
+                    transition: "all 0.2s ease",
+                    zIndex: 1001,
+                  }}
+                  title="Drag to resize"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = "#0066cc";
+                    e.currentTarget.style.transform = "scale(1.2)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "#0b84ff";
+                    e.currentTarget.style.transform = "scale(1)";
+                  }}
+                />
+              </div>
             )}
 
             {/* Sticker */}
-            {selectedStickers.map((sticker) => (
+            {currentDesignStickers.map((sticker) => (
               <div
                 key={sticker.id}
                 style={{
                   position: "absolute",
-                  left: `${(stickerPositions[sticker.id]?.x || 70)}%`,
-                  top: `${(stickerPositions[sticker.id]?.y || 70)}%`,
+                  left: `${(currentStickerPositions[sticker.id]?.x || 70)}%`,
+                  top: `${(currentStickerPositions[sticker.id]?.y || 70)}%`,
                   transform: "translate(-50%, -50%)",
                   zIndex: selectedStickerId === sticker.id ? 1000 : (draggingElement === `sticker-${sticker.id}` ? 999 : 10),
                 }}
@@ -1912,7 +1838,7 @@ export default function CustomizationStudio() {
                     data-sticker-id={sticker.id}
                     style={{
                       position: "relative",
-                      fontSize: `${stickerSizes[sticker.id] || 80}px`,
+                      fontSize: `${currentStickerSizes[sticker.id] || 80}px`,
                       cursor: draggingElement === `sticker-${sticker.id}` ? "grabbing" : "grab",
                       userSelect: "none",
                       padding: selectedStickerId === sticker.id ? "8px" : "0",
@@ -1936,17 +1862,30 @@ export default function CustomizationStudio() {
                         e.currentTarget.onerror = null;
                         const fallback = `https://source.unsplash.com/600x600/?${encodeURIComponent(sticker.name || sticker.keywords || "design")}`;
                         e.currentTarget.src = fallback;
-                        setSelectedStickers((prev) =>
-                          prev.map((s) => (s.id === sticker.id ? { ...s, url: fallback } : s))
-                        );
+                        // ✅ FIX: Update the current view's design stickers, not the shared array
+                        if (view === "front") {
+                          setFrontDesign((prev) => ({
+                            ...prev,
+                            selectedStickers: (prev.selectedStickers || []).map((s) =>
+                              s.id === sticker.id ? { ...s, url: fallback } : s
+                            ),
+                          }));
+                        } else {
+                          setBackDesign((prev) => ({
+                            ...prev,
+                            selectedStickers: (prev.selectedStickers || []).map((s) =>
+                              s.id === sticker.id ? { ...s, url: fallback } : s
+                            ),
+                          }));
+                        }
                       } catch (err) {
                         console.warn("sticker canvas fallback failed", err);
                       }
                     }}
                     style={{
                       position: "relative",
-                      width: `${stickerSizes[sticker.id] || 80}px`,
-                      height: `${stickerSizes[sticker.id] || 80}px`,
+                      width: `${currentStickerSizes[sticker.id] || 80}px`,
+                      height: `${currentStickerSizes[sticker.id] || 80}px`,
                       objectFit: "contain",
                       cursor: draggingElement === `sticker-${sticker.id}` ? "grabbing" : "grab",
                       border: selectedStickerId === sticker.id ? "2px solid #ff6b6b" : "none",
@@ -1955,6 +1894,37 @@ export default function CustomizationStudio() {
                       userSelect: "none",
                       display: "block",
                       transition: "all 0.2s ease",
+                    }}
+                  />
+                )}
+
+                {/* ✅ Resize Handle - Show on selected sticker corner */}
+                {selectedStickerId === sticker.id && (
+                  <div
+                    onMouseDown={handleMouseDown}
+                    data-element={`sticker-resize-${sticker.id}`}
+                    style={{
+                      position: "absolute",
+                      bottom: "-6px",
+                      right: "-6px",
+                      width: "16px",
+                      height: "16px",
+                      backgroundColor: "#ff6b6b",
+                      border: "2px solid #fff",
+                      borderRadius: "2px",
+                      cursor: "nwse-resize",
+                      boxShadow: "0 2px 8px rgba(255,107,107,0.6)",
+                      transition: "all 0.2s ease",
+                      zIndex: 1001,
+                    }}
+                    title="Drag to resize"
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = "#ff5252";
+                      e.currentTarget.style.transform = "scale(1.2)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = "#ff6b6b";
+                      e.currentTarget.style.transform = "scale(1)";
                     }}
                   />
                 )}
@@ -2001,36 +1971,7 @@ export default function CustomizationStudio() {
                   </button>
                 )}
 
-                {/* ✅ Resize Handle - Bottom Right Corner */}
-                {selectedStickerId === sticker.id && (
-                  <div
-                    onMouseDown={handleMouseDown}
-                    data-element={`sticker-resize-${sticker.id}`}
-                    style={{
-                      position: "absolute",
-                      bottom: "-6px",
-                      right: "-6px",
-                      width: "16px",
-                      height: "16px",
-                      backgroundColor: "#0b84ff",
-                      border: "2px solid #fff",
-                      borderRadius: "50%",
-                      cursor: "nwse-resize",
-                      boxShadow: "0 2px 6px rgba(11,132,255,0.4)",
-                      transition: "all 0.2s ease",
-                      zIndex: 1002,
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = "#0a6fd1";
-                      e.currentTarget.style.transform = "scale(1.2)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = "#0b84ff";
-                      e.currentTarget.style.transform = "scale(1)";
-                    }}
-                    title="Drag to resize sticker"
-                  />
-                )}
+
               </div>
             ))}
           </div>

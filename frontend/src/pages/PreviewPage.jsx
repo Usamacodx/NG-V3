@@ -124,11 +124,14 @@ export default function PreviewPage() {
         });
 
         // text shadow
-        ctx.fillStyle = "rgba(0,0,0,0.1)";
-        lines.forEach((line, index) => {
-          ctx.fillText(line, x + 2, startY + index * lineHeight + 2);
-        });
+        ctx.shadowColor = "rgba(0,0,0,0.25)";
+        ctx.shadowOffsetX = 1;
+        ctx.shadowOffsetY = 1;
+        ctx.shadowBlur = 3;
+        
       }
+      ctx.shadowColor = "transparent";
+
 
       // Draw logo (supports data:, blob:, http(s) or object with url)
       const drawImageFromSource = (src, x, y, w, h) => {

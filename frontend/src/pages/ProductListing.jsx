@@ -425,7 +425,7 @@ function ProductListing() {
       {/* CATEGORY SECTIONS */}
       <div id="collections" style={{ padding: "0" }}>
         {/* MEN COLLECTION - NEW LAYOUT */}
-        <div style={{ backgroundColor: "#fff" }}>
+        <div style={{ backgroundColor: "#1a1a1a" }}>
           <div style={categoryHeadingContainerStyle}>
             <h2 style={categoryMainHeadingStyle}>👔 Men Collection</h2>
           </div>
@@ -672,7 +672,6 @@ function ProductListing() {
                       backgroundColor: "#0b84ff",
                       color: "#fff",
                       border: "none",
-                      padding: "8px",
                       borderRadius: 8,
                       cursor: "pointer",
                       display: "inline-flex",

@@ -193,7 +193,7 @@ async function renderAndDownloadDesign(design, baseImageSrc, filename) {
   const stickerPositions = design.stickerPositions || {};
   
   stickers.forEach((sticker, index) => {
-    const stickerId = `sticker-${index}`;
+    const stickerId = sticker?.id || sticker?.name || `sticker-${index}`;
     const pos = stickerPositions[stickerId] || { x: 50, y: 50 };
     const stickerSize = (sticker.stickerSize || design.stickerSize || 80) * (desiredWidth / (design._canvasWidth || desiredWidth));
     
