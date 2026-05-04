@@ -1086,31 +1086,116 @@ export default function CustomizationStudio() {
   }
 };
 
-  const handleView3D = async () => {
-    // Capture current front view
-    setView("front");
-    await new Promise(resolve => setTimeout(resolve, 300)); // Wait for view to update
-    const frontCapture = await captureDesignAsImage(canvasRef.current);
+  // const handleView3D = async () => {
+  //   // Capture current front view
+  //   setView("front");
+  //   await new Promise(resolve => setTimeout(resolve, 300)); // Wait for view to update
+  //   const frontCapture = await captureDesignAsImage(canvasRef.current);
     
-    // Capture current back view
-    setView("back");
-    await new Promise(resolve => setTimeout(resolve, 300)); // Wait for view to update
-    const backCapture = await captureDesignAsImage(canvasRef.current);
+  //   // Capture current back view
+  //   setView("back");
+  //   await new Promise(resolve => setTimeout(resolve, 300)); // Wait for view to update
+  //   const backCapture = await captureDesignAsImage(canvasRef.current);
     
-    // Restore original view
-    setView("front");
+  //   // Restore original view
+  //   setView("front");
 
-    // Navigate to 3D viewer with captured customized designs
-    navigate(`/customize/${id}/3d-view`, { 
-      state: { 
-        frontImage: frontCapture || frontDataUrl, 
-        backImage: backCapture || backDataUrl, 
-        shirtColor,
-        frontDesign,
-        backDesign 
-      } 
-    });
+  //   // Navigate to 3D viewer with captured customized designs
+  //   navigate(`/customize/${id}/3d-view`, { 
+  //     state: { 
+  //       frontImage: frontCapture || frontDataUrl, 
+  //       backImage: backCapture || backDataUrl, 
+  //       shirtColor,
+  //       frontDesign,
+  //       backDesign 
+  //     } 
+  //   });
+  // };
+  const handleView3D = async () => {
+  // 1. Snapshot the live UI into whichever side is active right now
+  const liveSnapshot = {
+    designText, selectedColor, shirtColor,
+    fontSize, selectedFont,
+    logo, logoSize,
+    selectedStickers: selectedStickers.filter(s => s && s.id),
+    stickerSizes, stickerPositions,
+    textPos, logoPos, instructions,
   };
+
+  const savedFrontDesign = view === "front" ? { ...liveSnapshot } : { ...frontDesign };
+  const savedBackDesign  = view === "back"  ? { ...liveSnapshot } : { ...backDesign  };
+
+  // 2. Suppress the persist effect so switching views doesn't overwrite designs
+  setSuppressViewSync(true);
+
+  // ── Capture FRONT ──────────────────────────────────────────────────────────
+  setDesignText(savedFrontDesign.designText || "");
+  setSelectedColor(savedFrontDesign.selectedColor || "#000000");
+  setShirtColor(savedFrontDesign.shirtColor || "#FFFFFF");
+  setFontSize(savedFrontDesign.fontSize || 24);
+  setSelectedFont(savedFrontDesign.selectedFont || "Arial");
+  setLogo(savedFrontDesign.logo || null);
+  setLogoSize(savedFrontDesign.logoSize || 100);
+  setSelectedStickers(savedFrontDesign.selectedStickers || []);
+  setStickerSizes(savedFrontDesign.stickerSizes || {});
+  setStickerPositions(savedFrontDesign.stickerPositions || {});
+  setTextPos(savedFrontDesign.textPos || { x: 50, y: 50 });
+  setLogoPos(savedFrontDesign.logoPos || { x: 20, y: 20 });
+  setView("front");
+
+  // Wait for React to repaint the canvas with front design
+  await new Promise(r => setTimeout(r, 300));
+  const frontCapture = await captureDesignAsImage(canvasRef.current);
+
+  // ── Capture BACK ───────────────────────────────────────────────────────────
+  setDesignText(savedBackDesign.designText || "");
+  setSelectedColor(savedBackDesign.selectedColor || "#000000");
+  setShirtColor(savedBackDesign.shirtColor || "#FFFFFF");
+  setFontSize(savedBackDesign.fontSize || 24);
+  setSelectedFont(savedBackDesign.selectedFont || "Arial");
+  setLogo(savedBackDesign.logo || null);
+  setLogoSize(savedBackDesign.logoSize || 100);
+  setSelectedStickers(savedBackDesign.selectedStickers || []);
+  setStickerSizes(savedBackDesign.stickerSizes || {});
+  setStickerPositions(savedBackDesign.stickerPositions || {});
+  setTextPos(savedBackDesign.textPos || { x: 50, y: 50 });
+  setLogoPos(savedBackDesign.logoPos || { x: 20, y: 20 });
+  setView("back");
+
+  await new Promise(r => setTimeout(r, 300));
+  const backCapture = await captureDesignAsImage(canvasRef.current);
+
+  // ── Restore original view & UI ─────────────────────────────────────────────
+  const originalDesign = view === "front" ? savedFrontDesign : savedBackDesign;
+  setDesignText(originalDesign.designText || "");
+  setSelectedColor(originalDesign.selectedColor || "#000000");
+  setShirtColor(originalDesign.shirtColor || "#FFFFFF");
+  setFontSize(originalDesign.fontSize || 24);
+  setSelectedFont(originalDesign.selectedFont || "Arial");
+  setLogo(originalDesign.logo || null);
+  setLogoSize(originalDesign.logoSize || 100);
+  setSelectedStickers(originalDesign.selectedStickers || []);
+  setStickerSizes(originalDesign.stickerSizes || {});
+  setStickerPositions(originalDesign.stickerPositions || {});
+  setTextPos(originalDesign.textPos || { x: 50, y: 50 });
+  setLogoPos(originalDesign.logoPos || { x: 20, y: 20 });
+  setFrontDesign(savedFrontDesign);
+  setBackDesign(savedBackDesign);
+  setSuppressViewSync(false);
+
+  // 3. Navigate — pass both captured PNGs (base64 data URLs) via router state
+  navigate(`/customize/${id}/3d-view`, {
+    state: {
+      frontImage: frontCapture,   // full-design screenshot of front canvas
+      backImage:  backCapture,    // full-design screenshot of back canvas
+      shirtColor: savedFrontDesign.shirtColor || "#FFFFFF",
+      frontDesign: savedFrontDesign,
+      backDesign:  savedBackDesign,
+    },
+  });
+};
+
+
 
   const handleDownloadDesign = async () => {
   if (!downloadFormat) {
