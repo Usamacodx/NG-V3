@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 import './index.css'; // ← ADD THIS LINE
+import ThreeDViewer from "./pages/ThreeDViewer";
+
+
 
 
 // Components
@@ -71,6 +74,8 @@ export default function App() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/admin/edit-product/:id" element={<EditProduct />} />
+            <Route path="/customize/:id/3d-view" element={<ThreeDViewer />} />
+
             
             {/* Footer Links Routes */}
             <Route path="/about" element={<AboutUs />} />
