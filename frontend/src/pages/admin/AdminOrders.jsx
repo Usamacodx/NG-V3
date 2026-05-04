@@ -292,6 +292,34 @@ export default function AdminOrders() {
     }
   };
 
+  const handleDeleteOrder = async (orderId) => {
+    // ✅ Confirmation dialog
+    if (!window.confirm('Are you sure you want to delete this order? This action cannot be undone.')) {
+      return;
+    }
+
+    try {
+      const res = await fetch(`${API}/api/orders/${orderId}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+      });
+      if (!res.ok) throw new Error('Delete failed');
+      
+      // ✅ Remove order from list
+      setOrders((prev) => prev.filter((o) => o._id !== orderId));
+      // ✅ Clear from cache if expanded
+      setOrderDetails((prev) => {
+        const newDetails = { ...prev };
+        delete newDetails[orderId];
+        return newDetails;
+      });
+      alert('Order deleted successfully');
+    } catch (err) {
+      console.error('Failed to delete order', err);
+      alert('Failed to delete order');
+    }
+  };
+
   if (loading) return <div className="p-6">Loading orders...</div>;
 
   return (
@@ -331,6 +359,15 @@ export default function AdminOrders() {
                       ))}
                     </select>
                   </div>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDeleteOrder(o._id);
+                    }}
+                    className="mt-2 inline-block bg-red-600 hover:bg-red-700 text-white text-sm px-3 py-1 rounded"
+                  >
+                    Delete Order
+                  </button>
                   <div className="text-sm text-blue-600">{isExpanded ? '▼ Click to collapse' : '▶ Click to expand'}</div>
                 </div>
               </div>
