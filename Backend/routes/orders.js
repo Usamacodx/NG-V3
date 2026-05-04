@@ -139,4 +139,20 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// Delete an order
+router.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleted = await Order.findByIdAndDelete(id);
+    
+    if (!deleted) return res.status(404).json({ message: 'Order not found' });
+    
+    console.log(`✅ Order ${id} deleted successfully`);
+    res.json({ message: 'Order deleted successfully', order: deleted });
+  } catch (err) {
+    console.error('Error deleting order', err.message);
+    res.status(500).json({ message: 'Failed to delete order', error: err.message });
+  }
+});
+
 export default router;
